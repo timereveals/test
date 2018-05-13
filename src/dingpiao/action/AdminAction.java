@@ -565,7 +565,7 @@ public class AdminAction extends ActionSupport {
     }
 
     //回复留言
-    public String wordUpdate() throws Exception {
+    public void wordUpdate() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         String id = request.getParameter("id");
@@ -576,9 +576,7 @@ public class AdminAction extends ActionSupport {
         wordDAO.updateBean(word);
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        response.getWriter().print("<script language=javascript>alert('回复成功');window.location" +
-                ".href='javascript:history.back(-1);';</script>");
-        return SUCCESS;
+        response.getWriter().print("<script language=javascript>alert('回复成功');window.location.href='manage/index.jsp';</script>");
     }
 
     //查看留言
