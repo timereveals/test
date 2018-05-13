@@ -43,8 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	<li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick="doclk('../adminMethod!adminManage')">车站管理员</a></dd>
-            <dd><a href="javascript:;" onclick="doclk('../adminMethod!userManage')">普通用户</a></dd>
+            <dd><a href="javascript:;" onclick="doclk('../adminMethod!adminManage')" id="adminManage">车站管理员</a></dd>
+            <dd><a href="javascript:;" onclick="doclk('../adminMethod!userManage')" id="userManage">普通用户</a></dd>
           </dl>
         </li>
         

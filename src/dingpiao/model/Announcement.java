@@ -21,6 +21,10 @@ public class Announcement {
 
     private Date createtime;
 
+    private Date start_time;
+
+    private Date end_time;
+
     private int status;
 
     public int getId() {
@@ -61,5 +65,21 @@ public class Announcement {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public Date getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(Date end_time) {
+        this.end_time = end_time;
+    }
+
+    public Date getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(Date start_time) {
+        this.start_time = start_time;
     }
 }

@@ -331,6 +331,12 @@ public class UserAction extends ActionSupport {
 
         where += " order by id DESC";
 
+        Date curDate = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-ddHH:mm");
+        String curTime = simpleDateFormat.format(curDate);
+        List<Announcement> announcements = announcementDAO.selectBeanList(0, 999, " where date_format(start_time,'%Y-%m-%d%T') < '"+curTime+"' and date_format(end_time,'%Y-%m-%d%T') > '" + curTime+"'");
+        request.setAttribute("announcements", announcements);
+
         List<Schedule> scheduleList = scheduleDAO.selectBeanList(0, 999, where);
         for (int i = 0; i < scheduleList.size(); ++i) {
             if (scheduleList.get(i).getTickets().size() <= 0) {

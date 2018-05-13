@@ -52,10 +52,22 @@
 	    	<div>
 	    		<label>内容:</label><textarea name="content" style="width: 300px; height: 100px;border: 1px solid gray;margin-top: 15px; overflow: scroll;" placeholder="请输入内容,多于20字,小于1000字" />
 	    	</div>
+	    	<div>
+	    	    <label>开始时间:</label><input id="start" name="start" type="datetime-local" value=""/>
+	    	</div>
+	    	<div>
+	    	    <label>结束时间:</label><input id="end" name="end" type="datetime-local" value=""/>
+	    	</div>
 	    	<div class="btn">
-	    		<button id="sure_editRow" type="submit">确定</button>
+	    		<button id="sure_editRow" type="submit" onclick="test();">确定</button>
+	    		<script>
+	    		function test(){
+	    		    alert(document.getElementById('start').value+document.getElementById('end').value);
+	    		}
+	    		</script>
 	    	</div>
     	</form>
+	    		<button onclick="test();">test</button>
     </div>
     <!-- 弹出层(editRow)div-->
     <div class="layer" id="layer_editRow" >

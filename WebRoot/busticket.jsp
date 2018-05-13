@@ -127,10 +127,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </TBODY></TABLE></DIV>
 <DIV
 style="TEXT-ALIGN: right; PADDING-BOTTOM: 5px; LINE-HEIGHT: 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #f00; PADDING-TOP: 5px">以上查询信息仅供参考，请以站点当日售票信息为准！</DIV></DIV></DIV></DIV>
-
-
-
-<%@ include file="right.jsp" %>
-
-
+<!-- right -->
+<DIV class=article>
+<DIV class="yd-tittle yd-right martop">
+<H3>网站公告</H3><B class=hotydr></B></DIV>
+<br/><br/>
+<c:forEach items="${announcements}" var="bean">
+<a href="userMethod!announcement?id=${bean.id}">${bean.title}</a>
+<br/>
+</c:forEach>
+</DIV>
 </BODY></HTML>

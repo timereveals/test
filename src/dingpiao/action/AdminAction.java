@@ -309,12 +309,12 @@ public class AdminAction extends ActionSupport {
         int check = adminDAO.selectBeanCount(" where name='" + admin.getName() + "'");
         if (check != 0) {
             response.getWriter().print("<script language=javascript>alert('创建失败,用户名已存在');window.location" +
-                    ".href='adminMethod!adminManage';</script>");
+                    ".href='index.jsp';</script>");
             return;
         }
         adminDAO.insertBean(admin);
         response.getWriter().print("<script language=javascript>alert('创建车站管理员成功,初始密码为'" + admin.getPassword() + "'')" +
-                ";window.location.href='adminMethod!adminManage';</script>");
+                ";window.location.href='index.jsp';</script>");
     }
 
     public void adminSetLock() throws Exception {
@@ -327,17 +327,17 @@ public class AdminAction extends ActionSupport {
         if (admin.getStatus() == 1) {
             response.setCharacterEncoding("gbk");
             response.setContentType("text/html; charset=gbk");
-            response.getWriter().print("<script language=javascript>alert('该用户已停用！修改失败');href='manage/index.jsp';" +
+            response.getWriter().print("<script language=javascript>alert('该用户已停用！修改失败');window.location.href='manage/index.jsp';$('#adminManage').click();" +
                     "</script>");
             return;
         } else if (admin != null) {
             admin.setStatus(1);
             adminDAO.updateBean(admin);
         } else {
-            response.getWriter().print("<script language=javascript>alert('修改失败');href='manage/index.jsp';</script>");
+            response.getWriter().print("<script language=javascript>alert('修改失败');window.location.href='manage/index.jsp';$('#adminManage').click();</script>");
             return;
         }
-        response.getWriter().print("<script language=javascript>alert('修改成功');href='manage/index.jsp';</script>");
+        response.getWriter().print("<script language=javascript>alert('修改成功');window.location.href='manage/index.jsp';$('#adminManage').click();</script>");
     }
 
     public void adminReleaseLock() throws Exception {
@@ -350,17 +350,17 @@ public class AdminAction extends ActionSupport {
         if (admin.getStatus() == 0) {
             response.setCharacterEncoding("gbk");
             response.setContentType("text/html; charset=gbk");
-            response.getWriter().print("<script language=javascript>alert('该用户已启用！修改失败');href='manage/index.jsp';" +
+            response.getWriter().print("<script language=javascript>alert('该用户已启用！修改失败');window.location.href='manage/index.jsp';" +
                     "</script>");
             return;
         } else if (admin != null) {
             admin.setStatus(0);
             adminDAO.updateBean(admin);
         } else {
-            response.getWriter().print("<script language=javascript>alert('修改失败');href='manage/index.jsp';</script>");
+            response.getWriter().print("<script language=javascript>alert('修改失败');window.location.href='manage/index.jsp';</script>");
             return;
         }
-        response.getWriter().print("<script language=javascript>alert('修改成功');href='manage/index.jsp';</script>");
+        response.getWriter().print("<script language=javascript>alert('修改成功');window.location.href='manage/index.jsp';</script>");
     }
 
     public String announcementManage() throws Exception {
@@ -395,6 +395,11 @@ public class AdminAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         String title = request.getParameter("title");
         String content = request.getParameter("content");
+        String start = request.getParameter("start").replace("T","");
+        String end = request.getParameter("end").replace("T","");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddHH:mm");
+        Date time_start = sdf.parse(start);
+        Date time_end = sdf.parse(end);
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setContentType("text/html; charset=gbk");
@@ -403,6 +408,8 @@ public class AdminAction extends ActionSupport {
             announcement.setTitle(title);
             announcement.setContent(content);
             announcement.setCreatetime(new Date());
+            announcement.setStart_time(time_start);
+            announcement.setEnd_time(time_end);
             announcement.setStatus(0);
             announcementDAO.insertBean(announcement);
 
@@ -875,7 +882,7 @@ public class AdminAction extends ActionSupport {
         if (user.getStatus() == 1) {
             response.setCharacterEncoding("gbk");
             response.setContentType("text/html; charset=gbk");
-            response.getWriter().print("<script language=javascript>alert('该用户已停用！修改失败');</script>");
+            response.getWriter().print("<script language=javascript>alert('该用户已停用！修改失败');window.location.href='manage/index.jsp';doclk('adminMethod!userManage');</script>");
             return;
         } else if (user != null) {
             user.setStatus(1);
@@ -883,7 +890,7 @@ public class AdminAction extends ActionSupport {
         }
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        response.getWriter().print("<script language=javascript>alert('修改成功');href='javascript:history.back(-1);';" +
+        response.getWriter().print("<script language=javascript>alert('修改成功');window.location.href='manage/index.jsp'doclk('adminMethod!userManage');;" +
                 "</script>");
     }
 
@@ -895,7 +902,7 @@ public class AdminAction extends ActionSupport {
         if (user.getStatus() == 0) {
             response.setCharacterEncoding("gbk");
             response.setContentType("text/html; charset=gbk");
-            response.getWriter().print("<script language=javascript>alert('该用户已启用！修改失败');</script>");
+            response.getWriter().print("<script language=javascript>alert('该用户已启用！修改失败');window.location.href='manage/index.jsp';doclk('adminMethod!userManage');</script>");
             return;
         } else if (user != null) {
             user.setStatus(0);
@@ -904,7 +911,7 @@ public class AdminAction extends ActionSupport {
 
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        response.getWriter().print("<script language=javascript>alert('修改成功');href='index.jsp';</script>");
+        response.getWriter().print("<script language=javascript>alert('修改成功');window.location.href='manage/index.jsp';</script>");
     }
 
     public StationDAO getStationDAO() {
