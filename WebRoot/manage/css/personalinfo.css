@@ -1,0 +1,67 @@
+*{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+.show_userinfo,.alter_userinfo{
+	width: 80%;
+	height: 300px;
+	margin: 0 auto;
+	margin-top:10px;
+	border: 2px solid gray;	
+}
+.show_userinfo label,.alter_userinfo label{
+	display: block;
+	float: left;
+	text-align: right;
+	width: 60px;
+	height: 30px;
+	padding-left: 20px;
+}
+.alter_userinfo{
+	display: none;
+}
+
+.show_userinfo p ,.alter_userinfo p{
+	display: block;
+	width: 300px;
+	height: 52px;
+	text-align: left;
+	margin-right: 15px;
+	padding-left:20px ;
+	line-height: 52px;
+	font-size: 23px;
+}
+.show_userinfo div,.alter_userinfo div{
+	width: 100%;
+	height: 34px;
+	margin: 0 auto;
+	text-align: left;
+	line-height: 34px;
+	padding-left:20%;
+	font-size: 14px;
+	color:#355976;
+	font-family: "microsoft yahei";
+}
+.show_userinfo input,.alter_userinfo .alert_btn input{
+	text-align: center;
+	width: 80px;
+	height: 30px;
+	background: rgb(78,84,101);
+	color: white;
+	margin-left: 3%;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.alter_userinfo .alert_btn{
+	margin-left: 10%;
+}
+.alter_userinfo #name,.alter_userinfo #realname,.alter_userinfo #tel,.alter_userinfo #idcard,.alter_userinfo #sex,.alter_userinfo #born{
+	width: 50%;
+	height: 25px;
+	margin-left:15px;
+	font-size: 14px;
+	border: 1px solid grey;
+}

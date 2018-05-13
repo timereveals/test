@@ -1,0 +1,73 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+/*.bg{
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+.title{
+	height: 50px;
+	background-color: rgb(57,61,73);
+	font-size: 18px;
+	padding-left: 20px;
+	line-height: 50px;
+	font-weight: bold;
+	color: white;
+}*/
+.station_tip{
+	margin-top: 20px;
+	padding-left: 30px;
+	color:#355976;
+	font-size: 14px;
+}
+.station_select{
+	margin-top: 15px;
+}
+#select_city dt,#select1 dt,#select2 dt,#select3 dt,#select_city dd,#select1 dd,#select2 dd,#select3 dd{
+	float: left;
+}
+#select_city dt,#select1 dt,#select2 dt,#select3 dt{
+	margin-left:30px ;
+	color:#355976;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+#select_city select,#select1 select ,#select2 select,#select3 select{
+	width: 155px;
+	height: 30px;
+	margin-left:10px ;
+	border: 1px solid #7F8C93;
+	font-size: 14px;
+	cursor: pointer;
+}
+#select2 ,#select3 {
+	display: none;
+}
+#select_city ,#select1,#select2,#select3{
+	float: left;
+}
+select{
+	display: inline-block;
+}
+#submit_search ,#submit_add{
+	display: block;
+	background-color: rgb(78,84,101);
+	float: left;
+	margin-left:20px ;
+	color: white;
+	height: 30px; 
+	width: 60px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 4px;
+	text-decoration: none;
+}
+#submit_search:hover ,#submit_add:hover{
+	background: #7F8C93;
+	color: white;
+}
+

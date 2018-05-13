@@ -1,0 +1,72 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.bg{
+	width:75%;
+	margin: 0 auto;
+	margin-top:10px;
+}
+.title{
+	height: 50px;
+	background-color: #1EBFF5;
+	font-size: 18px;
+	padding-left: 20px;
+	line-height: 50px;
+	color: white;
+}
+.station_tip{
+	margin-top: 20px;
+	padding-left: 20px;
+	color:#355976;
+	font-size: 14px;
+}
+dt,dd{
+	float: left;
+	margin-top:15px ;
+}
+#cityName{
+    display:block;
+    width:300px;
+    height:40px;
+    line-height:40px;
+    border:1px solid rgb(30,191,245);
+    border-radius:5px;
+    margin-top:10px;
+    margin-left:20px;
+    float:left;
+}
+#submit-search {
+	display: block;
+	background-color: #23ac38;
+	float: left;
+	margin-left:20px ;
+	margin-top: 15px;
+	color: white;
+	height: 30px; 
+	width: 75px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 4px;
+	text-decoration: none;
+	cursor:pointer;
+}
+.stationinfo{
+	width: 100%;
+	margin-top: 70px;
+}
+.stationinfo th{
+	height: 35px;
+	line-height: 35px;
+	background: rgb(206,226,242);
+}
+.stationinfo td{
+	margin: 0px;
+	padding: 0px;
+	width: 300px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	background: rgb(250,250,250);
+}

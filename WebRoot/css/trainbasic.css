@@ -1,0 +1,731 @@
+.basic-ss {
+	BACKGROUND: url(images/sroll-x.png) repeat-x
+}
+.yd-tittle {
+	BACKGROUND: url(images/sroll-x.png) repeat-x
+}
+.ydlist-ss {
+	BACKGROUND: url(images/sroll-x.png) repeat-x
+}
+.train-riqi {
+	BACKGROUND: url(images/sroll-x.png) repeat-x
+}
+.chose-tt {
+	BACKGROUND: url(images/sroll-x.png) repeat-x
+}
+.hottab-top {
+	BACKGROUND: url(images/sroll-x.png) repeat-x
+}
+.ba-ssl {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.ba-ssr {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.go-city {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.basic-sousuo {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.hotydl {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.hotydr {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.fleft {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.fright {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.ydlistssl {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.ydlistssr {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.train-riqil {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.train-riqir {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.list-yd {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.guo-lu {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.z-dian {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.q-shi {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.go-city-date {
+	BACKGROUND: url(images/bgtrain.png) no-repeat
+}
+.basic-ss {
+	WIDTH: 960px; BACKGROUND-POSITION: 0px -352px; HEIGHT: 47px; OVERFLOW: hidden
+}
+.ba-ssl {
+	WIDTH: 9px; BACKGROUND-POSITION: -191px -49px; HEIGHT: 147px
+}
+.ba-ssr {
+	WIDTH: 9px; BACKGROUND-POSITION: -204px -49px; HEIGHT: 147px
+}
+.ba-ssc {
+	PADDING-BOTTOM: 14px; PADDING-LEFT: 10px; WIDTH: 922px; PADDING-RIGHT: 10px; FLOAT: left; HEIGHT: 40px; OVERFLOW: hidden; PADDING-TOP: 14px
+}
+.basicss-top {
+	BORDER-BOTTOM: #cfe3f2 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 37px; HEIGHT: 37px; OVERFLOW: hidden
+}
+.basicss-top H3 {
+	PADDING-LEFT: 60px; BACKGROUND: url(images/tubiao.png) no-repeat 10px 7px; FLOAT: left; COLOR: #007bc8; FONT-SIZE: 16px
+}
+.basicss-top SPAN {
+	PADDING-LEFT: 50px; COLOR: #ff6d00
+}
+.basicss-cen {
+	COLOR: #797979; PADDING-TOP: 25px
+}
+.basicss-cen LABEL {
+	PADDING-LEFT: 15px
+}
+.go-city {
+	BORDER-BOTTOM-STYLE: none; LINE-HEIGHT: 27px; BORDER-RIGHT-STYLE: none; PADDING-LEFT: 3px; WIDTH: 166px; BACKGROUND-POSITION: -331px -236px; HEIGHT: 30px; border:1px solid grey; border-radius:5px;
+}
+
+.basic-sousuo {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 116px; BACKGROUND-POSITION: -217px -126px; BORDER-TOP-STYLE: none; HEIGHT: 32px; MARGIN-LEFT: 30px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+.aside {
+	WIDTH: 750px; FLOAT: left; OVERFLOW: hidden
+}
+.article {
+	WIDTH: 200px; FLOAT: right; OVERFLOW: hidden
+}
+.w-all {
+	WIDTH: 720px
+}
+.pad10 {
+	PADDING-BOTTOM: 10px
+}
+.border-lr {
+	BORDER-LEFT: #d2d2d2 1px solid; BORDER-RIGHT: #d2d2d2 1px solid
+}
+.fleft {
+	Z-INDEX: 999; POSITION: absolute; WIDTH: 2px; BACKGROUND-POSITION: -441px -49px; HEIGHT: 2px; TOP: 0px; LEFT: 0px
+}
+.fright {
+	POSITION: absolute; TOP: 0px; RIGHT: 0px
+}
+.hottrain-yd {
+	WIDTH: 750px
+}
+.yd-tittle {
+	BACKGROUND-POSITION: 0px -500px; HEIGHT: 35px
+}
+.yd-tittle H3 {
+	LINE-HEIGHT: 35px; PADDING-LEFT: 6px; FLOAT: left; COLOR: #666; FONT-SIZE: 14px
+}
+.w1 {
+	WIDTH: 750px
+}
+.hotydl {
+	WIDTH: 4px; BACKGROUND-POSITION: -414px -51px; FLOAT: left; HEIGHT: 35px
+}
+.hotydr {
+	WIDTH: 4px; BACKGROUND-POSITION: -419px -51px; FLOAT: right; HEIGHT: 35px
+}
+.yd-cen {
+	BORDER-BOTTOM: #d5d5d5 1px solid; BORDER-LEFT: #d5d5d5 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; WIDTH: 728px; PADDING-RIGHT: 10px; OVERFLOW: hidden; BORDER-TOP: #d5d5d5 1px; BORDER-RIGHT: #d5d5d5 1px solid; PADDING-TOP: 10px
+}
+.w2 A {
+	LINE-HEIGHT: 28px; WIDTH: 80px; FLOAT: left; HEIGHT: 28px; OVERFLOW: hidden; MARGIN-RIGHT: 40px
+}
+.w2 A:link {
+	COLOR: #797979
+}
+.w1 A:visited {
+	COLOR: #797979
+}
+.ydright LI A:link {
+	COLOR: #797979
+}
+.ydright LI A:visited {
+	COLOR: #797979
+}
+.citynav DD A:link {
+	COLOR: #797979
+}
+.citynav DD A:visited {
+	COLOR: #797979
+}
+.chcecisousuo SPAN A:link {
+	COLOR: #797979
+}
+.chcecisousuo SPAN A:visited {
+	COLOR: #797979
+}
+.w2 A:hover {
+	COLOR: #f60; TEXT-DECORATION: underline
+}
+.citynav DD A:hover {
+	COLOR: #f60; TEXT-DECORATION: underline
+}
+.ydhot {
+	BORDER-BOTTOM: #b8e2ff 1px solid; BORDER-LEFT: #b8e2ff 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; WIDTH: 748px; PADDING-RIGHT: 0px; OVERFLOW: hidden; BORDER-TOP: #b8e2ff 1px solid; BORDER-RIGHT: #b8e2ff 1px solid; PADDING-TOP: 5px
+}
+.citynav {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; PADDING-LEFT: 15px; WIDTH: 718px; PADDING-RIGHT: 15px; COLOR: #333; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.citynav1 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; PADDING-LEFT: 15px; WIDTH: 718px; PADDING-RIGHT: 15px; COLOR: #333; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.bot-border {
+	BORDER-BOTTOM: #d2d2d2 1px solid
+}
+.citynav DT {
+	TEXT-ALIGN: right; FLOAT: left; COLOR: #333
+}
+.citynav1 DT {
+	TEXT-ALIGN: right; FLOAT: left; COLOR: #333
+}
+.citynav DD {
+	WIDTH: 635px; FLOAT: left
+}
+.citynav1 DD {
+	WIDTH: 635px; FLOAT: left
+}
+.citynav1 DD A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 9px; PADDING-RIGHT: 9px; WHITE-SPACE: nowrap; FLOAT: left; PADDING-TOP: 0px
+}
+.citynav A {
+	MARGIN: 0px 5px; COLOR: #666
+}
+.citynav A:hover {
+	COLOR: #f60
+}
+.fastnav1 {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 26px; PADDING-LEFT: 13px; PADDING-RIGHT: 13px; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.fastnav1 LI {
+	WIDTH: 85px; PADDING-RIGHT: 14px; FLOAT: left; HEIGHT: 27px; OVERFLOW: hidden; MARGIN-RIGHT: 45px
+}
+.fastnav2 {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 26px; PADDING-LEFT: 13px; PADDING-RIGHT: 13px; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.fastnav2 LI {
+	WIDTH: 93px; PADDING-RIGHT: 9px; FLOAT: left; HEIGHT: 26px; OVERFLOW: hidden
+}
+.fastnav1 LI A:link {
+	COLOR: #2084c3
+}
+.fastnav1 LI A:visited {
+	COLOR: #2084c3
+}
+.fastnav3 {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 26px; PADDING-LEFT: 13px; PADDING-RIGHT: 13px; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.fastnav3 LI {
+	WIDTH: 100px; PADDING-RIGHT: 14px; FLOAT: left; HEIGHT: 27px; OVERFLOW: hidden; MARGIN-RIGHT: 30px
+}
+.fastnav3 LI A:link {
+	COLOR: #2084c3
+}
+.fastnav1 LI A:visited {
+	COLOR: #2084c3
+}
+.fastnav3 LI A:hover {
+	COLOR: #f60
+}
+.ydright LI A:hover {
+	COLOR: #f60
+}
+.yd-right H3 {
+	COLOR: #565656
+}
+.ydright {
+	BORDER-BOTTOM: #d2d2d2 1px solid; BORDER-LEFT: #d2d2d2 1px solid; PADDING-BOTTOM: 6px; PADDING-LEFT: 10px; WIDTH: 178px; PADDING-RIGHT: 10px; COLOR: #797979; BORDER-TOP: #d2d2d2 1px; BORDER-RIGHT: #d2d2d2 1px solid; PADDING-TOP: 6px
+}
+.ydright LI {
+	LINE-HEIGHT: 26px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; HEIGHT: 26px; OVERFLOW: hidden
+}
+.w178 LI {
+	WIDTH: 178px
+}
+.w168 LI {
+	PADDING-LEFT: 10px; WIDTH: 150px; WHITE-SPACE: nowrap; BACKGROUND: url(images/tubiao.png) no-repeat 0px -729px; OVERFLOW: hidden
+}
+.ku-fy {
+	LINE-HEIGHT: 25px; MARGIN-TOP: 8px; PADDING-LEFT: 15px; WHITE-SPACE: nowrap; LETTER-SPACING: 0.1em; HEIGHT: 25px; COLOR: #333; OVERFLOW: hidden
+}
+.ku-fy A {
+	MARGIN-RIGHT: 10px
+}
+.ku-fy B {
+	COLOR: #2084c3
+}
+.citynav-station B {
+	COLOR: #2084c3
+}
+.fastnav DL DD A.bj1:link {
+	COLOR: #fff
+}
+.fastnav DL DD A.bj1:visited {
+	COLOR: #fff
+}
+.ku-fy A:link {
+	COLOR: #666
+}
+.ku-fy A:visited {
+	COLOR: #666
+}
+.citynav-station A:link {
+	COLOR: #666
+}
+.citynav-station A:visited {
+	COLOR: #666
+}
+.ku-fy A:hover {
+	COLOR: #f60; TEXT-DECORATION: underline
+}
+.citynav-station {
+	LINE-HEIGHT: 26px; PADDING-LEFT: 15px; LETTER-SPACING: 0.1em; COLOR: #333; OVERFLOW: hidden
+}
+.citynav-station A {
+	PADDING-RIGHT: 8px
+}
+.citynav-station A:hover {
+	COLOR: #f60
+}
+.bj1 {
+	BACKGROUND: url(images/bj1.png) no-repeat center 3px; COLOR: #fff; FONT-WEIGHT: bold
+}
+.citynav1 DD A.bj1:link {
+	COLOR: #fff
+}
+.citynav1 DD A.bj1:visited {
+	COLOR: #fff
+}
+.ydlist-ss {
+	BACKGROUND-POSITION: 0px -535px; HEIGHT: 60px; OVERFLOW: hidden
+}
+.ydlistssl {
+	WIDTH: 6px; BACKGROUND-POSITION: -343px -91px; FLOAT: left; HEIGHT: 60px
+}
+.ydlistssr {
+	WIDTH: 6px; BACKGROUND-POSITION: -351px -91px; FLOAT: left; HEIGHT: 60px
+}
+.ydlistssc {
+	PADDING-BOTTOM: 15px; PADDING-LEFT: 10px; WIDTH: 928px; PADDING-RIGHT: 10px; FLOAT: left; HEIGHT: 30px; PADDING-TOP: 15px
+}
+.ydlistssc LABEL {
+	PADDING-LEFT: 15px
+}
+.ydzhan-name {
+	PADDING-BOTTOM: 6px; LINE-HEIGHT: 30px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 30px; COLOR: #828282; PADDING-TOP: 6px
+}
+.ydzhan-name H3 {
+	PADDING-RIGHT: 25px; FONT: 16px/30px "����"; FLOAT: left; COLOR: #f60
+}
+.train-riqi {
+	BACKGROUND-POSITION: 0px -595px; HEIGHT: 42px; OVERFLOW: hidden
+}
+.train-riqir {
+	WIDTH: 6px; BACKGROUND-POSITION: -367px -91px; FLOAT: right; HEIGHT: 42px
+}
+.train-riqil {
+	WIDTH: 6px; BACKGROUND-POSITION: -361px -91px; FLOAT: left; HEIGHT: 42px
+}
+.train-riqi UL {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 8px; WIDTH: 932px; PADDING-RIGHT: 8px; FLOAT: left; HEIGHT: 42px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.train-riqi UL LI {
+	TEXT-ALIGN: center; PADDING-RIGHT: 2px; FONT: bold 14px/40px "����"; BACKGROUND: url(images/sroll-x.png) no-repeat right -640px; FLOAT: left; OVERFLOW: hidden; CURSOR: pointer
+}
+.train-riqi .yes {
+	BORDER-BOTTOM: #1893e7 1px; BORDER-LEFT: #1893e7 1px solid; WIDTH: 115px; BACKGROUND: #fff; HEIGHT: 37px; COLOR: #000; BORDER-TOP: #1893e7 2px solid; BORDER-RIGHT: #1893e7 1px solid
+}
+.train-riqi .not {
+	WIDTH: 112px; HEIGHT: 40px; COLOR: #007bc8
+}
+.train-riqi .none {
+	WIDTH: 112px; HEIGHT: 40px; COLOR: #b3b3b3
+}
+.yd-list {
+	BORDER-BOTTOM: #bce4ff 1px solid; BORDER-LEFT: #bce4ff 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 11px; WIDTH: 937px; PADDING-RIGHT: 10px; OVERFLOW: hidden; BORDER-TOP: #bce4ff 1px; BORDER-RIGHT: #bce4ff 1px solid; PADDING-TOP: 17px
+}
+.yu-list-top {
+	BORDER-TOP: #3399ff 1px solid
+}
+.yd-list .choose {
+	LINE-HEIGHT: 21px; WIDTH: 930px; PADDING-TOP: 5px
+}
+.yd-list .choose LI {
+	PADDING-BOTTOM: 15px
+}
+.yd-list .choose LI SPAN {
+
+}
+.yd-list form .go_city,.yd-list form .arr_city{
+    margin-left:5px;
+    margin-right:10px;
+}
+.yd-list LI LABEL {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; VERTICAL-ALIGN: top; PADDING-TOP: 3px
+}
+.yd-list .choose LI INPUT {
+	PADDING-RIGHT: 5px; VERTICAL-ALIGN: middle
+}
+.chooseleft {
+	MARGIN-TOP: 5px; WIDTH: 937px; OVERFLOW: hidden
+}
+.chose-tt {
+	BORDER-BOTTOM: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; BACKGROUND-POSITION: 0px -681px; HEIGHT: 35px; BORDER-TOP: #e0e0e0 1px solid; BORDER-RIGHT: #e0e0e0 1px solid
+}
+.chooseleft TABLE TR {
+	TEXT-ALIGN: center; LINE-HEIGHT: 26px; COLOR: #000; CURSOR: pointer
+}
+.chooseleft TABLE THEAD TR TH {
+	BORDER-BOTTOM: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; COLOR: #000; BORDER-TOP: #e0e0e0 1px solid; BORDER-RIGHT: #e0e0e0 1px solid
+}
+.chooseleft TABLE TBODY TR TD {
+	BORDER-BOTTOM: #ccc 1px dashed; PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+.chooseleft TABLE TBODY TR TD B {
+	FONT-WEIGHT: normal
+}
+.chooseleft TABLE TR LABEL {
+	DISPLAY: none; COLOR: #a3a3a3
+}
+.chooseleft TABLE TR.over LABEL {
+	DISPLAY: block
+}
+.chooseleft TABLE TR.over TD {
+	BACKGROUND: #f4f9ff
+}
+.yellow {
+	FONT-FAMILY: Arial; COLOR: #f60
+}
+.bluer {
+	FONT-FAMILY: Arial; COLOR: #09f; FONT-SIZE: 14px
+}
+.black {
+	COLOR: #999
+}
+.list-yd {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 73px; BACKGROUND-POSITION: -192px -201px; BORDER-TOP-STYLE: none; HEIGHT: 28px; margin-left: 10px;font-size: 16px;COLOR: #fff;background: rgb(30,191,245);border-radius: 5px; BORDER-LEFT-STYLE: none; CURSOR: pointer; FONT-WEIGHT: bold; text-shadow: 1px 1px 1px #000
+}
+.list-ydw {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 76px; BORDER-TOP-STYLE: none; BACKGROUND: #e1e1e1; HEIGHT: 31px; COLOR: #666; BORDER-LEFT-STYLE: none; CURSOR: pointer; FONT-WEIGHT: bold
+}
+.guo-lu {
+	PADDING-LEFT: 16px; BACKGROUND-POSITION: -480px -83px
+}
+.z-dian {
+	PADDING-LEFT: 16px; BACKGROUND-POSITION: -480px -107px
+}
+.q-shi {
+	PADDING-LEFT: 16px; BACKGROUND-POSITION: -480px -59px
+}
+.hot-tab {
+	BORDER-BOTTOM: #d8d8d8 1px solid; BORDER-LEFT: #d8d8d8 1px solid; WIDTH: 958px; OVERFLOW: hidden; BORDER-TOP: #d8d8d8 1px solid; BORDER-RIGHT: #d8d8d8 1px solid
+}
+.hottab-top {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 25px; PADDING-RIGHT: 0px; BACKGROUND-POSITION: 0px -564px; HEIGHT: 28px; OVERFLOW: hidden; PADDING-TOP: 3px
+}
+.hottab-top LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FLOAT: left; COLOR: #7c7c7c; CURSOR: pointer; PADDING-TOP: 0px
+}
+.hottab-top LI.at {
+	BORDER-BOTTOM: #d8d8d8 1px; BORDER-LEFT: #d8d8d8 1px solid; BACKGROUND: #fff; COLOR: #06f; BORDER-TOP: #d8d8d8 1px solid; BORDER-RIGHT: #d8d8d8 1px solid
+}
+.hottab-cen {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 25px; WIDTH: 908px; PADDING-RIGHT: 25px; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.hottab-cen LI {
+	LINE-HEIGHT: 28px; DISPLAY: inline; FLOAT: left; OVERFLOW: hidden
+}
+.hottab-cen .w11 LI {
+	WIDTH: 227px; HEIGHT: 28px; OVERFLOW: hidden
+}
+.hottab-cen A:link {
+	COLOR: #535353
+}
+.hottab-cen A:visited {
+	COLOR: #535353
+}
+.hottab-cen A:hover {
+	COLOR: #f60; TEXT-DECORATION: underline
+}
+.chcecisousuo {
+	LINE-HEIGHT: 30px; MARGIN: 10px 0px; PADDING-LEFT: 15px
+}
+.chcecisousuo SPAN {
+	PADDING-LEFT: 20px; COLOR: #797979
+}
+.chcecisousuo SPAN A {
+	PADDING-RIGHT: 15px
+}
+.checi-ss {
+	BORDER-BOTTOM: #b6b6b6 1px solid; BORDER-LEFT: #b6b6b6 1px solid; LINE-HEIGHT: 23px; PADDING-LEFT: 5px; WIDTH: 150px; HEIGHT: 23px; BORDER-TOP: #b6b6b6 1px solid; MARGIN-RIGHT: 15px; BORDER-RIGHT: #b6b6b6 1px solid
+}
+.checinews {
+	
+}
+.checinews TABLE {
+	WIDTH: 100%; BORDER-TOP: #afdafa 1px solid
+}
+.checinews TABLE TR {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px
+}
+.checinews TABLE TR TD {
+	BORDER-BOTTOM: #afdafa 1px solid; BORDER-LEFT: #afdafa 1px solid; BORDER-TOP: #afdafa 1px; BORDER-RIGHT: #afdafa 1px solid
+}
+.checinews .white {
+	BACKGROUND: #ffffff
+}
+.checinews .bg-b {
+	BACKGROUND: #e2f2fd
+}
+.city-show {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 20px; WIDTH: 728px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.city-show DT {
+	WIDTH: 60px; FLOAT: left; COLOR: #797979; CLEAR: both; FONT-SIZE: 13px; OVERFLOW: hidden; FONT-WEIGHT: bold
+}
+.city-show DD {
+	PADDING-BOTTOM: 4px; WIDTH: 660px; WHITE-SPACE: nowrap; FLOAT: left; FONT-SIZE: 13px; OVERFLOW: hidden
+}
+.city-show DD A {
+	MARGIN: 0px 2px; PADDING-RIGHT: 15px; FLOAT: left
+}
+.city-show DD A:link {
+	COLOR: #2084c3
+}
+.city-show DD A:visited {
+	COLOR: #2084c3
+}
+.city-show DD A:hover {
+	COLOR: #f60
+}
+.dsd-qxcity A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 3px; PADDING-RIGHT: 13px; PADDING-TOP: 0px
+}
+.dsdcity-d {
+	MARGIN-TOP: 10px; WIDTH: 748px; OVERFLOW: hidden
+}
+.dsdcity-d H3 {
+	LINE-HEIGHT: 32px; PADDING-LEFT: 8px; FONT-SIZE: 14px
+}
+.s2center {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 728px; PADDING-RIGHT: 10px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.s21 LI {
+	BORDER-BOTTOM: #cccccc 1px dashed; PADDING-BOTTOM: 5px; LINE-HEIGHT: 30px; PADDING-LEFT: 0px; WIDTH: 728px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.s21 LI SPAN {
+	FLOAT: left; FONT-SIZE: 12px; OVERFLOW: hidden
+}
+.st {
+	TEXT-ALIGN: left; COLOR: #009900; FONT-WEIGHT: bold
+}
+.mc {
+	WIDTH: 245px
+}
+.sbtime {
+	WIDTH: 140px
+}
+.dsd-yd {
+	TEXT-ALIGN: center; WIDTH: 90px
+}
+.mc A {
+	FONT-SIZE: 12px
+}
+.dezhi A {
+	FONT-SIZE: 12px
+}
+.dezhi SPAN {
+	FLOAT: left
+}
+.dsd-detail {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.dsd-detail UL LI {
+	LINE-HEIGHT: 26px
+}
+.dsd-name {
+	COLOR: #f60; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.adv-dsd {
+	WIDTH: 230px
+}
+.bot-hcz {
+	BORDER-BOTTOM: #b8e2ff 1px solid; BORDER-LEFT: #b8e2ff 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; BORDER-TOP: #b8e2ff 1px solid; BORDER-RIGHT: #b8e2ff 1px solid; PADDING-TOP: 0px
+}
+.hczdetail {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 26px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.hczdetail H3 {
+	LINE-HEIGHT: 30px; FONT-SIZE: 14px
+}
+.station-z {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; WIDTH: 718px; PADDING-RIGHT: 0px; COLOR: #4f4f4f; OVERFLOW: hidden; PADDING-TOP: 15px
+}
+.chose-tt {
+	BORDER-BOTTOM: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; BACKGROUND-POSITION: 0px -681px; HEIGHT: 31px; BORDER-TOP: #e0e0e0 1px solid; BORDER-RIGHT: #e0e0e0 1px solid
+}
+.station-z TABLE TR {
+	TEXT-ALIGN: center; LINE-HEIGHT: 26px; CURSOR: pointer
+}
+.station-z TABLE THEAD TR TH {
+	BORDER-BOTTOM: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; BORDER-RIGHT: #e0e0e0 1px solid
+}
+.station-z TABLE TBODY TR TD {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 3px
+}
+.bluer {
+	FONT-FAMILY: Arial; COLOR: #09f; FONT-SIZE: 14px
+}
+.gaotie {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.gaotie .gtnews {
+	PADDING-BOTTOM: 10px; LINE-HEIGHT: 26px
+}
+.gaotie .gtnews H3 {
+	PADDING-LEFT: 10px; COLOR: #333
+}
+.gaotie .gtnews P {
+	PADDING-BOTTOM: 0px; TEXT-INDENT: 1em; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; COLOR: #333; PADDING-TOP: 10px
+}
+.gaotie-top {
+	BORDER-BOTTOM: #d4d4d4 1px solid; PADDING-BOTTOM: 6px; TEXT-INDENT: 0.5em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: #f7f7f7; PADDING-TOP: 6px
+}
+.gaotie-top H3 {
+	PADDING-LEFT: 10px; FLOAT: left; COLOR: #333; FONT-SIZE: 14px
+}
+.gaotiecen {
+	PADDING-BOTTOM: 10px; LINE-HEIGHT: 26px; PADDING-LEFT: 10px; WIDTH: 940px; PADDING-RIGHT: 10px; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.gt-xianlu {
+	FLOAT: left; OVERFLOW: hidden
+}
+.gt-xianlu DT {
+	COLOR: #333
+}
+.gt-xianlu DD {
+	PADDING-LEFT: 5px; DISPLAY: block; OVERFLOW: hidden
+}
+.gt-xianlu DD A {
+	WHITE-SPACE: nowrap; FLOAT: left; OVERFLOW: hidden
+}
+.gtw1 DD {
+	WIDTH: 70px; FLOAT: left
+}
+.gtw1 {
+	PADDING-LEFT: 20px; WIDTH: 382px
+}
+.gtw2 {
+	PADDING-LEFT: 20px; WIDTH: 382px
+}
+.gtw2 DD A {
+	WIDTH: 95px; WHITE-SPACE: nowrap; OVERFLOW: hidden; MARGIN-RIGHT: 30px
+}
+.gtw3 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; WIDTH: 286px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+.gtw3 DD A {
+	WIDTH: 96px; WHITE-SPACE: nowrap; OVERFLOW: hidden; MARGIN-RIGHT: 44px
+}
+.gtw5 DD A {
+	WIDTH: 72px; OVERFLOW: hidden; MARGIN-RIGHT: 34px
+}
+.gtw3 DD {
+	BORDER-RIGHT-STYLE: none
+}
+.gtw5 DD {
+	BORDER-RIGHT-STYLE: none
+}
+.gtw4 {
+	WIDTH: 219px
+}
+.gtw5 {
+	WIDTH: 219px
+}
+.gtw4 A {
+	PADDING-LEFT: 10px; WIDTH: 190px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; BACKGROUND: url(images/tubiao.png) no-repeat 0px -730px; HEIGHT: 26px; OVERFLOW: hidden
+}
+.daohang {
+	WIDTH: 710px; COLOR: #333; MARGIN-LEFT: 15px
+}
+.daohang A {
+	MARGIN: 0px 5px 8px
+}
+.daohang A:link {
+	COLOR: #666
+}
+.daohang A:hover {
+	COLOR: #f60
+}
+.daohang DT {
+	LINE-HEIGHT: 2.3em; FLOAT: left
+}
+.daohang DD {
+	LINE-HEIGHT: 2.3em; FLOAT: left
+}
+.gtContent {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.gtContent H3 {
+	BORDER-BOTTOM: #d4d4d4 1px solid; PADDING-BOTTOM: 8px; TEXT-INDENT: 1em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: #f7f7f7; COLOR: #666; CLEAR: both; FONT-SIZE: 14px; PADDING-TOP: 8px
+}
+.gtContent .gtxl {
+	LINE-HEIGHT: 1.5em; MARGIN: 10px 0px 5px 10px; WIDTH: 580px; PADDING-RIGHT: 20px; FLOAT: left; BORDER-RIGHT: #ccc 1px solid
+}
+.gtContent .gtxl DD {
+	MARGIN: 8px 0px 0px; WIDTH: 96px; FLOAT: left
+}
+.gtContent .gtsk {
+	LINE-HEIGHT: 1.5em; MARGIN: 10px 0px 5px 10px; WIDTH: 305px; FLOAT: right
+}
+.gtContent .gtsk DD {
+	MARGIN: 8px 45px 0px 0px; WIDTH: 106px; WHITE-SPACE: nowrap; FLOAT: left; OVERFLOW: hidden
+}
+.gtContent .right DD {
+	MARGIN: 8px 45px 0px 0px; WIDTH: 106px; WHITE-SPACE: nowrap; FLOAT: left; OVERFLOW: hidden
+}
+.gtContent .left {
+	LINE-HEIGHT: 1.5em; WIDTH: 580px; PADDING-RIGHT: 30px; FLOAT: left; BORDER-RIGHT: #ccc 1px solid
+}
+.gtContent .right {
+	LINE-HEIGHT: 1.5em; WIDTH: 310px; FLOAT: right
+}
+.gtContent .left DD {
+	MARGIN: 8px 42px 0px 5px; WIDTH: 96px; WHITE-SPACE: nowrap; FLOAT: left; OVERFLOW: hidden
+}
+HR {
+	MARGIN: 10px auto; WIDTH: 960px; COLOR: #ccc; CLEAR: both
+}
+.gtClear {
+	BORDER-BOTTOM: #ccc 1px solid; MARGIN: 20px auto; WIDTH: 960px; HEIGHT: 1px; CLEAR: both
+}
+.gtContent .txt {
+	MARGIN: 10px 10px 5px; WIDTH: 580px; FLOAT: left; HEIGHT: 260px; OVERFLOW: hidden
+}
+.gtContent P {
+	LINE-HEIGHT: 1.9em; TEXT-INDENT: 1em; WIDTH: 100%
+}
+.gtContent H1 {
+	MARGIN: 10px 0px 10px 15px; COLOR: #f60; FONT-SIZE: 18px
+}
+.conter {
+	MARGIN: 10px 0px; WIDTH: 960px; HEIGHT: 8px; CLEAR: both
+}
+a{
+    text-decoration:none;
+}

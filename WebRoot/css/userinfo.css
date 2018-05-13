@@ -1,0 +1,61 @@
+*{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+.show_userinfo,.alter_userinfo{
+	width: 750px;
+	height: 200px;
+	margin-top:10px;
+	margin-left:20px;
+	border: 2px solid #f2f2f2;	
+}
+.alter_userinfo{
+	display: none;
+}
+
+.show_userinfo p ,.alter_userinfo p{
+	display: block;
+	width: 300px;
+	height: 52px;
+	text-align: left;
+	padding-left:20px ;
+	line-height: 52px;
+	font-size: 23px;
+}
+.alter_userinfo input{
+    display: block;
+    float:right;
+    margin-right:43%;
+    width: 300px;
+	height: 25px;
+	line-height:25px;
+	margin-left: 10px;
+	font-size: 14px;
+	border: 1px solid rgb(30,191,245);
+}
+.show_userinfo div,.alter_userinfo div{
+	width: 100%;
+	height: 34px;
+	text-align: left;
+	line-height: 34px;
+	padding-left:90px;
+	font-size: 14px;
+	color:#355976;
+	font-family: "microsoft yahei";
+}
+.show_userinfo input,.alter_userinfo .alert_btn input {
+	float: right;
+	width: 80px;
+	height: 30px;
+	margin-right: 40px;
+	background: rgb(30,191,245);
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-right: 13%;
+}
+
+

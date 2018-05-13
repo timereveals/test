@@ -1,0 +1,180 @@
+*{
+	padding:0px;
+	margin:0px;
+	border:0px;
+	}
+
+A {
+	COLOR: #0083de;
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: #f60;
+	TEXT-DECORATION: underline
+}
+INPUT {
+	COLOR: #999
+}
+
+#navChecked {
+	BACKGROUND: url(images/common/images.jpg) no-repeat
+}
+
+#nav LI A:hover {
+	BACKGROUND: url(images/common/images.jpg) no-repeat
+}
+
+#head {
+	MARGIN: 0px auto;
+	WIDTH: 100%;
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+
+#head .top {
+	BORDER-BOTTOM: #eee 1px solid;
+	MARGIN: 0px auto;
+	WIDTH: 100%;
+	BACKGROUND: #f7f7f7;
+	HEIGHT: 30px
+}
+
+.top P {
+	TEXT-ALIGN: right;
+	LINE-HEIGHT: 30px;
+	MARGIN: 0px auto;
+	WIDTH: 960px;
+	HEIGHT: 20px
+}
+
+.top P A {
+	MARGIN: 0px 5px;
+	COLOR: #666
+}
+
+.top P SPAN {
+	PADDING-RIGHT: 12px;
+	FLOAT: left;
+	COLOR: #666
+}
+
+.top P SPAN A {
+	COLOR: #666
+}
+
+.top P SPAN A:hover {
+	COLOR: #f60
+}
+
+#head .banner {
+	width: 100%;
+	height: 100px;
+	background: rgb(235,235,235);
+}
+.banner .left{
+	padding-top: 30px;
+	padding-left: 200px;
+	float: left;
+	display: inline;
+}
+.banner .left .title-cq{
+	font-family:  arial;
+	font-size: 40px;
+	color: rgb(42,171,62);
+}
+.banner .right{
+	font-family:  arial;
+	font-size: 30px;
+	padding-top: 40px;
+	padding-right: 200px;
+	float: right;
+	display: inline;
+}
+.banner {
+	HEIGHT: 90px
+}
+
+.banner .logo {
+	MARGIN: 15px 0px 5px;
+	WIDTH: 200px;
+	FLOAT: left
+}
+
+#head .nav {
+	WIDTH: 100%;
+	BACKGROUND: url(images/common/nav.jpg) repeat-x;
+	HEIGHT: 39px;
+	CLEAR: both
+}
+
+.nav UL {
+	LIST-STYLE-TYPE: none;
+	MARGIN: 0px auto;
+	WIDTH: 960px;
+	
+}
+
+#nav LI {
+	TEXT-ALIGN: center;
+	LINE-HEIGHT: 40px;
+	WIDTH: 110px;
+	PADDING-RIGHT: 0px;
+	BACKGROUND: url(images/common/fgx.jpg) no-repeat 0px 7px;
+	FLOAT: left;
+	LETTER-SPACING: 0.1em;
+	HEIGHT: 40px;
+	FONT-SIZE: 14px;
+	MARGIN-RIGHT: 0px;
+	PADDING-TOP: 0px
+}
+
+#nav LI.no {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+
+.menu LI.no {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+
+#nav LI A {
+	WIDTH: 110px;
+	
+	HEIGHT: 40px;
+	COLOR: black;
+	FONT-WEIGHT: bold
+}
+
+#nav LI A:hover {
+	BACKGROUND-POSITION: 0px 0px;
+	COLOR: #333;
+	FONT-WEIGHT: bold;
+	TEXT-DECORATION: none
+}
+
+#nav LI A#navChecked {
+	BACKGROUND-POSITION: 0px 0px;
+	COLOR: #333;
+	FONT-WEIGHT: bold;
+	TEXT-DECORATION: none
+}
+
+#menu {
+	WIDTH: 100%;
+	BACKGROUND: url(images/common/nav.jpg) repeat-x 0px -40px;
+	HEIGHT: 39px;
+	CLEAR: both
+}
+
+.menu {
+	LIST-STYLE-TYPE: none;
+	MARGIN: 0px auto;
+	WIDTH: 960px
+}
+
+.menu LI {
+	TEXT-ALIGN: center;
+	LINE-HEIGHT: 30px;
+	WIDTH: 100px;
+	BACKGROUND: url(images/common/nav2.jpg) no-repeat 0px 0px;
+	FLOAT: left
+}

@@ -1,0 +1,462 @@
+
+body {
+  transition: all .2s;
+  -moz-transition: all .2s;
+  -webkit-transition: all .2s;
+  -o-transition: all .2s;
+  list-style: none;
+ 
+}
+.title-text {
+  height: 52px;
+  width: 100%;
+  padding-left: 20px;
+  float: left;
+  line-height: 52px;
+  font-size: 23px;
+  color: black;
+}
+
+li{
+	list-style: none;
+}
+a{
+	 text-decoration: none;
+}
+.check-a {
+  float: left;
+  width: 99.5%;
+  margin-left: 1.5px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.check-a a {
+  display: inline-block;
+  height: 40px;
+  width: 150px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-right: 10px;
+  float: left;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.check-a a:first-child {
+  margin-left: 20px;
+}
+.check-a a:hover {
+  background-color: #1ebff5;
+  color: white;
+}
+
+.contactPage {
+  width: 99.5%;
+  margin-left: 1.5px;
+}
+.contactPage form ul {
+  float: left;
+  border-bottom: 1px dotted #dddddd;
+  margin-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 57%;
+}
+.contactPage form ul li {
+	
+  height: 30px;
+  text-align: right;
+}
+.contactPage form ul li label {
+  display: inline-block;
+  float: right;
+  width: 410px;
+  height: 25px;
+  text-align: left;
+}
+.contactPage form ul li input {
+  display: inline-block;
+  width: 410px;
+  text-align: left;
+  font-size: 14px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -2px;
+  padding-left: 5px;
+  position: relative;
+}
+.contactPage form div {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 150px;
+  width: 37%;
+  float: left;
+  border-bottom: 1px dotted #dddddd;
+}
+.contactPage form div a {
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+  float: right;
+  border: 1px solid #1ebff5;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  color: #1ebff5;
+}
+
+/******************************************我的订单/汽车票订单****************************************************/
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.theCarPage {
+  float: left;
+  width: 99.5%;
+  margin-left: 1.5px;
+  margin-top: 20px;
+}
+.theCarPage .theCarPage-ul1 {
+  float: left;
+  margin: 10px 0 16px 0;
+  width: 100%;
+}
+.theCarPage .theCarPage-ul1:first-child li {
+  float: left;
+}
+.theCarPage .theCarPage-ul1:first-child li:first-child input {
+  height: 35px;
+  width: 270px;
+  padding-left: 5px;
+  font-size: 16px;
+  float: left;
+  margin-left: 10px;
+}
+.theCarPage .theCarPage-ul1:first-child li:first-child span {
+  background-color: #ff7d1b;
+  color: white;
+  display: block;
+  height: 41px;
+  width: 130px;
+  float: left;
+  text-align: center;
+  line-height: 41px;
+}
+.theCarPage .theCarPage-ul1:first-child li:last-child {
+  margin-left: 50px;
+  margin-top: 9px;
+}
+.theCarPage .theCarPage-ul1:first-child li:last-child span {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin-top: 0px;
+  float: right;
+  /*@include vipPic1-sprite(jtou);
+  background-position: 6px -486px !important;*/
+  background: url("../images/vipPic1/jtou.png") no-repeat 5px -7px !important;
+}
+.theCarPage .theCarPage-ul2 {
+  padding-top: 20px;
+  padding-left: 5px;
+  margin: 0px 10px 0 10px;
+  float: left;
+}
+.theCarPage .theCarPage-ul2 li {
+  float: left;
+  width: 437px;
+  margin-bottom: 20px;
+}
+.theCarPage .theCarPage-ul2 li select {
+  height: 30px;
+  width: 300px;
+  margin-left: 20px;
+  font-size: 14px;
+  padding-left: 5px;
+  color: grey;
+}
+.theCarPage .theCarPage-ul2 li select option {
+  font-size: 14px;
+}
+.theCarPage .theCarPage-ul2 li:last-child {
+  margin-left: 0px;
+}
+.theCarPage .theCarPage-ul2 li:first-child + li select {
+  width: 150px;
+  margin-left: 48px;
+}
+.theCarPage .theCarPage-ul3 {
+  width: 75%;
+  float: left;
+  background-color: #1ebff5;
+  margin-bottom: 20px;
+  margin: 0px 10px 0 10px;
+}
+.theCarPage .theCarPage-ul3 li {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  color: white;
+  text-align: center;
+}
+.theCarPage .theCarPage-ul3 li:first-child {
+  margin-left: 10px;
+  width: 246px;
+}
+.theCarPage .theCarPage-ul3 li:first-child + li {
+  width: 35px;
+  padding-left: 50px;
+}
+.theCarPage .theCarPage-ul3 li:first-child + li + li {
+  width: 85px;
+}
+.theCarPage .theCarPage-ul3 li:first-child + li + li + li {
+  width: 166px;
+}
+.theCarPage .theCarPage-ul3 li:first-child + li + li + li + li {
+  width: 84px;
+}
+.theCarPage .theCarPage-ul3 li:first-child + li + li + li + li + li {
+  width: 136px;
+}
+.theCarPage .theCarPage-ul3 li:last-child {
+  width: 90px;
+}
+.theCarPage .theCarPage-ul4 {
+  float: left;
+  width: 75%;
+  background-color: #f4f7f9;
+  margin-bottom: 0px;
+  margin: 20px 10px 0px 10px;
+}
+.theCarPage .theCarPage-ul4 li {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.theCarPage .theCarPage-ul4 li:first-child {
+  width: 142px;
+}
+.theCarPage .theCarPage-ul4 li:first-child input {
+  color: white;
+  background-color: white;
+  font-size: 14px;
+}
+.theCarPage .theCarPage-ul4 li:first-child span {
+  background-color: #FFF;
+  border: 1px solid #C1CACA;
+  padding: 7px;
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  margin: 0px 8px 0px 0px;
+}
+.theCarPage .theCarPage-ul4 li:first-child b {
+  font-weight: normal;
+}
+.theCarPage .theCarPage-ul4 li:first-child + li {
+  width: auto;
+}
+.theCarPage .theCarPage-ul4 li:first-child + li + li {
+  width: 0px;
+}
+.theCarPage .theCarPage-ul4 li:first-child + li + li a {
+  display: inline-block;
+  height: 30px;
+  width: 114px;
+  border: 0px solid #1ebff5;
+  color: #1ebff5;
+  text-align: center;
+  line-height: 30px;
+}
+.theCarPage .theCarPage-ul4 li:last-child {
+  float: right;
+  margin-right: 20px;
+}
+.theCarPage .theCarPage-ul5, .theCarPage .theCarPage-ul6 {
+  clear: both;
+  width: 75%;
+  margin-top: 0px;
+  border: 1px solid #dddddd;
+  overflow: hidden;
+  margin: 0px 10px 0px 9px;
+}
+.theCarPage .theCarPage-ul5 li:last-child, .theCarPage .theCarPage-ul6 li:last-child {
+  margin-left: 0px;
+  width: 116px;
+  float: left;
+}
+.theCarPage .theCarPage-ul5 li:last-child label, .theCarPage .theCarPage-ul6 li:last-child label {
+  display: inline-block;
+  float: left;
+  width: 99%;
+  text-align: center;
+  margin-top: 15px;
+}
+.theCarPage .theCarPage-ul5 li:first-child, .theCarPage .theCarPage-ul6 li:first-child {
+  width: 578px;
+  position: relative;
+  float: left;
+  border-right: 1px solid #dddddd;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul, .theCarPage .theCarPage-ul6 li:first-child ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+  height: 125px;
+  border-bottom: 1px solid #dddddd;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li, .theCarPage .theCarPage-ul6 li:first-child ul li {
+  height: 36px;
+  width: 98.5%;
+  float: left;
+  min-height: 0px !important;
+  margin-left: 10px;
+  border-right: none;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li span:first-child, .theCarPage .theCarPage-ul6 li:first-child ul li span:first-child {
+  display: inline-block;
+  width: 143px;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li span:first-child + span, .theCarPage .theCarPage-ul6 li:first-child ul li span:first-child + span {
+  width: 93px;
+  display: inline-block;
+  padding-left: 22px;
+  color: #333;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li span:first-child + span + span, .theCarPage .theCarPage-ul6 li:first-child ul li span:first-child + span + span {
+  width: 112px;
+  display: inline-block;
+  text-align: center;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li span:first-child + span + span + span, .theCarPage .theCarPage-ul6 li:first-child ul li span:first-child + span + span + span {
+  width: 92px;
+  display: inline-block;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li:last-child, .theCarPage .theCarPage-ul6 li:first-child ul li:last-child {
+  width: 98.5%;
+  border-right: none;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li:last-child span:last-child, .theCarPage .theCarPage-ul6 li:first-child ul li:last-child span:last-child {
+  float: right;
+  width: 106px;
+  display: inline-block;
+  padding-left: 22px;
+  color: #333;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li:first-child + li a, .theCarPage .theCarPage-ul6 li:first-child ul li:first-child + li a {
+  margin-left: 93px;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li:first-child + li .atPlace, .theCarPage .theCarPage-ul6 li:first-child ul li:first-child + li .atPlace {
+  background-position: 0 -400px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li:first-child + li span:first-child, .theCarPage .theCarPage-ul6 li:first-child ul li:first-child + li span:first-child {
+  font-size: 18px;
+  color: #333;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li:first-child, .theCarPage .theCarPage-ul6 li:first-child ul li:first-child {
+  margin-top: 15px;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li:first-child .goPlace, .theCarPage .theCarPage-ul6 li:first-child ul li:first-child .goPlace {
+  background-position: 0 -1049px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.theCarPage .theCarPage-ul5 li:first-child ul li .tuipage, .theCarPage .theCarPage-ul6 li:first-child ul li .tuipage {
+  width: 90px;
+}
+.theCarPage .theCarPage-ul5 li:first-child div, .theCarPage .theCarPage-ul6 li:first-child div {
+  float: left;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+.theCarPage .theCarPage-ul5 li:first-child div span:first-child, .theCarPage .theCarPage-ul6 li:first-child div span:first-child {
+  margin-left: 10px;
+}
+.theCarPage .theCarPage-ul5 li:first-child div span:first-child + span, .theCarPage .theCarPage-ul6 li:first-child div span:first-child + span {
+  margin-left: 242px;
+}
+.theCarPage .theCarPage-ul5 li:first-child div span:last-child, .theCarPage .theCarPage-ul6 li:first-child div span:last-child {
+  margin-left: 44px;
+}
+.theCarPage .theCarPage-ul5 li:first-child i, .theCarPage .theCarPage-ul6 li:first-child i {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 1px;
+  background-color: #dddddd;
+  top: 0;
+  left: 120%;
+}
+.theCarPage .theCarPage-ul5 li:first-child b, .theCarPage .theCarPage-ul6 li:first-child b {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 1px;
+  background-color: #dddddd;
+  top: 0;
+  left: 140%;
+}
+.theCarPage .theCarPage-ul5 li:first-child + li, .theCarPage .theCarPage-ul6 li:first-child + li {
+  width: 114px;
+  float: left;
+}
+.theCarPage .theCarPage-ul5 li:first-child + li label, .theCarPage .theCarPage-ul6 li:first-child + li label {
+  display: inline-block;
+  float: left;
+  width: 99%;
+  text-align: center;
+  margin-top: 15px;
+}
+.theCarPage .theCarPage-ul5 li:first-child + li label:first-child + label + label, .theCarPage .theCarPage-ul6 li:first-child + li label:first-child + label + label {
+  height: 25px;
+  /* background-position: 0 -630px !important;
+   @include vipPic1-sprite(phone);*/
+}
+.theCarPage .theCarPage-ul5 li:first-child + li + li, .theCarPage .theCarPage-ul6 li:first-child + li + li {
+  width: 114px;
+  float: left;
+}
+.theCarPage .theCarPage-ul5 li:first-child + li + li label, .theCarPage .theCarPage-ul6 li:first-child + li + li label {
+  display: inline-block;
+  float: left;
+  width: 99%;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.jzicon-phone {
+  background: url("../images/vipPic1/phone.png") no-repeat 5px -7px;
+}
+
+#bepay {
+  color: #ff7d1b;
+}
+
+.pay {
+  display: inline-block;
+  height: 30px;
+  width: 70px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  color: white !important;
+  background-color: #ff7d1b;
+  line-height: 30px;
+}

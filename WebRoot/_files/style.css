@@ -1,0 +1,261 @@
+HTML {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	FONT-FAMILY: "宋体"; FONT-SIZE: 12px
+}
+IMG {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+.clear {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px
+}
+A {
+	COLOR: #0083de; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #f60; TEXT-DECORATION: underline
+}
+.clear {
+	CLEAR: both
+}
+EM {
+	FONT-STYLE: normal; FONT-FAMILY: Verdana, Geneva, sans-serif; COLOR: #f60
+}
+INPUT {
+	COLOR: #999
+}
+#navChecked {
+	BACKGROUND: url(images/images.jpg) no-repeat
+}
+#nav LI A:hover {
+	BACKGROUND: url(images/images.jpg) no-repeat
+}
+#head {
+	MARGIN: 0px auto; WIDTH: 100%; BACKGROUND: url(images/1Pixels.jpg) repeat-x
+}
+#head .top {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+#head .banner {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.top P {
+	TEXT-ALIGN: right; LINE-HEIGHT: 30px; MARGIN: 0px; WIDTH: 960px; HEIGHT: 20px
+}
+.top P A {
+	MARGIN: 0px 10px
+}
+.top P SPAN {
+	PADDING-RIGHT: 12px
+}
+.top P SPAN A {
+	COLOR: #666
+}
+.top P SPAN A:hover {
+	COLOR: #f60
+}
+.banner {
+	HEIGHT: 90px
+}
+.banner .logo {
+	MARGIN: 15px 0px 5px; FLOAT: left
+}
+.logo A {
+	TEXT-INDENT: -1000px; WIDTH: 187px; DISPLAY: block; BACKGROUND: url(images/logo.jpg); HEIGHT: 70px
+}
+.banner .ban {
+	MARGIN: 15px auto 5px; FLOAT: right
+}
+#head .nav {
+	WIDTH: 100%; HEIGHT: 78px; CLEAR: both
+}
+.nav UL {
+	LIST-STYLE-TYPE: none; MARGIN: 0px auto; WIDTH: 960px
+}
+#nav LI {
+	TEXT-ALIGN: center; LINE-HEIGHT: 40px; WIDTH: 110px; BACKGROUND: url(images/fgx.jpg) no-repeat 0px 7px; FLOAT: left; LETTER-SPACING: 0.1em; HEIGHT: 40px; FONT-SIZE: 14px
+}
+#nav LI.no {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.menu LI.no {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+#nav LI A {
+	WIDTH: 110px; DISPLAY: block; HEIGHT: 40px; COLOR: #fff
+}
+#nav LI A:hover {
+	BACKGROUND-POSITION: 0px 0px; COLOR: #333; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+#nav LI A#navChecked {
+	BACKGROUND-POSITION: 0px 0px; COLOR: #333; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.menu LI {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px; WIDTH: 100px; BACKGROUND: url(images/nav2.jpg) no-repeat 0px 0px; FLOAT: left
+}
+.citynav {
+	FONT-FAMILY: "微软雅黑"; LETTER-SPACING: 0.1em
+}
+.imgs {
+	MARGIN-TOP: 10px
+}
+.clea {
+	MARGIN: 0px; CLEAR: both; PADDING-TOP: 0px
+}
+.yd {
+	BORDER-BOTTOM: #d2d2d2 1px solid; BORDER-LEFT: #d2d2d2 1px solid; PADDING-BOTTOM: 6px; PADDING-LEFT: 10px; WIDTH: 178px; PADDING-RIGHT: 10px; COLOR: #797979; BORDER-TOP: #d2d2d2 1px; BORDER-RIGHT: #d2d2d2 1px solid; PADDING-TOP: 6px
+}
+.yd LI {
+	WIDTH: 100%; MARGIN-BOTTOM: 12px; FLOAT: left
+}
+.yd LI IMG {
+	WIDTH: 80px; DISPLAY: inline; FLOAT: left; HEIGHT: 80px
+}
+.yd LI P {
+	MARGIN: 5px 0px 5px 5px; WIDTH: 90px; DISPLAY: inline; FLOAT: left; COLOR: #333
+}
+.yd LI P STRONG {
+	WIDTH: 94%; DISPLAY: block; WHITE-SPACE: nowrap; MARGIN-BOTTOM: 12px; OVERFLOW: hidden; FONT-WEIGHT: normal
+}
+.yd LI P SPAN {
+	WIDTH: 94%; DISPLAY: block; WHITE-SPACE: nowrap; MARGIN-BOTTOM: 12px; OVERFLOW: hidden; FONT-WEIGHT: normal
+}
+.yd LI P SPAN EM {
+	FONT-WEIGHT: bold; MARGIN-RIGHT: 2px
+}
+.yd LI P SPAN B {
+	MARGIN: 0px 2px; VERTICAL-ALIGN: middle; FONT-WEIGHT: normal; TEXT-DECORATION: line-through
+}
+.hottab-cen H3 {
+	MARGIN: 15px 0px 10px; FONT-SIZE: 14px
+}
+.bj1 {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+.cit {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; PADDING-LEFT: 10px; WIDTH: 920px; PADDING-RIGHT: 20px; FONT-FAMILY: "微软雅黑"; LETTER-SPACING: 0.1em; COLOR: #333; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.cit A {
+	MARGIN: 0px 5px; COLOR: #666
+}
+.cit A:hover {
+	COLOR: #f60
+}
+.tabs {
+	HEIGHT: 50px; OVERFLOW: hidden
+}
+.hei {
+	MAX-HEIGHT: 400px; OVERFLOW: hidden; _height: 400px
+}
+.go-time {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 0px; WIDTH: 85px; PADDING-RIGHT: 0px; PADDING-TOP: 3px
+}
+.yt {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 720px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none
+}
+.zc {
+	TEXT-ALIGN: left
+}
+.blocks EM {
+	FONT-FAMILY: "Microsoft YaHei", STXihei, MingLiu; COLOR: #f60
+}
+.blocks TD {
+	COLOR: #333
+}
+.z-dian {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 16px; PADDING-RIGHT: 0px; PADDING-TOP: 2px
+}
+.q-shi {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 16px; PADDING-RIGHT: 0px; PADDING-TOP: 2px
+}
+.complaints {
+	MARGIN: 10px auto; WIDTH: 960px; LETTER-SPACING: 0.08em
+}
+.complaints TABLE TD P {
+	MARGIN: 5px 0px; COLOR: #999
+}
+.complaints .button {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.suggest {
+	BORDER-BOTTOM: #ffd5bf 1px solid; BORDER-LEFT: #ffd5bf 1px solid; PADDING-BOTTOM: 4px; LINE-HEIGHT: 21px; TEXT-INDENT: 2em; PADDING-LEFT: 10px; WIDTH: 940px; PADDING-RIGHT: 10px; MARGIN-BOTTOM: 10px; BACKGROUND: #fff3ee; BORDER-TOP: #ffd5bf 1px solid; BORDER-RIGHT: #ffd5bf 1px solid; PADDING-TOP: 4px
+}
+#footer {
+	TEXT-ALIGN: center
+}
+#footer A {
+	MARGIN: 0px 5px
+}
+.superiority {
+	BORDER-BOTTOM: #cccccc 1px dashed; TEXT-ALIGN: center; BORDER-LEFT: #cccccc 1px dashed; LINE-HEIGHT: 40px; MARGIN: 5px auto 10px; WIDTH: 950px; FONT-FAMILY: "微软雅黑"; HEIGHT: 40px; COLOR: #333; FONT-SIZE: 12px; BORDER-TOP: #cccccc 1px dashed; BORDER-RIGHT: #cccccc 1px dashed
+}
+.superiority SPAN {
+	WIDTH: 24%; DISPLAY: block; FLOAT: left
+}
+.superiority SPAN EM {
+	FONT-SIZE: 14px; FONT-WEIGHT: bold; MARGIN-RIGHT: 5px
+}
+.chooseleft TABLE TD.zc {
+	PADDING-LEFT: 5px
+}
+.train-riqi UL {
+	WIDTH: 720px
+}
+.train-riqi .yes {
+	WIDTH: 102px
+}
+.train-riqi .not {
+	WIDTH: 100px
+}
+.ydlist {
+	BORDER-BOTTOM: #bce4ff 1px solid; BORDER-LEFT: #bce4ff 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 11px; WIDTH: 727px; PADDING-RIGHT: 10px; OVERFLOW: hidden; BORDER-TOP: #bce4ff 1px; BORDER-RIGHT: #bce4ff 1px solid; PADDING-TOP: 17px
+}
+.nostyle {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none
+}
+UL.xl {
+	MARGIN: 10px auto; ZOOM: 1; WHITE-SPACE: nowrap
+}
+UL.xl:after {
+	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; FONT-SIZE: 0px; CONTENT: "."
+}
+UL.xl LI {
+	LINE-HEIGHT: 26px; FLOAT: left; MARGIN-RIGHT: 15px
+}
+.boders {
+	BORDER-BOTTOM: #ccc 1px dashed; MARGIN: 5px auto; WIDTH: 100%; HEIGHT: 1px; CLEAR: both
+}
+.blue B {
+	DISPLAY: block; FLOAT: left; HEIGHT: 30px
+}
+.blue A {
+	COLOR: #06f
+}
+.city-show DT {
+	WIDTH: 95px; WHITE-SPACE: nowrap
+}
+.city-show DD {
+	WIDTH: 625px
+}
+.dheight {
+	TEXT-ALIGN: center; MARGIN-BOTTOM: 10px
+}
+.ci DT {
+	WIDTH: 50px
+}
+.ci DD {
+	WIDTH: 670px
+}

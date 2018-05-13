@@ -1,0 +1,132 @@
+*{
+	padding:0px;
+	margin:0px;
+	border:0px;
+	}
+
+#head {
+	MARGIN: 0px auto;
+	WIDTH: 100%;
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+#head .top {
+	BORDER-BOTTOM: #eee 1px solid;
+	MARGIN: 0px auto;
+	WIDTH: 100%;
+	BACKGROUND: #f7f7f7;
+	HEIGHT: 35px;
+	font-size:14px;
+}
+
+.top p {
+	TEXT-ALIGN: right;
+	LINE-HEIGHT: 30px;
+	MARGIN: 0px auto;
+	WIDTH: 960px;
+	HEIGHT: 20px
+}
+
+.top p a {
+	MARGIN: 0px 5px;
+	COLOR: #666;
+	text-decoration:none;
+}
+
+.top p span {
+	PADDING-RIGHT: 12px;
+	FLOAT: left;
+	COLOR: #666
+}
+
+.top p span a {
+	COLOR: #666
+}
+.top p span a:hover {
+	COLOR: rgb(30,191,245)
+}
+.top p a:hover {
+	COLOR: rgb(30,191,245);
+}
+
+#head .banner {
+	width: 100%;
+	height: 100px;
+	background: white;
+}
+.banner .left{
+	padding-top: 5px;
+	padding-left: 200px;
+	float: left;
+	display: inline;
+}
+.banner .left .title-logo{
+	font-family:  arial;
+	font-size: 40px;
+	color:rgb(30,191,245)
+}
+.banner .left .title-ykx{
+	display:block;
+	float:left;
+	text-decoration:none;
+	font-family: "ËÎÌו"  !important;
+    font-size: 14px  !important;
+    width:100%;
+    margin-top: -40px !important;
+    margin-left: 150px  !important;
+    color:rgb(100,230,245)  !important;
+	}
+.banner .right{
+	font-family:  arial;
+	font-size: 30px !important;
+	color:rgb(30,191,245) !important;
+	padding-top: 40px !important;
+	padding-right: 200px;
+	float: right;
+	display: inline;
+}
+.banner {
+	HEIGHT: 90px
+}
+
+.banner .logo {
+	MARGIN: 15px 0px 5px;
+	WIDTH: 200px;
+	FLOAT: left
+}
+
+#head .nav {
+	WIDTH: 100%;
+	HEIGHT: 50px;
+	background:rgb(30,191,245);
+	CLEAR: both;
+}
+
+.nav #nav {
+	LIST-STYLE-TYPE: none;
+	MARGIN: 0px auto;
+	WIDTH: 960px;
+	height:50px;
+	line-height:50px;
+	
+}
+
+#nav input {
+	text-align: center;
+	line-height: 40px;
+	width: 110px;	
+	LETTER-SPACING: 0.1em;
+	height: 40px;
+	font-size: 16px;	
+	color:white;
+	cursor: pointer;
+	
+	border-radius:5px;
+	background:rgb(30,191,245);
+}
+#nav input:hover{
+	background:white;
+	color:rgb(30,191,245);
+	border:1px solid rgb(30,191,245);
+	}
+
+
