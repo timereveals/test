@@ -584,6 +584,7 @@ public class UserAction extends ActionSupport {
     public String word() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html; charset=gbk");
         HttpSession session = request.getSession();
         Word word = new Word();
         User user = (User) session.getAttribute("user");
@@ -595,7 +596,7 @@ public class UserAction extends ActionSupport {
         wordDAO.insertBean(word);
         response.getWriter().print("<script language=javascript>alert('留言成功！');window.location.href='index.jsp';" +
                 "</script>");
-
+        this.setUrl("personal.jsp");
         return SUCCESS;
     }
 
