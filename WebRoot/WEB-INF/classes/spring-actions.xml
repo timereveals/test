@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+
+    <bean id="userAction" class="dingpiao.action.UserAction" scope="prototype">
+        <property name="userDAO">
+            <ref bean="userDAO"/>
+        </property>
+        <property name="busDAO">
+            <ref bean="busDAO"/>
+        </property>
+        <property name="routeDAO">
+            <ref bean="routeDAO"/>
+        </property>
+        <property name="scheduleDAO">
+            <ref bean="scheduleDAO"/>
+        </property>
+        <property name="ticketDAO">
+            <ref bean="ticketDAO"/>
+        </property>
+        <property name="orderDAO">
+            <ref bean="orderDAO"/>
+        </property>
+        <property name="announcementDAO">
+            <ref bean="announcementDAO"/>
+        </property>
+        <property name="busTypeDAO">
+            <ref bean="busTypeDAO"/>
+        </property>
+        <property name="passengerDAO">
+            <ref bean="passengerDAO"/>
+        </property>
+        <property name="stationDAO">
+            <ref bean="stationDAO"/>
+        </property>
+        <property name="wordDAO">
+            <ref bean="wordDAO"/>
+        </property>
+    </bean>
+
+    <bean id="adminAction" class="dingpiao.action.AdminAction" scope="prototype">
+        <property name="userDAO">
+            <ref bean="userDAO"/>
+        </property>
+        <property name="busDAO">
+            <ref bean="busDAO"/>
+        </property>
+        <property name="ticketDAO">
+            <ref bean="ticketDAO"/>
+        </property>
+        <property name="orderDAO">
+            <ref bean="orderDAO"/>
+        </property>
+        <property name="routeDAO">
+            <ref bean="routeDAO"/>
+        </property>
+        <property name="announcementDAO">
+            <ref bean="announcementDAO"/>
+        </property>
+        <property name="adminDAO">
+            <ref bean="adminDAO"/>
+        </property>
+        <property name="busTypeDAO">
+            <ref bean="busTypeDAO"/>
+        </property>
+        <property name="passengerDAO">
+            <ref bean="passengerDAO"/>
+        </property>
+        <property name="stationDAO">
+            <ref bean="stationDAO"/>
+        </property>
+        <property name="scheduleDAO">
+            <ref bean="scheduleDAO"/>
+        </property>
+        <property name="wordDAO">
+            <ref bean="wordDAO"/>
+        </property>
+    </bean>
+
+</beans>
