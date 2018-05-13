@@ -314,7 +314,7 @@ public class AdminAction extends ActionSupport {
         }
         adminDAO.insertBean(admin);
         response.getWriter().print("<script language=javascript>alert('创建车站管理员成功,初始密码为'" + admin.getPassword() + "'')" +
-                ";window.location.href='index.jsp';</script>");
+                ";window.location.href='javascript:history.back(-1);';</script>");
     }
 
     public void adminSetLock() throws Exception {
@@ -617,8 +617,39 @@ public class AdminAction extends ActionSupport {
         request.setAttribute("urlUpdate", "../adminMethod!busUpdate");
         request.setAttribute("urlRemove", "../adminMethod!busRemove");
         request.setAttribute("title", "车辆管理");
-        this.setUrl("announcementList.jsp");
+        this.setUrl("manage/busmanagement.jsp");
         return SUCCESS;
+    }
+
+    public String busCreate() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+
+        return SUCCESS;
+    }
+
+    public void busRemove() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String id=request.getParameter("id");
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setCharacterEncoding("gbk");response.setContentType("text/html; charset=gbk");
+        Bus bus= busDAO.selectBean("where id="+id);
+        if(null == bus){
+            response.getWriter().print("<script language=javascript>alert('车辆不存在');window.location.href='javascript:history.back(-1);';</script>");
+            return;
+        }
+        busDAO.deleteBean(bus);
+        response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='javascript:history.back(-1);';</script>");
+    }
+
+    public void busUpdate() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        String id = request.getParameter("id");
+        Bus bus= busDAO.selectBean("where id="+id);
+
+        response.getWriter().print("<script language=javascript>alert('编辑成功');window.location.href='javascript:history.back(-1);';</script>");
+
     }
 
     public String busTypeManage() throws Exception {

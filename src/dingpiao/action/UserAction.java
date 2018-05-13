@@ -482,13 +482,23 @@ public class UserAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String stationList() throws Exception {
+    public  String stationList() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
-        List<Station> stationlist = stationDAO.selectBeanList(0, 999, "");
-        request.setAttribute("stationlist", stationlist);
+        String keyWord = request.getParameter("keyWord");
+        StringBuffer sb = new StringBuffer();
+        if (keyWord != null && !"".equals(keyWord)) {
+            sb.append("where locationDetail like '%" + keyWord + "%' or name like '%" + keyWord + "%' ");
+            request.setAttribute("keyWord", keyWord);
+        }
+        sb.append(" order by id desc ");
+        String where = sb.toString();
+        List<Station> stationlist = stationDAO.selectBeanList(0,999,where);
+        request.setAttribute("stationlist",stationlist);
+        request.setAttribute("url","userMethod!stationList");
         this.setUrl("querystation.jsp");
         return SUCCESS;
     }
+
 
     public String orderInfo() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();

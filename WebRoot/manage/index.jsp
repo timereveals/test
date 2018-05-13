@@ -71,6 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <dl class="layui-nav-child">
             <dd><a href="javascript:;" id="nav_type" onclick="doclk('../adminMethod!busTypeManage')">类型管理</a></dd>
             <dd><a href="javascript:;" id="nav_line" onclick="doclk('../adminMethod!routeManage')">线路管理</a></dd>
+            <dd><a href="javascript:;" id="nav_line" onclick="doclk('../adminMethod!busManage')">车辆管理</a></dd>
             <dd><a href="javascript:;" id="nav_classes" onclick="doclk('../adminMethod!scheduleManage')">班次管理(普通)</a></dd>
             <dd><a href="javascript:;" id="nav_classes" onclick="doclk('classes_overtime.jsp')">班次管理(加班)</a></dd>
           </dl>

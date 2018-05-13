@@ -24,20 +24,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			站点查询
 		</div>
 		<div class="station1">
-			<form action="?" method="get">
-				<div class="station_select">
-                    <input name="cityName" id="cityName" type="text" placeholder="请输入站点名称或所在区县进行查询"/>
-					<input id="submit-search" type="submit" value="查询"/>
-				</div>
-			</form>
+			<form action="${url}" method="post">
+            	<div class="station_select">
+                    <input name="keyWord" value="${name}" id="cityName" type="text" placeholder="请输入站点名称或所在区县进行查询"/>
+            		<input id="submit-search" type="submit" value="查询" onclick="search('${url}')"/>
+            	</div>
+            </form>
 		</div>
 			<div class="stationinfo">
 				<table class="stationtable">
-					<tr>
-						<th>名称</th>
-						<th>所在省市县</th>
-						<th>地址</th>
-						<th>电话</th>
+                    <tr>
+						<th style="width:210px;">名称</th>
+						<th style="width:300px">所在省市县</th>
+						<th style="width:300px">地址</th>
+						<th style="width:210px;">电话</th>
 					</tr>
 					<c:forEach items="${stationlist}" var="bean">
 					<tr>
