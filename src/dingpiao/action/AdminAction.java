@@ -284,9 +284,10 @@ public class AdminAction extends ActionSupport {
 
     public void adminCreate() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        Station station = (Station) session.getAttribute("station");
-        station.setName(request.getParameter("stationName"));
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
+
         Admin admin = new Admin();
         admin.setName(request.getParameter("name"));
         admin.setPassword(request.getParameter("password"));
@@ -296,12 +297,16 @@ public class AdminAction extends ActionSupport {
         admin.setIDNumber(request.getParameter("idNumber"));
         admin.setSex(request.getParameter("sex"));
         admin.setPhone(request.getParameter("phone"));
+        String stationName = request.getParameter("stationName");
+        Station station = stationDAO.selectBean(" where name='"+stationName+"'");
+        if(station == null){
+            response.getWriter().print("<script language=javascript>alert('创建失败,站点不存在');window.location" +
+                    ".href='adminMethod!adminManage';</script>");
+            return;
+        }
         admin.setStation(station);
 
         int check = adminDAO.selectBeanCount(" where name='" + admin.getName() + "'");
-        HttpServletResponse response = ServletActionContext.getResponse();
-        response.setCharacterEncoding("gbk");
-        response.setContentType("text/html; charset=gbk");
         if (check != 0) {
             response.getWriter().print("<script language=javascript>alert('创建失败,用户名已存在');window.location" +
                     ".href='adminMethod!adminManage';</script>");
