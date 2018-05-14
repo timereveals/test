@@ -1,5 +1,5 @@
 *.patch
+*.class
 .*
 *.iml
 out
-!.gitignore
