@@ -23,7 +23,7 @@ public class Pager {
         if (pagenum == 1) {
             buf.append("<SPAN style='color:#CCCCCC'>【首页】</SPAN><SPAN style='color:#CCCCCC'>【上一页】</SPAN>&nbsp;&nbsp;");
         } else {
-            buf.append("【<a href='" + pageurl + "pagenum=1'>首页</a>】【<a href='" + pageurl + "pagenum=" + (pagenum - 1)
+            buf.append("【<a onclick = \"dockPage(this);return false;\" href='" + pageurl + "pagenum=1'>首页</a>】【<a onclick = \"dockPage(this);return false;\" href='" + pageurl + "pagenum=" + (pagenum - 1)
                     + "' >上一页</a>】");
         }
         int bound1 = ((pagenum - 2) <= 0) ? 1 : (pagenum - 2);
@@ -33,7 +33,7 @@ public class Pager {
                 buf.append("<SPAN style='color:#FF0000'>" + i
                         + "</SPAN>&nbsp;&nbsp;");
             } else {
-                buf.append("<a href='" + pageurl + "pagenum=" + i + "'>" + i
+                buf.append("<a onclick = \"dockPage(this);return false;\"  href='" + pageurl + "pagenum=" + i + "'>" + i
                         + "</a>&nbsp;&nbsp;");
             }
         }
@@ -43,8 +43,8 @@ public class Pager {
         if (pagenum == count || count == 0) {
             buf.append("<SPAN style='color:#CCCCCC'>【下一页】</SPAN><SPAN style='color:#CCCCCC'>【尾页】</SPAN>");
         } else {
-            buf.append("【<a href='" + pageurl + "pagenum=" + (pagenum + 1)
-                    + "'>下一页</a>】【<a href='" + pageurl + "pagenum=" + count
+            buf.append("【<a onclick = \"dockPage(this);return false;\" href='" + pageurl + "pagenum=" + (pagenum + 1)
+                    + "'>下一页</a>】【<a onclick = \"dockPage(this);return false;\" href='" + pageurl + "pagenum=" + count
                     + "'>尾页</a>】");
         }
         return buf.toString();

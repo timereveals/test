@@ -831,7 +831,7 @@ public class AdminAction extends ActionSupport {
         request.setAttribute("urlUpdate", "../adminMethod!scheduleUpdate");
         request.setAttribute("urlRemove", "../adminMethod!scheduleRemove");
         request.setAttribute("title", "班次管理");
-        this.setUrl("manage/classesmanage.jsp");
+        this.setUrl("manage/classes_common.jsp");
         return SUCCESS;
     }
 

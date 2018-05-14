@@ -16,6 +16,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    var url = url+"?keyWord="+document.getElementById("keyWord").value;
 		    doclk(url);
 		}
+		function dockPage(obj){
+		    $("#content").load(obj.href);
+		    return false;
+		}
 		</script>
 	</head>
 	<body>
