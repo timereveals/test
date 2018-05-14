@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<label >个人信息</label>
         	<a href="javascript:;" onclick="doclk('userinfo.jsp')"><li  id="nav-userinfo"  >我的资料</li></a>
         	<a href="javascript:;" onclick="doclk('alertpwd.jsp')"><li  id="nav-alertpwd" >修改密码</li></a>
-        	<a href="javascript:;" onclick="doclk('passenger.jsp')"><li  id="nav-passenger" >常用乘车人</li></a>
+        	<a href="javascript:;" onclick="doclk('userMethod!passengerManage')"><li  id="nav-passenger" >常用乘车人</li></a>
         	<a href="javascript:;" onclick="doclk('userMethod!wordList')"><li  id="nav-message" >消息</li></a>
         	</br>
         	<label>订单中心</label>

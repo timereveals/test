@@ -38,6 +38,12 @@ form .top {
 	text-align: left ;
 
 }
+form .top #keyWord{
+    width:300px;
+    height:30px;
+    line-height:30px;
+    border:1px solid grey;
+}
 form select{
 	width: 50px;
 	height: 30px;

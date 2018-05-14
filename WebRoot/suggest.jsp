@@ -17,20 +17,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="suggest">
         <form method="post" action="userMethod!word">
             <div class="title_suggest">在线咨询</div>
-            <ul  class='sourceType'>
-                <li>
-                    用户名：<input type="text" name="name"  readonly="readonly" style='background-color:rgba(221, 221, 221, 0.28);' value="${user.name}" ></input>
-                </li>
-                <li>
-                    手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：<input type="text" name="phone"  readonly="readonly" style='background-color:rgba(221, 221, 221, 0.28);' value="${user.phone}" ></input>
-                </li>
-                <li >
-                    <label>内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容&nbsp;&nbsp;：</label><textarea name="wordContent" cols="30" id="wordContent" placeholder="请输入4-200个字符" style="border:1px solid grey;overflow:scroll" ></textarea>
-                </li>
-                <li >
-                    <input type="submit" value="提交"/>
-                </li>
-            </ul>
+            <div  class='sourceType'>
+                <div>
+                    <label>用户名：</label><input type="text" name="name"  readonly="readonly" style='background-color:rgba(221, 221, 221, 0.28);' value="${user.name}" ></input>
+                </div>
+                <div>
+                    <label>手机：</label><input type="text" name="phone"  readonly="readonly" style='background-color:rgba(221, 221, 221, 0.28);' value="${user.phone}" ></input>
+                </div>
+                <div >
+                    <label>内容：</label><textarea name="wordContent" cols="30" id="wordContent" placeholder="请输入4-200个字符" ></textarea>
+                </div>
+                <div >
+                    <input id="submit" type="submit" value="提交"/>
+                </div>
+            </div>
    		</form>
    	</div>
   </body>

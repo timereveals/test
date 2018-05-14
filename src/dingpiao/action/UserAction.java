@@ -604,7 +604,7 @@ public class UserAction extends ActionSupport {
         word.setStatus("未读");
 
         wordDAO.insertBean(word);
-        response.getWriter().print("<script language=javascript>alert('留言成功！');window.location.href='index.jsp';" +
+        response.getWriter().print("<script language=javascript>alert('留言成功！');window.location.href='personal.jsp';" +
                 "</script>");
         this.setUrl("personal.jsp");
         return SUCCESS;
@@ -640,7 +640,65 @@ public class UserAction extends ActionSupport {
     }
 
     //乘车人管理
-    public void passengerManage() throws Exception {
+    public String passengerManage() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        if(user==null){
+            response.setCharacterEncoding("gbk");response.setContentType("text/html; charset=gbk");
+            response.getWriter().print("<script language=javascript>alert('请先登录！');window.location.href='login.jsp';</script>");
+            return null;
+        }
+        List<Passenger> passengerList = passengerDAO.selectBeanList(0,999,"where user.id = '" + user.getId() +"'");
+        request.setAttribute("passengerList",passengerList);
+        request.setAttribute("url","userMethod!passengerManage");
+        request.setAttribute("urlCreate","userMethod!passengerCreate");
+        request.setAttribute("urlRemove","userMethod!passengerRemove");
+        this.setUrl("passenger.jsp");
+        return  SUCCESS;
+    }
+
+    public void passengerCreate() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            response.setCharacterEncoding("gbk");
+            response.setContentType("text/html; charset=gbk");
+            response.getWriter().print("<script language=javascript>alert('请先登录！');window.location.href='login.jsp';</script>");
+        }
+        Passenger passenger = new Passenger();
+        passenger.setUser(user);
+        passenger.setName(request.getParameter("name"));
+        passenger.setPhone(request.getParameter("phone"));
+        passenger.setIDNumber(request.getParameter("IDNumber"));
+
+        Passenger passenger_check = passengerDAO.selectBean("where name='" + passenger.getName() + "'and user.id='" + user.getId() + "'");
+        if (passenger_check != null) {
+            response.setCharacterEncoding("gbk");
+            response.setContentType("text/html; charset=gbk");
+            response.getWriter().print("<script language=javascript>alert('已存在该乘车人！');window.location.href='personal.jsp';</script>");
+        } else {
+            passengerDAO.insertBean(passenger);
+            response.setCharacterEncoding("gbk");
+            response.setContentType("text/html; charset=gbk");
+            response.getWriter().print("<script language=javascript>alert('添加乘车人成功！');window.location.href='personal.jsp';</script>");
+        }
+    }
+    public void passengerRemove() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String id=request.getParameter("id");
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setCharacterEncoding("gbk");response.setContentType("text/html; charset=gbk");
+        Passenger bean= passengerDAO.selectBean("where id="+id);
+        if(null == bean){
+            response.getWriter().print("<script language=javascript>alert('该乘车人不存在');window.location.href='personal.jsp';</script>");
+            return;
+        }
+        passengerDAO.deleteBean(bean);
+        response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='personal.jsp';</script>");
 
     }
 }

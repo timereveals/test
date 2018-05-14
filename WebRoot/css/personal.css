@@ -48,7 +48,7 @@
 	color:white;
 	cursor:pointer;
 	}
-ul li:hover{
+.personal .person_nav ul li:hover{
 	background:white;
 	color:rgb(30,191,245) !important;
 	}

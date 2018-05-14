@@ -6,116 +6,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>站点管理</title>
-        <link rel="stylesheet" href="css/stationmanage.css" />
         <link rel="stylesheet" href="css/common.css" />
-        <script>
-        	function changeway(){
-        	var select=document.getElementById("select");
-        	var select1=document.getElementById("select1");
-        	var select2=document.getElementById("select2");
-        	var select3=document.getElementById("select3");
-        	var val=select.options[select.selectedIndex].value;
-		        if(val=="1"){
-		        	select1.style.display = "block";
-		        	select2.style.display = "none";
-		        	select3.style.display = "none";
-		        }if(val=="2"){
-		        	select1.style.display = "none";
-		        	select2.style.display = "block";
-		        	select3.style.display = "none";
-		        }if(val=="3"){
-		        	select1.style.display = "none";
-		        	select2.style.display = "none";
-		        	select3.style.display = "block";
-		        }
-	        }	
-        </script>
     </head>
     <body>
 		<div id="title" >站点管理</div>
-		<div class="station1">
-			<div class="station_tip">请选择所在城区或所在区县进行搜索</div>
-			<div class="station_select">
-				<form action="?" method="get">				
-					<dl id="select_city">
-						<dt>所在城区：</dt>
-						<dd>
-							<select  id="select"  onchange="changeway()">
-								<option id="unlimit" value="1">不限制</option>
-								<option id="city" value="2">市辖区</option>
-								<option id="country" value="3">县</option>
-							</select>
-						</dd>
-					</dl>
-					<!--当所在城区选择不限制  所在区县-->
-					<dl id="select1">
-						<dt>所在区县：</dt>
-						<dd>
-							<select name="area" id="area">
-								<option value="">不限制</option>							
-							</select>
-						</dd>
-					</dl>
-					<!--当所在城区选择市辖区  所在区县-->
-					<dl id="select2">
-						<dt>所在区县：</dt>
-						<dd>
-							<select name="area" id="area">
-								<option value="">不限制</option>	
-								<option value="500101">万州区</option>
-								<option value="500102">涪陵区</option>
-								<option value="500103">渝中区</option>
-								<option value="500104">大渡口区</option>
-								<option value="500105">江北区</option>
-								<option value="500106">沙坪坝区</option>
-								<option value="500107">九龙坡区</option>
-								<option value="500108">南岸区</option>
-								<option value="500109">北碚区</option>
-								<option value="500110">綦江区</option>
-								<option value="500111">大足区</option>
-								<option value="500113">巴南区</option>
-								<option value="500112">渝北区</option>
-								<option value="500114">黔江区</option>
-								<option value="500115">长寿区</option>
-								<option value="500116">江津区</option>
-								<option value="500117">合川区</option>
-								<option value="500118">永川区</option>
-								<option value="500120">璧山区</option>
-								<option value="500151">铜梁区</option>
-								<option value="500119">南川区</option>
-								<option value="500226">荣昌区</option>
-							</select>
-						</dd>
-					</dl>
-					<!--当所在城区选择县  所在区县-->
-					<dl id="select3">
-						<dt>所在区县：</dt>
-						<dd>
-							<select name="area" id="area">
-								<option value="">不限制</option>	
-								<option value="500234">开县</option>
-								<option value="500228">梁平县</option>
-								<option value="500229">城口县</option>
-								<option value="500230">丰都县</option>
-								<option value="500231">垫江县</option>
-								<option value="500232">武隆县</option>
-								<option value="500233">忠县</option>
-								<option value="500235">云阳县</option>
-								<option value="500236">奉节县</option>
-								<option value="500237">巫山县</option>
-								<option value="500238">巫溪县</option>
-								<option value="500240">石柱土家族自治县</option>
-								<option value="500241">秀山土家族苗族自治县</option>
-								<option value="500242">酉阳土家族苗族自治县</option>
-								<option value="500243">彭水苗族土家族自治县</option>					
-							</select>
-						</dd>
-					</dl>
-					<input type="button" value="搜索" id="submit_search" >
-					<input type="button" value="添加" id="submit_add" >
-				</form>
+        <form action="${url}" method="post">
+		    <div class="top">
+				&nbsp;&nbsp;&nbsp;关键字：<input type="text" name="keyWord" value="${username}" id="keyWord" >
+				<input type="button" value="搜索" id="submit_find" onclick="search('${url}')">
+				<input type="button" value="添加" id="submit_add" >
+				<br/>
 			</div>
-		</div>
+        </form>
 		<table id="table">
 			<tr>
 				<th style="width: 3%;">ID</th>

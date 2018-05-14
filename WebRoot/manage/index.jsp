@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="text-align:center;">
       	<!-- 系统管理员功能 -->
       	<c:if test="${admin.role==0}">
       	<li class="layui-nav-item layui-nav-itemed">

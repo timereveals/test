@@ -21,8 +21,10 @@
     <table id="table">
     	<tr>
     		<th style="width: 8%;">ID</th>
-	        <th style="width: 15%;">标题</th>
+	        <th style="width: 10%;">标题</th>
 	        <th style="width: 15%;">内容</th>
+	        <th style="width: 15%;">开始时间</th>
+	        <th style="width: 15%;">结束时间</th>
 	        <th style="width: 13%;">操作</th>
 	    </tr>  
 	    <c:forEach items="${list}"  var="bean">
@@ -30,6 +32,8 @@
 		        <td >${bean.id}</td>
 		        <td >${bean.title}</td>
 		        <td >${bean.content}</td>
+		        <td >${bean.start_time}</td>
+		        <td >${bean.end_time}</td>
 	        	<td>
 					<a  href="javascript:editannouncement(${bean.id},'${bean.title}','${bean.content}');">编辑</a>
 					<a href="${urlRemove}?id=${bean.id}">删除</a>
@@ -42,15 +46,15 @@
     <div class="cover" id="cover"></div> 
     <!-- 弹出层(add)div-->
     <div class="layer" id="layer_add" >
-    	<form action="adminMethod!announcementCreate" method="post">
+    	<form action="adminMethod!announcementCreate" onsubmit="return checknoticeform()" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose" href="javascript:;">X</a>
 	    	</div>
 	    	<div>
-	    		<label>标题:</label><input name="title" type="text" placeholder="请输入标题,不能多于20字" />
+	    		<label>标题:</label><input name="title" id="title1" type="text" placeholder="请输入标题,不能多于20字" />
 	    	</div>
 	    	<div>
-	    		<label>内容:</label><textarea name="content" style="width: 300px; height: 100px;border: 1px solid gray;margin-top: 15px; overflow: scroll;" placeholder="请输入内容,多于20字,小于1000字" />
+	    		<label>内容:</label><textarea name="content" id="content" style="width: 300px; height: 100px;border: 1px solid gray;margin-top: 15px; overflow: scroll;" placeholder="请输入内容,多于20字,小于1000字" />
 	    	</div>
 	    	<div>
 	    	    <label>开始时间:</label><input id="start" name="start" type="datetime-local" value=""/>
@@ -60,14 +64,8 @@
 	    	</div>
 	    	<div class="btn">
 	    		<button id="sure_editRow" type="submit" onclick="test();">确定</button>
-	    		<script>
-	    		function test(){
-	    		    alert(document.getElementById('start').value+document.getElementById('end').value);
-	    		}
-	    		</script>
 	    	</div>
     	</form>
-	    		<button onclick="test();">test</button>
     </div>
     <!-- 弹出层(editRow)div-->
     <div class="layer" id="layer_editRow" >
@@ -110,6 +108,28 @@
                 $("#cover").fadeOut("slow");
                 $("#layer_editRow").fadeOut("slow");//淡入淡出效果 隐藏div
             })
+        function checknoticeform(){
+        if (document.getElementById('title1').value=="")
+             {
+                alert("标题不能为空");
+                return false;
+             }
+        if (document.getElementById('content').value=="")
+        	{
+        		alert("内容不能为空");
+        		return false;
+        	}
+        if (document.getElementById('start').value=="")
+        	{
+        		alert("开始时间不能为空");
+        		return false;
+        	}
+        if (document.getElementById('end').value=="")
+        	{
+        		alert("结束时间不能为空");
+        		return false;
+        	}
+        }
      </script>
  	</body>
 </html>

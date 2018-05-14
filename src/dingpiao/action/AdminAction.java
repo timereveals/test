@@ -241,7 +241,7 @@ public class AdminAction extends ActionSupport {
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
         response.getWriter().print("<script language=javascript>alert('修改成功');window.location" +
-                ".href='javascript:history.back(-1);';</script>");
+                ".href='manage/index.jsp;';</script>");
 
     }
 
@@ -403,7 +403,9 @@ public class AdminAction extends ActionSupport {
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setContentType("text/html; charset=gbk");
-        if (null != title && null != content && !title.isEmpty() && !content.isEmpty()) {
+        int compare = time_end.compareTo(time_start);
+
+        if (compare==1 && null != title && null != content && !title.isEmpty() && !content.isEmpty() ) {
             Announcement announcement = new Announcement();
             announcement.setTitle(title);
             announcement.setContent(content);
@@ -415,8 +417,11 @@ public class AdminAction extends ActionSupport {
 
             response.getWriter().print("<script language=javascript>alert('添加成功');window.location.href='index.jsp';" +
                     "</script>");
-        } else {
-            response.getWriter().print("<script language=javascript>alert('添加失败');window.location.href='index.jsp';" +
+        } else if(compare !=1){
+            response.getWriter().print("<script language=javascript>alert('添加失败,结束日期不能小于或等于开始日期');window.location.href='index.jsp';" +
+                    "</script>");
+        }else {
+            response.getWriter().print("<script language=javascript>alert('添加失败，数据不能为空');window.location.href='index.jsp';" +
                     "</script>");
         }
     }
@@ -461,7 +466,7 @@ public class AdminAction extends ActionSupport {
         String keyWord = request.getParameter("keyWord");
         StringBuffer sb = new StringBuffer();
         if (keyWord != null && !"".equals(keyWord)) {
-            sb.append("where name like '%" + keyWord + "%' or id='" + keyWord + "'");
+            sb.append("where name like '%" + keyWord + "%' or id='" + keyWord + "' or locationDetail like '%" + keyWord + "%'");
             request.setAttribute("keyWord", keyWord);
         }
         sb.append(" order by id desc ");
