@@ -300,13 +300,13 @@ public class UserAction extends ActionSupport {
             String leaveTime = "date_format(leaveTime,'%T')";
             switch (time) {
                 case "12":
-                    where += leaveTime + " > '00:00:00' and " + leaveTime + " < " + "'12:00:00' ";
+                    where += leaveTime + " >= '00:00:00' and " + leaveTime + " < " + "'12:00:00' ";
                     break;
                 case "18":
-                    where += leaveTime + " > '12:00:00' and " + leaveTime + " < " + "'18:00:00' ";
+                    where += leaveTime + " >= '12:00:00' and " + leaveTime + " < " + "'18:00:00' ";
                     break;
                 case "24":
-                    where += leaveTime + " > '18:00:00' and " + leaveTime + " < " + "'24:00:00' ";
+                    where += leaveTime + " >= '18:00:00' and " + leaveTime + " < " + "'24:00:00' ";
                     break;
                 default:
                     break;
@@ -315,12 +315,12 @@ public class UserAction extends ActionSupport {
         }
 
         if (null != from && !from.isEmpty()) {
-            where += " and route.leaveStation = '" + from + "'";
+            where += " and route.leaveStation.name = '" + from + "'";
             request.setAttribute("from", from);
         }
 
         if (null != to && !to.isEmpty()) {
-            where += " and route.arriveStation = '" + to + "'";
+            where += " and route.arriveStation.name = '" + to + "'";
             request.setAttribute("to", to);
         }
 
