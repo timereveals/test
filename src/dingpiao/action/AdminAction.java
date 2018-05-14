@@ -16,6 +16,7 @@ import dingpiao.dao.UserDAO;
 import dingpiao.util.Pager;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -836,6 +837,11 @@ public class AdminAction extends ActionSupport {
         request.setAttribute("urlUpdate", "../adminMethod!scheduleUpdate");
         request.setAttribute("urlRemove", "../adminMethod!scheduleRemove");
         request.setAttribute("title", "班次管理");
+
+        List<Route> routes = routeDAO.selectBeanList(0,999,"");
+        request.setAttribute("routeList", routes);
+        List<Bus> buses = busDAO.selectBeanList(0,999,"");
+        request.setAttribute("busList", buses);
         this.setUrl("manage/classes_common.jsp");
         return SUCCESS;
     }
@@ -845,19 +851,28 @@ public class AdminAction extends ActionSupport {
         Schedule schedule = new Schedule();
         schedule.setRoute(routeDAO.selectBean("where id=" + request.getParameter("routeId")));
         schedule.setBus(busDAO.selectBean("where id=" + request.getParameter("busId")));
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         schedule.setLeaveTime(sdf.parse(request.getParameter("leaveTime")));
         schedule.setArriveTime(sdf.parse(request.getParameter("arriveTime")));
         schedule.setPrice(Double.parseDouble(request.getParameter("price").trim()));
+        scheduleDAO.insertBean(schedule);
         int num = Integer.parseInt(request.getParameter("num"));
+        List<Ticket> tickets = new ArrayList<>();
         for (int i = 1; i <= num; ++i) {
             Ticket ticket = new Ticket();
             ticket.setSchedule(schedule);
             ticket.setSeatNumber(i);
             ticket.setStatus(0);
             ticketDAO.insertBean(ticket);
+            tickets.add(ticket);
         }
-        scheduleDAO.insertBean(schedule);
+        schedule.setTickets(tickets);
+        scheduleDAO.updateBean(schedule);
+
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html; charset=gbk");
+        response.getWriter().print("<script language=javascript>alert('添加成功');window.location.href='index.jsp';" +
+                "</script>");
     }
 
     public void scheduleRemove() throws Exception {

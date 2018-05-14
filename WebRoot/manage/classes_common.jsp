@@ -62,33 +62,41 @@
     <div class="cover" id="cover"></div> 
     <!-- 弹出层div-->
     <div class="layer" id="layer_add" >
-    	<form >
+    	<form action="adminMethod!scheduleCreate" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose" href="javascript:;">X</a>
 	    	</div>
 	    	<div>
-	    		<label>始站:</label><input type="text" placeholder="请选择始站" />
+	    	    路线:
+	    		<select name="routeId">
+	    		    <c:forEach items="${routeList}" var="bean">
+	    		    <option name="routeId" value="${bean.id}">${bean.leaveStation.name}-${bean.arriveStation.name}</option>
+	    		    </c:forEach>
+	    		</select>
 	    	</div>
 	    	<div>
-	    		<label>终站:</label><input type="text" placeholder="请选择终站" />
-	    	</div>	
-	    	<div>
-	    		<label>途径:</label><input type="text" placeholder="途径" />
+	    	    车辆:
+	    		<select name="busId">
+	    		    <c:forEach items="${busList}" var="bean">
+	    		    <option name="busId" value="${bean.id}">${bean.busType.name}-${bean.plateNumber}</option>
+	    		    </c:forEach>
+	    		</select>
 	    	</div>
 	    	<div>
-	    		<label>类型:</label><input type="text" placeholder="请选择类型" />
-	    	</div>	
-	    	<div>
-	    		<label>班次:</label><input type="text" placeholder="请输入班次" />
-	    	</div>	    
-	    	<div>
-	    		<label>出发时间:</label><input type="text" placeholder="请输入出发时间,格式：12:00,12:30..." />
+	    		<label>出发时间:</label><input name="leaveTime" type="text" placeholder="请输入出发时间,格式：yyyy-MM-dd HH:mm" />
 	    	</div>
 	    	<div>
-	    		<label>票价(元):</label><input type="text" placeholder="请输入票价" />
+	    		<label>到达时间:</label><input name="arriveTime" type="text" placeholder="请输入到达时间,格式：yyyy-MM-dd HH:mm" />
+	    	</div>
+	    	<div>
+	    		<label>票数</label><input name="num" type="text" placeholder="请输入票的数量" />
+	    	</div>
+	    	<div>
+	    		<label>票价(元):</label><input name="price" type="text" placeholder="请输入票价" />
 	    	</div>	
 	    	<div class="btn">
 	    		<a onclick="addRow()" href="javascript:;" id="sure">确定</a>
+	    		<button type="submit">submit</button>
 	    	</div>
     	</form>
     </div>
