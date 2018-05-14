@@ -301,7 +301,7 @@ public class AdminAction extends ActionSupport {
         Station station = stationDAO.selectBean(" where name='"+stationName+"'");
         if(station == null){
             response.getWriter().print("<script language=javascript>alert('创建失败,站点不存在');window.location" +
-                    ".href='adminMethod!adminManage';</script>");
+                    ".href='index.jsp';</script>");
             return;
         }
         admin.setStation(station);
@@ -313,8 +313,8 @@ public class AdminAction extends ActionSupport {
             return;
         }
         adminDAO.insertBean(admin);
-        response.getWriter().print("<script language=javascript>alert('创建车站管理员成功,初始密码为'" + admin.getPassword() + "'')" +
-                ";window.location.href='javascript:history.back(-1);';</script>");
+        response.getWriter().print("<script language=javascript>alert(\"创建车站管理员成功,初始密码为'" + admin.getPassword() + "'\")" +
+                ";window.location.href='index.jsp';</script>");
     }
 
     public void adminSetLock() throws Exception {
