@@ -98,9 +98,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <TBODY>
 
   <c:forEach items="${scheduleList}" var="beanbean">
-  <TR class=blocks begtime="00:05" ttype="D601" name="checi">
-    <TD><STRONG class=bluer>${beanbean.bus.busType.name }-${beanbean.id }</STRONG></TD>
-    <TD><B class="font14 q-shi">
     <script>
     var count = 0;
     <c:forEach items="${beanbean.tickets}" var="ticket">
@@ -108,19 +105,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         count++;
     }
     </c:forEach>
-    document.write(count);
+    if(count>0){
+    document.write("\
+  <TR class=blocks begtime='00:05' ttype='D601' name='checi'>\
+    <TD><STRONG class=bluer>${beanbean.bus.busType.name }-${beanbean.id }</STRONG></TD>\
+    <TD><B class='font14 q-shi'>"+count+
+    "</B></TD>\
+    <TD><B class='font14 q-shi'>${beanbean.route.leaveStation.name }</B></TD>\
+    <TD><B class='font14 z-dian'>${beanbean.route.arriveStation.name }</B></TD>\
+    <TD><B class='font14 z-dian'>${beanbean.leaveTime }</B></TD>\
+    <TD><B class='font14 z-dian'>${beanbean.arriveTime }</B></TD>\
+    <TD class=zc><EM>￥${beanbean.price }</EM></TD>\
+    <TD>\
+    <a href='userMethod!order'></a>\
+    <INPUT class=list-yd  value=预订 type='button' onclick=\"javascript:window.location.href='userMethod!order?scheduleid=${beanbean.id }';\"  />\
+    </TD>\
+  </TR>")
+ }
     </script>
-    </B></TD>
-    <TD><B class="font14 q-shi">${beanbean.route.leaveStation.name }</B></TD>
-    <TD><B class="font14 z-dian">${beanbean.route.arriveStation.name }</B></TD>
-    <TD><B class="font14 z-dian">${beanbean.leaveTime }</B></TD>
-    <TD><B class="font14 z-dian">${beanbean.arriveTime }</B></TD>
-    <TD class=zc><EM>￥${beanbean.price }</EM></TD>
-    <TD>
-    <a href="userMethod!order"></a>
-    <INPUT class=list-yd  value=预订 type="button" onclick="javascript:window.location.href='userMethod!order?scheduleid=${beanbean.id }';"  />
-    </TD>
-  </TR>
   </c:forEach>
 
 
