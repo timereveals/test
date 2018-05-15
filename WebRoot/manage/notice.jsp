@@ -13,7 +13,7 @@
     	<form action="${url}" method="post">
 		    <div class="top">		        	
 				&nbsp;&nbsp;&nbsp;&nbsp;关键字<input type="text" name="keyWord" value="${username}" id="keyWord" placeholder="请输入id或者标题或者内容进行查询">
-				<input type="submit" value="搜索" id="submit_find" onclick="search('${url}')">
+				<input type="button" value="搜索" id="submit_find" onclick="search('${url}')">
 				<input type="button" value="添加" id="submit_add" >
 				<br/>
 			</div>
