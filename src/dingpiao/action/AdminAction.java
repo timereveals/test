@@ -666,7 +666,7 @@ public class AdminAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String busCreate() throws Exception{
+    public void busCreate() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("gbk");
@@ -679,22 +679,21 @@ public class AdminAction extends ActionSupport {
         BusType busType = busTypeDAO.selectBean(" where name='"+busTypeName+"'");
         if(busType == null){
             response.getWriter().print("<script language=javascript>alert('创建失败,该类型不存在');window.location" +
-                    ".href='index.jsp';</script>");
-            return null;
+                    ".href='manage/index.jsp';</script>");
+            return;
         }
         bus.setBusType(busType);
 
         int check = busDAO.selectBeanCount(" where plateNumber='" + bus.getPlateNumber() + "'");
         if (check != 0) {
             response.getWriter().print("<script language=javascript>alert('添加失败,该车辆已存在');window.location" +
-                    ".href='index.jsp';</script>");
-            return null;
+                    ".href='manage/index.jsp';</script>");
+            return;
         }else{
             busDAO.insertBean(bus);
             response.getWriter().print("<script language=javascript>alert('添加成功');window.location" +
-                    ".href='manage/index.jsp';</script>");
+                    ".href='index.jsp';</script>");
         }
-        return SUCCESS;
     }
 
     public void busRemove() throws Exception{
