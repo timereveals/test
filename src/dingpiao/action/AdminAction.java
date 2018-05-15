@@ -897,12 +897,19 @@ public class AdminAction extends ActionSupport {
         response.setContentType("text/html; charset=gbk");
         Route bean = routeDAO.selectBean(" where id=" + id);
         if (null == bean) {
-            response.getWriter().print("<script language=javascript>alert('路线不存在');window.location.href='index.jsp';" +
+            response.getWriter().print("<script language=javascript>alert('路线不存在');window.location.href='manage/index.jsp';" +
                     "</script>");
             return;
         }
+        int check = scheduleDAO.selectBeanCount("where route.id ="+bean.getId());
+        if(check!=0){
+            response.getWriter().print("<script language=javascript>alert('该路线有对应班次, 不能删除');window.location.href='manage/index.jsp';" +
+                    "</script>");
+            return;
+        }
+
         routeDAO.deleteBean(bean);
-        response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='index.jsp';" +
+        response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='manage/index.jsp';" +
                 "</script>");
     }
 
