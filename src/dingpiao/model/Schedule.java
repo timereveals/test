@@ -26,7 +26,7 @@ public class Schedule {
 
     private double price;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     private List<Ticket> tickets;
 
     private int status;
