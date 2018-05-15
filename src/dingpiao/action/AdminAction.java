@@ -276,7 +276,9 @@ public class AdminAction extends ActionSupport {
         request.setAttribute("url", "../adminMethod!adminManage");
         request.setAttribute("urlSetLock", "../adminMethod!adminSetLock");
         request.setAttribute("urlReleaseLock", "../adminMethod!adminReleaseLock");
+        request.setAttribute("urlResetpwd","../adminMethod!adminResetpwd");
         request.setAttribute("urlCreate", "../adminMethod!adminCreate");
+        request.setAttribute("title","车站管理员");
         List<Station> stationlist = stationDAO.selectBeanList(0, 999, "");
         request.setAttribute("stationlist", stationlist);
         this.setUrl("/manage/stationmanager.jsp");
@@ -363,7 +365,22 @@ public class AdminAction extends ActionSupport {
         }
         response.getWriter().print("<script language=javascript>alert('修改成功');window.location.href='manage/index.jsp';</script>");
     }
-
+    public void adminResetpwd() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String id = request.getParameter("id");
+        Admin admin = adminDAO.selectBean("where id = " + id);
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
+        if (admin != null) {
+            admin.setPassword("123456");
+            adminDAO.updateBean(admin);
+        } else {
+            response.getWriter().print("<script language=javascript>alert('重置失败');window.location.href='manage/index.jsp';</script>");
+            return;
+        }
+        response.getWriter().print("<script language=javascript>alert('重置成功');window.location.href='manage/index.jsp';</script>");
+    }
     public String announcementManage() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         String keyWord = request.getParameter("keyWord");
@@ -401,16 +418,16 @@ public class AdminAction extends ActionSupport {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddHH:mm");
         Date time_start = sdf.parse(start);
         Date time_end = sdf.parse(end);
-
+        Date date = new Date();
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setContentType("text/html; charset=gbk");
         int compare = time_end.compareTo(time_start);
-
-        if (compare==1 && null != title && null != content && !title.isEmpty() && !content.isEmpty() ) {
+        int compare2 = time_start.compareTo(date);
+        if (compare== 1 && compare2 == 1&& null != title && null != content && !title.isEmpty() && !content.isEmpty() ) {
             Announcement announcement = new Announcement();
             announcement.setTitle(title);
             announcement.setContent(content);
-            announcement.setCreatetime(new Date());
+            announcement.setCreatetime(date);
             announcement.setStart_time(time_start);
             announcement.setEnd_time(time_end);
             announcement.setStatus(0);
@@ -418,7 +435,11 @@ public class AdminAction extends ActionSupport {
 
             response.getWriter().print("<script language=javascript>alert('添加成功');window.location.href='index.jsp';" +
                     "</script>");
-        } else if(compare !=1){
+        }else if(compare2 != 1){
+            response.getWriter().print("<script language=javascript>alert('添加失败,开始日期不能小于或等于当前日期');window.location.href='index.jsp';" +
+                    "</script>");
+        }
+        else if(compare != 1){
             response.getWriter().print("<script language=javascript>alert('添加失败,结束日期不能小于或等于开始日期');window.location.href='index.jsp';" +
                     "</script>");
         }else {
@@ -451,13 +472,31 @@ public class AdminAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         String id = request.getParameter("id");
-        Announcement announcement = announcementDAO.selectBean("where id=" + id);
-        announcement.setTitle(request.getParameter("title"));
-        announcement.setContent(request.getParameter("content"));
-        announcement.setStatus(request.getParameter("status") == "1" ? 1 : 0);
-        announcementDAO.updateBean(announcement);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddHH:mm");
+        Date start = sdf.parse(request.getParameter("start"));
+        Date end = sdf.parse(request.getParameter("end"));
+        Date date = new Date();
+        int compare = end.compareTo(start);
+        int compare2 = start.compareTo(date);
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
+        Announcement announcement = announcementDAO.selectBean("where id=" + id);
+        if (compare == 1 && compare2 == 1){
+            announcement.setTitle(request.getParameter("title"));
+            announcement.setContent(request.getParameter("content"));
+            announcement.setStart_time(start);
+            announcement.setEnd_time(end);
+            announcement.setStatus(request.getParameter("status") == "1" ? 1 : 0);
+            announcementDAO.updateBean(announcement);
+            response.setCharacterEncoding("gbk");
+            response.setContentType("text/html; charset=gbk");
+        }else if(compare2 != 1){
+            response.getWriter().print("<script language=javascript>alert('添加失败,开始日期不能小于或等于当前日期');window.location.href='index.jsp';" +
+                    "</script>");
+        }else if(compare == 1){
+            response.getWriter().print("<script language=javascript>alert('添加失败,结束日期不能小于或等于开始日期');window.location.href='index.jsp';" +
+                    "</script>");
+        }
         response.getWriter().print("<script language=javascript>alert('编辑成功');window.location.href='index.jsp';" +
                 "</script>");
     }
@@ -548,10 +587,10 @@ public class AdminAction extends ActionSupport {
         String keyWord = request.getParameter("keyWord");
         StringBuffer sb = new StringBuffer();
         if (keyWord != null && !"".equals(keyWord)) {
-            sb.append(" id = '" + keyWord + "'");
+            sb.append("where status like '%" + keyWord + "%' or id = '" + keyWord + "'");
             request.setAttribute("keyWord", keyWord);
         }
-        sb.append("order by id asc");
+        sb.append(" order by id asc ");
         String where = sb.toString();
         int currentpage = 1;
         int pagesize = 10;
@@ -621,6 +660,8 @@ public class AdminAction extends ActionSupport {
         request.setAttribute("urlUpdate", "../adminMethod!busUpdate");
         request.setAttribute("urlRemove", "../adminMethod!busRemove");
         request.setAttribute("title", "车辆管理");
+        List<BusType> busTypes = busTypeDAO.selectBeanList(0,999,"");
+        request.setAttribute("busTypeList", busTypes);
         this.setUrl("manage/busmanagement.jsp");
         return SUCCESS;
     }
@@ -628,7 +669,31 @@ public class AdminAction extends ActionSupport {
     public String busCreate() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
+        Bus bus = new Bus();
+        bus.setPlateNumber(request.getParameter("plateNumber"));
+        bus.setTotalSeats(Integer.parseInt(request.getParameter("totalSeats").trim()));
+        bus.setDescription(request.getParameter("description"));
+        String busTypeName = request.getParameter("busTypeName");
+        BusType busType = busTypeDAO.selectBean(" where name='"+busTypeName+"'");
+        if(busType == null){
+            response.getWriter().print("<script language=javascript>alert('创建失败,该类型不存在');window.location" +
+                    ".href='index.jsp';</script>");
+            return null;
+        }
+        bus.setBusType(busType);
 
+        int check = busDAO.selectBeanCount(" where plateNumber='" + bus.getPlateNumber() + "'");
+        if (check != 0) {
+            response.getWriter().print("<script language=javascript>alert('添加失败,该车辆已存在');window.location" +
+                    ".href='index.jsp';</script>");
+            return null;
+        }else{
+            busDAO.insertBean(bus);
+            response.getWriter().print("<script language=javascript>alert('添加成功');window.location" +
+                    ".href='manage/index.jsp';</script>");
+        }
         return SUCCESS;
     }
 
@@ -649,10 +714,30 @@ public class AdminAction extends ActionSupport {
     public void busUpdate() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
-        String id = request.getParameter("id");
-        Bus bus= busDAO.selectBean("where id="+id);
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
+        String id =request.getParameter("id");
+        Bus bus = busDAO.selectBean("where id=" + id);
+        bus.setPlateNumber(request.getParameter("plateNumber"));
+        bus.setTotalSeats(Integer.parseInt(request.getParameter("totalSeats").trim()));
+        bus.setDescription(request.getParameter("description"));
+        String busTypeName = request.getParameter("busTypeName");
+        BusType busType = busTypeDAO.selectBean(" where name='"+busTypeName+"'");
+        if(busType == null){
+            response.getWriter().print("<script language=javascript>alert('创建失败,该类型不存在');window.location" +
+                    ".href='manage/index.jsp';</script>");
+            return ;
+        }
+        int check = busDAO.selectBeanCount(" where plateNumber='" + bus.getPlateNumber() + "'");
+        if (check != 1) {
+            response.getWriter().print("<script language=javascript>alert('添加失败,该车辆已存在');window.location" +
+                    ".href='manage/index.jsp';</script>");
+            return ;
+        }else{
+            busDAO.updateBean(bus);
+        }
 
-        response.getWriter().print("<script language=javascript>alert('编辑成功');window.location.href='javascript:history.back(-1);';</script>");
+        response.getWriter().print("<script language=javascript>alert('编辑成功');window.location.href='manage/index.jsp';</script>");
 
     }
 
@@ -661,7 +746,7 @@ public class AdminAction extends ActionSupport {
         String keyWord = request.getParameter("keyWord");
         StringBuffer sb = new StringBuffer();
         if (keyWord != null && !"".equals(keyWord)) {
-            sb.append("where id like '%" + keyWord + "%'");
+            sb.append("where id like '%" + keyWord + "%' or name like '%" + keyWord + "%'");
             request.setAttribute("keyWord", keyWord);
         }
         sb.append("order by id desc ");
@@ -768,25 +853,33 @@ public class AdminAction extends ActionSupport {
         request.setAttribute("url", "../adminMethod!routeManage");
         request.setAttribute("urlUpdate", "../adminMethod!routeUpdate");
         request.setAttribute("urlRemove", "../adminMethod!routeRemove");
-        request.setAttribute("title", "路线管理");
+        request.setAttribute("title", "线路管理");
+        List<Station> stationlist = stationDAO.selectBeanList(0, 999, "");
+        request.setAttribute("stationlist", stationlist);
         this.setUrl("manage/routemanage.jsp");
         return SUCCESS;
     }
 
     public void routeCreate() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
         Route bean = new Route();
+        String leaveStation = request.getParameter("leaveStation");
+        String arriveStation = request.getParameter("arriveStation");
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
+        if (leaveStation.equals(arriveStation)){
+            response.getWriter().print("<script language=javascript>alert('创建失败,始站和终站不能一致！');window.location.href='index" +
+                    ".jsp';</script>");
+            return;
+        }
         bean.setLeaveStation(stationDAO.selectBean("where name='" + request.getParameter("leaveStation").trim() + "'"));
         bean.setArriveStation(stationDAO.selectBean("where name='" + request.getParameter("arriveStation").trim() +
                 "'"));
         bean.setDistance(Integer.parseInt(request.getParameter("distance").trim()));
-        bean.setPassby(request.getParameter("passby"));
 
         int check = routeDAO.selectBeanCount(" where leaveStation.id = " + bean.getLeaveStation().getId() + " and " +
                 "arriveStation.id=" + bean.getArriveStation().getId());
-        HttpServletResponse response = ServletActionContext.getResponse();
-        response.setCharacterEncoding("gbk");
-        response.setContentType("text/html; charset=gbk");
         if (0 != check) {
             response.getWriter().print("<script language=javascript>alert('创建失败,该路线已存在');window.location.href='index" +
                     ".jsp';</script>");
@@ -819,7 +912,7 @@ public class AdminAction extends ActionSupport {
         String keyWord = request.getParameter("keyWord");
         StringBuffer sb = new StringBuffer();
         if (keyWord != null && !"".equals(keyWord)) {
-            sb.append("where id = '" + keyWord + "'");
+            sb.append("where id = '" + keyWord + "' ");
             request.setAttribute("username", keyWord);
         }
         sb.append("order by id desc ");
@@ -848,14 +941,34 @@ public class AdminAction extends ActionSupport {
 
     public void scheduleCreate() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
         Schedule schedule = new Schedule();
         schedule.setRoute(routeDAO.selectBean("where id=" + request.getParameter("routeId")));
         schedule.setBus(busDAO.selectBean("where id=" + request.getParameter("busId")));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        schedule.setLeaveTime(sdf.parse(request.getParameter("leaveTime")));
-        schedule.setArriveTime(sdf.parse(request.getParameter("arriveTime")));
+        String leave_time = request.getParameter("leaveTime").replace("T","");
+        String arrive_time = request.getParameter("arriveTime").replace("T","");
+        Date leaveTime = sdf.parse(leave_time);
+        Date arriveTime = sdf.parse(arrive_time);
+        Date date = new Date();
+        schedule.setLeaveTime(leaveTime);
+        schedule.setArriveTime(arriveTime);
         schedule.setPrice(Double.parseDouble(request.getParameter("price").trim()));
-        scheduleDAO.insertBean(schedule);
+        int compare = arriveTime.compareTo(leaveTime);
+        int compare2 = leaveTime.compareTo(date);
+        response.setContentType("text/html; charset=gbk");
+        if(compare == 1 && compare2 == 1) {
+         scheduleDAO.insertBean(schedule);
+        }else if(compare2 != 1){
+            response.getWriter().print("<script language=javascript>alert('添加失败,开始日期不能小于或等于当前日期');window.location.href='index.jsp';" +
+                    "</script>");
+            return;
+        }
+        else if(compare != 1){
+            response.getWriter().print("<script language=javascript>alert('添加失败,结束日期不能小于或等于开始日期');window.location.href='index.jsp';" +
+                    "</script>");
+            return;
+        }
         int num = Integer.parseInt(request.getParameter("num"));
         List<Ticket> tickets = new ArrayList<>();
         for (int i = 1; i <= num; ++i) {
@@ -868,8 +981,6 @@ public class AdminAction extends ActionSupport {
         }
         schedule.setTickets(tickets);
         scheduleDAO.updateBean(schedule);
-
-        HttpServletResponse response = ServletActionContext.getResponse();
         response.setContentType("text/html; charset=gbk");
         response.getWriter().print("<script language=javascript>alert('添加成功');window.location.href='index.jsp';" +
                 "</script>");
@@ -883,12 +994,12 @@ public class AdminAction extends ActionSupport {
         response.setContentType("text/html; charset=gbk");
         Schedule bean = scheduleDAO.selectBean("where id=" + id);
         if (null == bean) {
-            response.getWriter().print("<script language=javascript>alert('班次不存在');window.location.href='index.jsp';" +
+            response.getWriter().print("<script language=javascript>alert('班次不存在');window.location.href='manage/index.jsp';" +
                     "</script>");
             return;
         }
         scheduleDAO.deleteBean(bean);
-        response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='index.jsp';" +
+        response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='manage/index.jsp';" +
                 "</script>");
     }
 

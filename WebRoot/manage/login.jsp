@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网上订票管理后台</title>
-<link rel="stylesheet" type="text/css" href="inc/login.css">
+<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 
 
@@ -33,7 +33,7 @@
 		<input type="submit" class="man_login" name="submit"  value=" 登  录 "> 
 		<input type="reset" class="man_cancel" name="Submit" value=" 取  消 ">
 		</div>
-		<a class="forgerpw"href="#">忘记密码 ?  </a><a class="returnhome"href="../">返回首页  </a>
+		<a class="returnhome" href="../">返回首页  </a>
 	</div>
 </form>
 </div>

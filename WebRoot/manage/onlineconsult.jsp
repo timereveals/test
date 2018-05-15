@@ -10,12 +10,11 @@
     </head>
     <body>
     	<div id="title">${title }</div>
-    	<form action="${url}" method="post">
-		    <div class="top">		        	
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				状态：
-				<input type="text" name="username" value="${username}" id="text" >
-				<input type="button" value="搜索" id="submit_find" >
+        <form action="${url}" method="post">
+		    <div class="top">
+				&nbsp;&nbsp;&nbsp;关键字：<input type="text" name="keyWord" value="${username}" id="keyWord" placeholder="请输入id进行查询">
+				<input type="button" value="搜索" id="submit_find" onclick="search('${url}')">
+				<input type="button" value="添加" id="submit_add" >
 				<br/>
 			</div>
         </form>

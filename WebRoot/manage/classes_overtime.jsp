@@ -38,25 +38,25 @@
 	        <th style="width: 5%;">票价</th>
 	        <th style="width: 8%;">操作</th>
 	    </tr>  
-	    <c:forEach items="${list}"  var="bean">
-	        <tr>
-		        <td >ID</td>       
-		        <td >始站</td>    
-		        <td >终站</td>
-		        <td >途径</td>
-		        <td >类型</td>
-		        <td >班次</td>
+
+        <c:forEach items="${list}"  var="bean">
+    	    <tr>
+    		    <td >${bean.id}</td>
+    		    <td >${bean.id}</td>
+    	        <td >${bean.route.leaveStation.name}</td>
+    		    <td >${bean.route.arriveStation.name}</td>
+    	        <td >${bean.bus.busType.name}</td>
 		        <td >开始日期</td>
 		        <td >结束日期</td>
-		        <td >出发时间</td>
-		        <td >票价</td>
-	        	<td>
-					<a id="editRow" href="javascript:;">编辑</a>
-					&nbsp;&nbsp;
-					<a href="${url2 }delete2?id=${bean.id }">删除</a>
-				</td>
-	        </tr>
-	    </c:forEach>
+    		    <td >${bean.leaveTime}</td>
+    		    <td >${bean.price}</td>
+    	        <td>
+    				<a href="${url2 }delete?id=${bean.id }">修改</a>
+    				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    				<a href="${url2 }delete2?id=${bean.id }">删除</a>
+    			</td>
+    	    </tr>
+    	</c:forEach>
     </table>
     
     <div class="table_bottom">${pagerinfo }</div>
@@ -66,7 +66,7 @@
     <div class="layer" id="layer_add" style="overflow: scroll;">
     	<form >
     		<div class="nav_close">
-	    		<a class="btclose" id="btclose" href="javascript:histroy();">X</a>
+	    		<a class="btclose" id="btclose" href="javascript:;">X</a>
 	    	</div>
 	    	<div>
 	    		<label>始站:</label><input type="text" placeholder="请选择始站" />
@@ -139,39 +139,6 @@
     	</form>
     </div>
    	<script type="text/javascript" src="js/layer.js" ></script>
-    <!-- 表格操作-->
-    <script>
-    	$(document).ready(function () {
-            $("#table").DataTable()
-        });
-        var i = 0;
-        //添加行
-        function addRow() {
-            i++;
-            var rowTem ='<tr class="tr_' + i + '">'
-                + '<td id="ID' + i + '">ID</td>'
-                + '<td id="start_station' + i + '">始站</td>'
-                + '<td id="stop_station' + i + '">终站</td>'
-                + '<td id="between_station' + i + '">途径</td>'
-                + '<td id="bustype' + i + '">类型</td>'
-                + '<td id="classes' + i + '">班次</td>'
-                + '<td id="godate' + i + '">开始日期</td>'
-                + '<td id="stopdate' + i + '">结束日期</td>'
-                + '<td id="gotime' + i + '">出发时间</td>'
-                + '<td id="price' + i + '">票价</td>'
-                + '<td><a href="#" onclick=editRow('+i+') >编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick=delRow('+i+') >删除</a></td>'
-                + '</tr>';
-            $("#table tbody:last").append(rowTem);
-		}
-        //删除行
-        function delRow(_id) {
-            $("#table .tr_"+_id).remove();
-            i--;
-        }
-        </script>
-        
-        
-       
  	</body>
 </html>
  	</body>

@@ -8,13 +8,39 @@
         <title>类型管理</title>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="layui/css/layui.css" />
-    
+
+        <script type="text/javascript">
+            function checkaddbustypeform(){
+                if (document.getElementById('name1').value=="")
+                	{
+                		alert("类型不能为空");
+                		return false;
+                	}
+                if (document.getElementById('description1').value=="")
+                	{
+                		alert("简介不能为空");
+                		return false;
+                	}
+            }
+            function checkeditbustypeform(){
+                if (document.getElementById('name').value=="")
+                	{
+                		alert("类型不能为空");
+                		return false;
+                	}
+                if (document.getElementById('description').value=="")
+                	{
+                		alert("简介不能为空");
+                		return false;
+                	}
+            }
+        </script>
     </head>
     <body>
     	<div id="title">${title }</div>
     	<form action="${url }" method="post">
 		    <div class="top">		        	
-				&nbsp;&nbsp;&nbsp;关键字：<input type="text" name="keyWord" value="${username}" id="keyWord" >
+				&nbsp;&nbsp;&nbsp;关键字：<input type="text" name="keyWord" value="${username}" id="keyWord" placeholder="请输入id或者类型进行查询">
 				<input type="button" value="搜索" id="submit_find" onclick="search('${url}')">
 				<input type="button" value="添加" id="submit_add">
 				<br/>
@@ -45,15 +71,15 @@
     <div class="cover" id="cover"></div> 
     <!-- 弹出层div-->
     <div class="layer" id="layer_add" >
-    	<form action="adminMethod!busTypeCreate" method="post">
+    	<form action="adminMethod!busTypeCreate" onsubmit="return checkaddbustypeform()" method="post">
     		<div class="nav_close">
-	    		<a class="btclose" id="btclose" href="javascript:histroy();">X</a>
+	    		<a class="btclose" id="btclose" href="javascript:;">X</a>
 	    	</div>
 	    	<div>
-	    		<label>类型:</label><input name="name" type="text" placeholder="请输入类型" />
+	    		<label>类型:</label><input name="name" id="name1"type="text" placeholder="请输入类型" />
 	    	</div>
 	    	<div>
-	    		<label>简介:</label><input name="description" type="text" placeholder="请输入简介" />
+	    		<label>简介:</label><input name="description" id="description1"type="text" placeholder="请输入简介" />
 	    	</div>	    	
 	    	<div class="btn">
 	    		<button id="sure" type="submit">确定</button>
@@ -62,7 +88,7 @@
     </div>
     <!-- 弹出层(editRow)div-->
     <div class="layer" id="busTypeEdit" >
-    	<form action="${urlUpdate}" method="post">
+    	<form action="${urlUpdate}" onsubmit="return checkaddbustypeform()" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose_editRow" href="javascript:;">X</a>
 	    	</div>

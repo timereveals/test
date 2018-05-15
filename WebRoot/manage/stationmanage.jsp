@@ -7,12 +7,36 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>站点管理</title>
         <link rel="stylesheet" href="css/common.css" />
+        <script type="text/javascript">
+            function checkaddform(){
+                if (document.getElementById('name1').value=="")
+                	{
+                		alert("站点名称不能为空");
+                		return false;
+                	}
+                if (document.getElementById('locationBrief1').value=="")
+                	{
+                		alert("所在省市县不能为空");
+                		return false;
+                	}
+                if (document.getElementById('locationDetail1').value=="")
+                	{
+                		alert("地址不能为空");
+                		return false;
+                	}
+                if (document.getElementById('phone1').value=="")
+                	{
+                		alert("电话不能为空");
+                		return false;
+                	}
+            }
+        </script>
     </head>
     <body>
 		<div id="title" >站点管理</div>
         <form action="${url}" method="post">
 		    <div class="top">
-				&nbsp;&nbsp;&nbsp;关键字：<input type="text" name="keyWord" value="${username}" id="keyWord" >
+				&nbsp;&nbsp;&nbsp;关键字：<input type="text" name="keyWord" value="${username}" id="keyWord" placeholder="请输入站点名称或所在区县进行查询">
 				<input type="button" value="搜索" id="submit_find" onclick="search('${url}')">
 				<input type="button" value="添加" id="submit_add" >
 				<br/>
@@ -46,21 +70,21 @@
     <div class="cover" id="cover"></div> 
     <!-- 弹出层div  添加add-->
     <div class="layer" id="layer_add" >
-    	<form action="adminMethod!stationCreate" method="post">
+    	<form action="adminMethod!stationCreate" onsubmit="return checkaddform()" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose" href="javascript:histroy();">X</a>
 	    	</div>
 	    	<div>
-	    		<label>站点名称:</label><input name="name" type="text" placeholder="请输入站点名称" />
+	    		<label>站点名称:</label><input name="name" id="name1" type="text" placeholder="请输入站点名称" />
 	    	</div>
 	    	<div>
-	    		<label>所在省市县:</label><input name="locationBrief" type="text" placeholder="请输入所在省/市/县" />
+	    		<label>所在省市县:</label><input name="locationBrief" id="locationBrief1" type="text" placeholder="请输入所在省/市/县" />
 	    	</div>
 	    	<div>
-	    		<label>地址:</label><input name="locationDetail" type="text" placeholder="请输入地址" />
+	    		<label>地址:</label><input name="locationDetail" id="locationDetail1" type="text" placeholder="请输入地址" />
 	    	</div>
 	    	<div>
-	    		<label>电话:</label><input name="phone" type="text" placeholder="请输入电话,区号和电话请用-分隔" />
+	    		<label>电话:</label><input name="phone" id="phone1" type="text" placeholder="请输入电话,区号和电话请用-分隔" />
 	    	</div>	    	
 	    	<div class="btn">
 	    		<button type="submit">确定</button>

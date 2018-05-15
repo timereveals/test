@@ -12,7 +12,7 @@
     	<div id="title">${title }</div>
     	<form action="${url}" method="post">
 		    <div class="top">		        	
-				&nbsp;&nbsp;&nbsp;&nbsp;关键字<input type="text" name="keyWord" value="${username}" id="keyWord" >
+				&nbsp;&nbsp;&nbsp;&nbsp;关键字<input type="text" name="keyWord" value="${username}" id="keyWord" placeholder="请输入id或者标题或者内容进行查询">
 				<input type="submit" value="搜索" id="submit_find" onclick="search('${url}')">
 				<input type="button" value="添加" id="submit_add" >
 				<br/>
@@ -35,7 +35,7 @@
 		        <td >${bean.start_time}</td>
 		        <td >${bean.end_time}</td>
 	        	<td>
-					<a  href="javascript:editannouncement(${bean.id},'${bean.title}','${bean.content}');">编辑</a>
+					<a  href="javascript:editannouncement(${bean.id},'${bean.title}','${bean.content}','${bean.start_time}','${bean.end_time}');">编辑</a>
 					<a href="${urlRemove}?id=${bean.id}">删除</a>
 				</td>
 	        </tr>
@@ -78,10 +78,10 @@
 	    		<label>标题:</label><input name="title" id="title2" type="text" value=""/>
 	    	</div>
 	    	<div>
-	    		<label>开始时间:</label><input type="date" value="获取的值"/>
+	    		<label>开始时间:</label><input name="start" id="start_time" type="text" value=""/>
 	    	</div>
 	    	<div>
-	    		<label>结束时间:</label><input type="date" value="获取的值"/>
+	    		<label>结束时间:</label><input name="end" id="end_time" type="text" value=""/>
 	    	</div>
 	    	<div>
 	    		<label>内容:</label><textarea name="content" id="content2" style="width: 300px; height: 100px;border: 1px solid gray;margin-top: 15px; overflow: scroll;" value="" />
@@ -93,10 +93,12 @@
     </div>
     <script type="text/javascript" src="js/layer.js" ></script>
     <script>
-        function editannouncement(editid,title,content){
+        function editannouncement(editid,title,content,start_time,end_time){
              document.getElementById("editid").value=editid;
              document.getElementById("title2").value = title;
              document.getElementById("content2").value = content;
+             document.getElementById("start_time").value = start_time;
+             document.getElementById("end_time").value = end_time;
              $("#cover").fadeIn("slow");
              $("#layer_editRow").fadeIn("slow");//淡入淡出效果 显示div
         }
