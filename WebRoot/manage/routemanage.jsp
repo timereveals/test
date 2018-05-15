@@ -44,8 +44,6 @@
 		        <td >${bean.arriveStation.name}</td>
 		        <td >${bean.distance}</td>
 	        	<td>
-					<a id="editRow" href="${urlEdit}?{bean.id}>编辑</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="${urlRemove}?id=${bean.id }">删除</a>
 				</td>
 	        </tr>

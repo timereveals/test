@@ -116,9 +116,6 @@
 	    		<label>到达时间:</label><input name="arriveTime" id="arriveTime1" type="datetime-local"  />
 	    	</div>
 	    	<div>
-	    		<label>票数</label><input name="num" id="num1" type="text" placeholder="请输入票的数量" />
-	    	</div>
-	    	<div>
 	    		<label>票价(元):</label><input name="price" id="price1" type="text" placeholder="请输入票价" />
 	    	</div>	
 	    	<div class="btn">

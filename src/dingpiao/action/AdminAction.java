@@ -895,7 +895,7 @@ public class AdminAction extends ActionSupport {
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        Route bean = routeDAO.selectBean("where id=" + id);
+        Route bean = routeDAO.selectBean(" where id=" + id);
         if (null == bean) {
             response.getWriter().print("<script language=javascript>alert('路线不存在');window.location.href='index.jsp';" +
                     "</script>");
@@ -944,7 +944,7 @@ public class AdminAction extends ActionSupport {
         Schedule schedule = new Schedule();
         schedule.setRoute(routeDAO.selectBean("where id=" + request.getParameter("routeId")));
         schedule.setBus(busDAO.selectBean("where id=" + request.getParameter("busId")));
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddHH:mm");
         String leave_time = request.getParameter("leaveTime").replace("T","");
         String arrive_time = request.getParameter("arriveTime").replace("T","");
         Date leaveTime = sdf.parse(leave_time);
@@ -968,7 +968,7 @@ public class AdminAction extends ActionSupport {
                     "</script>");
             return;
         }
-        int num = Integer.parseInt(request.getParameter("num"));
+        int num = schedule.getBus().getTotalSeats();
         List<Ticket> tickets = new ArrayList<>();
         for (int i = 1; i <= num; ++i) {
             Ticket ticket = new Ticket();
