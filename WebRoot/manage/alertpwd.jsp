@@ -20,11 +20,17 @@
                 		alert("新密码不能为空");
                 		return false;
                 	}
+                if (document.getElementById('password2').value.length<6)
+                	{
+                		alert("密码长度必须大于6位");
+                		return false;
+                	}
                 if (document.getElementById('password3').value=="")
                 	{
                 		alert("确认密码不能为空");
                 		return false;
                 	}
+
                 if (document.getElementById('password2').value != document.getElementById('password3').value)
                     {
                         alert("确认密码与密码不一致");

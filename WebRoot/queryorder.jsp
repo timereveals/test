@@ -11,9 +11,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <title>查询订单</title>
 
-	<link rel="stylesheet" href="css/usercenter.css" />	
+	<link rel="stylesheet" href="css/queryorder.css" />
   </head>
-  
+  <script>
+          jQuery(document).ready(function(){
+              //显示时间，以后应用于自动定时器做某一件事
+              jQuery("div[id^=auto_order_cancel]").each(function(index, element) {
+                  var val=jQuery(this).attr("mark");
+                  var status=jQuery(this).attr("status");
+                  timeCount(val,status,"1");
+              });
+          });
+          function timeCount(remain_id,status){
+              function _fresh(){
+                  var nowDate = new Date();//当前时间
+                  var id=jQuery('#'+remain_id).attr("order_id");   //当前订单的id
+
+                  var addTime=new Date(jQuery('#'+remain_id).attr('addTime'));//下单开始时间
+                  var auto_order_cancel=jQuery('#'+remain_id).attr('auto_order_cancel');//订单支付有效时长
+                  var auto_totalS=parseInt(auto_order_cancel*60*60);
+                  var ad_totalS  = parseInt((addTime.getTime()/1000)+auto_totalS);  ///下单总秒数
+                  var totalS   = parseInt(ad_totalS-(nowDate.getTime()/ 1000));///支付时长
+
+                  if(status == 10){
+                      if(totalS>0){
+                          var _hour   = parseInt((totalS / 3600) % 24);
+                          var _minute = parseInt((totalS / 60) % 60);
+                          var _second = parseInt(totalS % 60);
+
+                          jQuery('#status_'+remain_id).html('剩余'+_hour+'时'+_minute+'分'+_second+'秒');
+                          jQuery('#ico_'+remain_id).show();
+
+                      }else{//支付超时
+                          jQuery('#status_'+remain_id).html('');
+                          jQuery('#ico_'+remain_id).hide();
+                          clearInterval(sh);
+                          jQuery.ajax({
+                              type:'POST',
+                              url:"http://取消订单的路径",
+                              data:{"id":id},
+                              success:function(data){
+                                  window.location.href="http://localhost:8080/buyer/order.htm";
+                              }
+                          });
+                      }
+                  }
+
+              }
+              _fresh();
+              var sh = setInterval(_fresh,1000);
+          }
+      </script>
+      <style>
+
+      </style>
+  </head>
+
   <body>
     <!-- 汽车票订单信息 -->
 <div class="title_queryorder">汽车票订单<span></span></div>
@@ -26,6 +79,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </li>
 	    <li id="saixuan"><a href="javascript:void(0)"> <span id="animate"></span></a></li>
 	</ul>
+	<!-- status=10 为订单为已下单未支付  addtime:下单时间  auto_order_cancel=24 自动取消时间  -->
+      <div class="count_time" _val="85542"
+           id="auto_order_cancel" mark="auto_order_cancel"
+           order_id="420" status="10" addtime="02/26/2018 08:34:49"
+           auto_order_cancel="24">
+          <span class="time_icon" id="ico_auto_order_cancel"></span><i id="status_auto_order_cancel" style="font-style: normal;"></i>
+      </div>
 	<ul class="theCarPage-ul3">
 	  <li>订单</li>
 	  <li style="width:80px">价格</li>

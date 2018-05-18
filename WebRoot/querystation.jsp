@@ -40,12 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th style="width:210px;">电话</th>
 					</tr>
 					<c:forEach items="${stationlist}" var="bean">
-					<tr>
-						<td>${bean.name}</td>
-						<td>${bean.locationBrief}</td>
-						<td>${bean.locationDetail}</td>
-						<td>${bean.phone}</td>
-					</tr>
+                        <tr>
+                            <td>${bean.name}</td>
+                            <td>${bean.locationBrief}</td>
+                            <td>${bean.locationDetail}</td>
+                            <td>${bean.phone}</td>
+                        </tr>
 					</c:forEach>
 				</table>
 			</div>

@@ -1,9 +1,8 @@
 package dingpiao.action;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import dingpiao.dao.*;
 import dingpiao.model.*;
+import dingpiao.util.Arith;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -254,6 +255,7 @@ public class UserAction extends ActionSupport {
         String id = request.getParameter("id");
         Announcement announcement = announcementDAO.selectBean("where id = " + id);
         request.setAttribute("announcement", announcement);
+        this.setUrl("announcement.jsp");
         return SUCCESS;
     }
 
@@ -315,7 +317,7 @@ public class UserAction extends ActionSupport {
         }
 
         if (null != from && !from.isEmpty()) {
-            where += " and route.leaveStation.name = '" + from + "'";
+            where += " and route.leaveStation.name like '%" + from + "%'";
             request.setAttribute("from", from);
         }
 
@@ -325,11 +327,11 @@ public class UserAction extends ActionSupport {
         }
 
         if (null != busType && !busType.isEmpty()) {
-            where += " and bus.busType.name = '" + busType + "'";
+            where += " and bus.busType.name like '%" + to + "%'";
             request.setAttribute("busType", busType);
         }
 
-        where += " order by id DESC";
+        where += " and status = 0 order by id DESC";
 
         Date curDate = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-ddHH:mm");
@@ -374,7 +376,7 @@ public class UserAction extends ActionSupport {
         Schedule schedule = scheduleDAO.selectBean("where id =" + scheduleid);
         request.setAttribute("schedule", schedule);
         request.setAttribute("iAvailable", iAvailable);
-        this.setUrl("new_file.jsp");
+        this.setUrl("addorder.jsp");
         return SUCCESS;
     }
 
@@ -478,7 +480,7 @@ public class UserAction extends ActionSupport {
         List<Order> orders = orderDAO.selectBeanList(0, 999, "where user.id = '" + user.getId() + "'");
 
         request.setAttribute("orderlist", orders);
-        this.setUrl("orderlist.jsp");
+        this.setUrl("myorder.jsp");
         return SUCCESS;
     }
 
@@ -553,7 +555,11 @@ public class UserAction extends ActionSupport {
         user_check.setIDNumber(request.getParameter("IDNumber"));
         user_check.setEmail(request.getParameter("email"));
         user_check.setSex(request.getParameter("sex"));
-        userDAO.insertBean(user_check);
+        userDAO.updateBean(user_check);
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
+        response.getWriter().print("<script language=javascript>alert('修改成功！');window.location.href='personal.jsp';" +
+                "</script>");
         return SUCCESS;
     }
 
@@ -624,17 +630,17 @@ public class UserAction extends ActionSupport {
                     "</script>");
             return null;
         }
-        List<Word> wordList;
-        if (list == "2") {
-            wordList = wordDAO.selectBeanList(0, 999, "where user.id = '" + user.getId() + "'and user.status = '已回复'");
-        } else if (list == "3") {
-            wordList = wordDAO.selectBeanList(0, 999, "where user.id = '" + user.getId() + "'and user.status = '未读'");
-        } else {
-            wordList = wordDAO.selectBeanList(0, 999, "where user.id = '" + user.getId() + "'");
+        String keyWord = request.getParameter("keyWord");
+        StringBuffer sb = new StringBuffer();
+        if (keyWord != null && !"".equals(keyWord)) {
+            sb.append("where  user.id = '" + user.getId() + "'and status like '%" + keyWord + "%' ");
+            request.setAttribute("keyWord", keyWord);
         }
-        int size = wordDAO.selectBeanCount("where user.id='" + user.getId() + "'");
-        request.setAttribute("wordSize", size);
+        sb.append(" order by word_time desc ");
+        String where = sb.toString();
+        List<Word> wordList = wordDAO.selectBeanList(0, 999, where);
         request.setAttribute("wordList", wordList);
+        request.setAttribute("url","userMethod!wordList");
         this.setUrl("message.jsp");
         return SUCCESS;
     }
@@ -700,5 +706,37 @@ public class UserAction extends ActionSupport {
         passengerDAO.deleteBean(bean);
         response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='personal.jsp';</script>");
 
+    }
+    //热门路线,
+    public String hotRoad() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        List<Schedule> scheduleList = scheduleDAO.selectBeanList(0,999,"");
+        Map<String,Object> map;
+        List<Map<String,Object>> schedules=new ArrayList<>();
+        int scheduleId;
+        for (Schedule schedule:scheduleList) {
+            map=new HashMap<>();
+            scheduleId=schedule.getId();
+            int ticketCount = ticketDAO.selectBeanCount("where status = 1 and schedule.id= '"+scheduleId+"'");
+            map.put("scheduleId",scheduleId);
+            map.put("ticketCount",ticketCount);
+            map.put("leavestationName",schedule.getRoute().getLeaveStation().getName());
+            map.put("arrivestationName",schedule.getRoute().getArriveStation().getName());
+            schedules.add(map);
+        }
+        Collections.sort(schedules, new Comparator<Map<String, Object>>() {
+            @Override
+            public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+                // TODO Auto-generated method stub
+                String updateDate1 = o1.get("ticketCount").toString();
+                String updateDate2 =  o2.get("ticketCount").toString();
+                return updateDate2.compareTo(updateDate1);
+            }
+        });
+        request.setAttribute("schedules",schedules);
+        request.setAttribute("url","userMethod!hotRoad");
+        this.setUrl("hotroad.jsp");
+        return SUCCESS;
     }
 }

@@ -16,7 +16,6 @@
                 		return false;
                 	}
             }
-            }
         </script>
     </head>
     <body>
@@ -56,12 +55,12 @@
     <div class="layer" id="layer_add" >
     	<form action="adminMethod!routeCreate" onsubmit="return checkaddrouteform()"  method="post">
     		<div class="nav_close">
-	    		<a class="btclose" id="btclose" href="javascript:histroy();">X</a>
+	    		<a class="btclose" id="btclose" href="javascript:;">X</a>
 	    	</div>
 	    	<div>
 	    		<label>始站:</label>
                 <select id="leaveStation"  name="leaveStation" style="width:300px;height:34px;line-height:34px;border:1px solid grey;border-radius:4px;margin-top:15px;">
-                    <c:forEach items="${stationlist}"  var="bean">
+                    <c:forEach items="${stationlist1}"  var="bean">
                        	<option value="${bean.name}">${bean.name}</option>
                     </c:forEach>
                 </select>
@@ -82,60 +81,7 @@
 	    	</div>
     	</form>
     </div>
-    <!-- 弹出层(editRow)div-->
-    <div class="layer" id="layer_editRow" >
-    	<form >
-    		<div class="nav_close">
-	    		<a class="btclose" id="btclose_editRow" href="javascript:;">X</a>
-	    	</div>
-	    	<div>
-	    		<label>始站:</label><input type="text" value="获取的值" />
-	    	</div>
-	    	<div>
-	    		<label>终站:</label><input type="text" value="获取的值" />
-	    	</div>
-	    	<div>
-	    		<label>途径:</label><input type="text" value="获取的值" />
-	    	</div>
-	    	<div>
-	    		<label>里程(km):</label><input type="text" value="获取的值" />
-	    	</div>
-	    	<div>
-	    		<label>行驶时间:</label><input type="text" value="获取的值" />
-	    	</div>
-	    	<div class="btn">
-	    		<a   href="javascript:;" id="sure_editRow">确定</a>
-	    	</div>
-    	</form>
-    </div>
-    
-    
     <script type="text/javascript" src="js/layer.js" ></script>
-    <!-- 表格操作-->
-    <script>
-    	$(document).ready(function () {
-            $("#table").DataTable()
-        });
-        var i = 0;
-        //添加行
-        function addRow() {
-            i++;
-            var rowTem ='<tr class="tr_' + i + '">'
-                + '<td id="ID' + i + '">ID</td>'
-                + '<td id="start_station' + i + '">始站</td>'
-                + '<td id="stop_station' + i + '">终站</td>'
-                + '<td id="between_station' + i + '">途径</td>'
-                + '<td id="instance' + i + '">里程(km)</td>'
-                + '<td id="drivetime' + i + '">行驶时间(h)</td>'
-                + '<td><a href="#" onclick=editRow('+i+') >编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick=delRow('+i+') >删除</a></td>'
-                + '</tr>';
-            $("#table tbody:last").append(rowTem);
-		}
-        //删除行
-        function delRow(_id) {
-            $("#table .tr_"+_id).remove();
-            i--;
-        }
-    </script>
+
  	</body>
 </html>

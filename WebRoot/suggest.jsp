@@ -11,11 +11,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <title>在线咨询</title>
 	<link rel="stylesheet" href="css/suggest.css" />
+        <script type="text/javascript">
+            function checkwordform(){
+                if (document.getElementById('wordContent').value=="")
+                	{
+                		alert("内容不能为空");
+                		return false;
+                	}
+            }
+            </script>
   </head>
   
   <body>
    <div class="suggest">
-        <form method="post" action="userMethod!word">
+        <form method="post" onsubmit="return checkwordform()" action="userMethod!word">
             <div class="title_suggest">在线咨询</div>
             <div  class='sourceType'>
                 <div>
@@ -25,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <label>手机：</label><input type="text" name="phone"  readonly="readonly" style='background-color:rgba(221, 221, 221, 0.28);' value="${user.phone}" ></input>
                 </div>
                 <div >
-                    <label>内容：</label><textarea name="wordContent" cols="30" id="wordContent" placeholder="请输入4-200个字符" ></textarea>
+                    <label>内容：</label><textarea name="wordContent" cols="30" id="wordContent" placeholder="请输入内容" ></textarea>
                 </div>
                 <div >
                     <input id="submit" type="submit" value="提交"/>

@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="css/checkorder.css" />
 	</head>
 	<body>
-		
+		<%@ include file="head.jsp" %>
 		<div class="bg" style="padding-top: 20px;">
 			<div class="carpay-process">
 			<span class="carpay-process-conten">1.确定预定车票车次</span> <span >2.核对支付订单</span>
@@ -23,7 +23,7 @@
 				<dl>
 					<dt>订单号:</dt>
 					<dd>
-						<span>18041300000013507465</span>
+						<span>${schedule.order.id}</span>
 					</dd>
 				</dl>
 				<dl>
@@ -64,10 +64,8 @@
 									<dt>乘车人</dt>
 									<dd>
 									<c:forEach items="${order.passenger}" var="passenger">
-									<span class="name">${passenger.name}</span><span class="idcard">${passenger.IDNumber}</span>
-										<span class="hailight">
-												&#20840;
-										</span>
+									<span class="name">${passenger.name}</span><span class="idcard">${passenger.name}</span>
+										<span class="hailight">全</span>
 										<span style=" margin-left: 25px;">座位号:${passenger.id}</span>
 									</c:forEach>
 									</dd>
@@ -85,7 +83,7 @@
 				<div class="newCpxx87-a">
 					<dl>
 						<dt>发车时间</dt>
-						<dd>19&#58;30</dd>
+						<dd>${schedule.leaveTime}</dd>
 					</dl>
 					<dl>
 						<dt>乘车点</dt>
@@ -97,13 +95,13 @@
 					</dl>
 					<dl style="border-bottom: none;">
 						<dt>车辆/班次</dt>
-						<dd>8543</dd>
+						<dd>${shcedule.bus.plateNumber}</dd>
 					</dl>
 				</div>
 				<div class="newCpxx87-b">下单人信息</div>
 						<div class="newCpxx87-c">
-							<p><span>${user.name}</span></p>
-							<p>电话：${user.phone}</p>
+							<p>用户名：<span>${user.name}</span></p>
+							<p>电话：<span>${user.phone}</span></p>
 						</div>
 			</div>
 			

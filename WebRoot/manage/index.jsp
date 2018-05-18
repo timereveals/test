@@ -44,52 +44,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="text-align:center;">
       	<!-- 系统管理员功能 -->
       	<c:if test="${admin.role==0}">
-      	<li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">用户管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick="doclk('../adminMethod!adminManage')" id="adminManage">车站管理员</a></dd>
-            <dd><a href="javascript:;" onclick="doclk('../adminMethod!userManage')" id="userManage">普通用户</a></dd>
-          </dl>
-        </li>
-        
-      	<li class="layui-nav-item">
-          <a href="javascript:;">系统管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick="doclk('../adminMethod!announcementManage')">公告管理</a></dd>
-            <dd><a href="javascript:;" onclick="doclk('../adminMethod!stationManage')">站点管理</a></dd>
-          </dl>
-        </li>
+            <li class="layui-nav-item layui-nav-itemed">
+              <a class="" href="javascript:;">用户管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;" onclick="doclk('../adminMethod!adminManage')" id="adminManage">车站管理员</a></dd>
+                <dd><a href="javascript:;" onclick="doclk('../adminMethod!userManage')" id="userManage">普通用户</a></dd>
+              </dl>
+            </li>
+
+            <li class="layui-nav-item">
+              <a href="javascript:;">系统管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;" onclick="doclk('../adminMethod!announcementManage')">公告管理</a></dd>
+                <dd><a href="javascript:;" onclick="doclk('../adminMethod!stationManage')">站点管理</a></dd>
+              </dl>
+            </li>
         </c:if>
         <!-- 车站管理员功能 -->
+        <c:if test="${admin.role==1}">
+            <li class="layui-nav-item layui-nav-itemed">
+              <a class="" href="javascript:;">个人资料</a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;" onclick="doclk('alertpwd.jsp')">修改密码</a></dd>
+                <dd><a href="javascript:;" onclick="doclk('../adminMethod!profile')">个人信息</a></dd>
+              </dl>
+            </li>
 
-        <li class="layui-nav-item ">
-          <a class="" href="javascript:;">个人资料</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick="doclk('alertpwd.jsp')">修改密码</a></dd>
-            <dd><a href="javascript:;" onclick="doclk('../adminMethod!profile')">个人信息</a></dd>
-          </dl>
-        </li>
-
-        <li class="layui-nav-item">
-          <a href="javascript:;">班车管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;" id="nav_type" onclick="doclk('../adminMethod!busTypeManage')">类型管理</a></dd>
-            <dd><a href="javascript:;" id="nav_line" onclick="doclk('../adminMethod!routeManage')">线路管理</a></dd>
-            <dd><a href="javascript:;" id="nav_line" onclick="doclk('../adminMethod!busManage')">车辆管理</a></dd>
-            <dd><a href="javascript:;" id="nav_classes" onclick="doclk('../adminMethod!scheduleManage')">班次管理(普通)</a></dd>
-            <dd><a href="javascript:;" id="nav_classes" onclick="doclk('classes_overtime.jsp')">班次管理(加班)</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-        	<a href="javascript:;" >服务管理</a>
-        	<dl class="layui-nav-child">
-            <dd><a href="javascript:;" id="nav_type" onclick="doclk('../adminMethod!wordManage')">在线咨询</a></dd>
-          </dl>
-        </li>
+            <li class="layui-nav-item">
+              <a href="javascript:;">班车管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;" id="nav_type" onclick="doclk('../adminMethod!busTypeManage')">类型管理</a></dd>
+                <dd><a href="javascript:;" id="nav_line" onclick="doclk('../adminMethod!routeManage')">线路管理</a></dd>
+                <dd><a href="javascript:;" id="nav_line" onclick="doclk('../adminMethod!busManage')">车辆管理</a></dd>
+                <dd><a href="javascript:;" id="nav_classes" onclick="doclk('../adminMethod!scheduleManage')">班次管理</a></dd>
+              </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" >服务管理</a>
+                <dl class="layui-nav-child">
+                <dd><a href="javascript:;" id="nav_type" onclick="doclk('../adminMethod!wordManage')">在线咨询</a></dd>
+              </dl>
+            </li>
+        </c:if>
       </ul>
     </div>
   </div>
-  
+
     <div class="layui-body" id="content" style="background: rgb(241,241,241);">
   	</div>
   	

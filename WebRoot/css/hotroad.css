@@ -59,14 +59,7 @@ table {
   border-spacing: 0;
 }
 
-select {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background: url("../images/select-arrow.png") no-repeat scroll right center #FFFFFF;
-  padding-right: 32px;
- 
-}
+
 
 select::-ms-expand {
   display: none;
@@ -3617,9 +3610,9 @@ dt {
 }
 .newgouccici ul li {
   float: left;
-  height: 85px;
-  width: 25%;
-  margin-top: 10px;
+  height: 100px;
+  width: 30%;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .newgouccici ul li a {
@@ -3632,8 +3625,10 @@ dt {
 }
 
 .btnyupiaocx {
+  width: 245px;
   padding-top: 10px;
   border-top: 1px dotted gainsboro;
+  text-align: center;
 }
 .btnyupiaocx span {
   height: 30px;
@@ -3648,10 +3643,7 @@ dt {
   font-size: 16px;
 }
 
-.fyfy {
-  background-image: url(../../assets/images/uuuuu22.png);
-  background-position: center 51px;
-}
+
 
 .bottom-copyright {
   overflow: hidden;

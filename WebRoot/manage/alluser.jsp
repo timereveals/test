@@ -54,9 +54,7 @@
 				</td>
 	        </tr>
 	    </c:forEach>
-	    <tr bgcolor="grey">
-	        <td class="txlrow"  colspan="10">${pagerinfo }</td>
-	    </tr>
     </table>
+    <div class="table_bottom">${pagerinfo }</div>
  	</body>
 </html>

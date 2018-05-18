@@ -18,17 +18,31 @@
     width:500px;
     height:50px;
 }
-.show_word_status input{
-    float:left;
+.show_word_status #message_status{
     display:block;
-    width:60px;
-    height:30px;
-    margin-top:15px;
-    margin-left:30px;
-    background:rgb(30,191,245);
-    color:white;
-    font-size:18px;
+    width:300px;
+    height:40px;
+    line-height:40px;
+    border:1px solid rgb(30,191,245);
     border-radius:5px;
+    margin-top:10px;
+    margin-left:20px;
+    float:left;
+}
+#submit-search {
+	display: block;
+	background-color: rgb(30,191,245);
+	float: left;
+	margin-left:20px ;
+	margin-top: 15px;
+	color: white;
+	height: 30px;
+	width: 75px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 4px;
+	text-decoration: none;
+	cursor:pointer;
 }
 .show_word_detail {
     width:600px;

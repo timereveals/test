@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -15,12 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel=stylesheet type=text/css href="css/trainbasic.css">
 <link rel=stylesheet href="css/style.css">
 <link rel="stylesheet" href="css/hotroad.css" />
-<script language=javascript type=text/javascript src="js/ss_city.js"></script>
-<script language=javascript type=text/javascript src="js/WdatePicker.js"></script>
-<script language=javascript type=text/javascript src="js/jquery-1.4.2.min.js"></script>
-<script language=javascript type=text/javascript src="js/valform.js"></script>
 </head>
-<BODY onload="createCode();">
+<BODY>
 <%@ include file="head.jsp" %>
 	<div  class="hotroad" style="width: 900px;height: 342px;overflow: hidden;">
 		<div class="ticket-tittle" style="border-bottom: 1px solid #66ccff;overflow: hidden;">
@@ -31,22 +28,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="changeContent">
 				<div class="newgouccici" style="padding-bottom: 20px;height: 231px;">
 					<ul>
+					    <% int num = 0; %>
+					    <c:forEach items="${schedules}" var="bean">
+					    <% num = num + 1; %>
+					    <c:if test="num == 7">
+					    break;
+					    </c:if>
 						<li>
-							<a href="javascript:void(0)" class="ticket-list1 ticket-search" data-start="&#37325;&#24198;" data-end="&#21512;&#24029;">
+							<a href="javascript:void(0)" class="ticket-list1 ticket-search" >
 								<div>
-									<p style="text-align: center;font-size: 16px;padding-top: 10px;padding-bottom: 10px;">重庆 →合川</p>
+									<p style="text-align: center;font-size: 16px;padding-top: 10px;padding-bottom: 10px;">${bean.leavestationName}-${bean.arrivestationName}</p>
 									<p class="btnyupiaocx">
 										<span>余票查询</span>
 									</p>
 								</div>
 							</a>
 						</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
+
 		</div>
 	</div>
-
 
 
 </BODY></HTML>

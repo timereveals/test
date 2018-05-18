@@ -25,6 +25,7 @@
             function checkeditbustypeform(){
                 if (document.getElementById('name').value=="")
                 	{
+                	    alert("document.getElementById('name').value");
                 		alert("类型不能为空");
                 		return false;
                 	}
@@ -88,7 +89,7 @@
     </div>
     <!-- 弹出层(editRow)div-->
     <div class="layer" id="busTypeEdit" >
-    	<form action="${urlUpdate}" onsubmit="return checkaddbustypeform()" method="post">
+    	<form action="${urlUpdate}" onsubmit="return checkeditbustypeform()" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose_editRow" href="javascript:;">X</a>
 	    	</div>
@@ -107,7 +108,7 @@
     <script type="text/javascript" src="js/layer.js" ></script>
      <script type="text/javascript">
              function editBusType(bustypeid,name,description){
-                     document.getElementById("bustypeid").value=bustypeid;
+                     document.getElementById("bustypeid").value = bustypeid;
                      document.getElementById("name").value = name;
                      document.getElementById("description").value = description;
                      $("#cover").fadeIn("slow");

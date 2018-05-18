@@ -57,19 +57,18 @@ http-equiv="X-UA-Compatible">
   <c:forEach items="${orderlist}" var="beanbean">
   <TR class=blocks begtime="00:05" ttype="D601" name="checi">
     <TD><STRONG class=bluer>${beanbean.id }</STRONG></TD>
-     <TD><STRONG class=bluer>${fn:substring(beanbean.createtime,0, 19)}</STRONG></TD>
-    <TD><STRONG class=bluer>${beanbean.tickets[0].schedule.id }</STRONG></TD>
+     <TD><STRONG class=bluer>${fn:substring(beanbean.createtime,0, 10)}</STRONG></TD>
+    <TD><STRONG class=bluer>${beanbean.tickets[0].schedule.bus.plateNumber }</STRONG></TD>
     <TD>
     <c:choose>
-    <c:when test="${beanbean.status == 1}">
-    已付款
-    </c:when>
-    <c:when test="${beanbean.status == 2}">
-    待付款
-    </c:when>
+        <c:when test="${beanbean.status == 1}">
+        已付款
+        </c:when>
+        <c:when test="${beanbean.status == 2}">
+        待付款
+        </c:when>
     </c:choose>
     </TD>
-
     <TD>
     <a href="method!order"></a>
     <INPUT class=list-yd  value=详细信息 type="button" onclick="javascript:window.location.href='userMethod!orderInfo?id=${beanbean.id }';"  />

@@ -30,6 +30,28 @@
                 		return false;
                 	}
             }
+            function checkeditform(){
+                if (document.getElementById('name').value=="")
+                	{
+                		alert("站点名称不能为空");
+                		return false;
+                	}
+                if (document.getElementById('locationBrief').value=="")
+                	{
+                		alert("所在省市县不能为空");
+                		return false;
+                	}
+                if (document.getElementById('locationDetail').value=="")
+                	{
+                		alert("地址不能为空");
+                		return false;
+                	}
+                if (document.getElementById('phone').value=="")
+                	{
+                		alert("电话不能为空");
+                		return false;
+                	}
+            }
         </script>
     </head>
     <body>
@@ -93,7 +115,7 @@
     </div>
     <!-- 弹出层(editRow)div-->
     <div class="layer" id="layer_editRow" >
-    	<form action="${urlUpdate}" method="post">
+    	<form action="${urlUpdate}" onsubmit="return checkeditform()" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose_editRow" href="javascript:;">X</a>
 	    	</div>

@@ -10,6 +10,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">   
     <title>	我的资料</title>
 	<link rel="stylesheet" href="css/userinfo.css" />
+    <script type="text/javascript">
+        function checkeditform(){
+            if (document.getElementById('name').value=="")
+                {
+                	alert("用户名不能为空");
+                	return false;
+                }
+            if (document.getElementById('realName').value=="")
+                {
+                	alert("真实姓名不能为空");
+                	return false;
+                }
+            if (document.getElementById('phone').value=="")
+                {
+                	alert("联系方式不能为空");
+                	return false;
+                }
+            valid=/^0?1[3,5,7,8][0,1,2,3,4,5,6,7,8,9]\d{8}$/;
+                if(!valid.test(document.getElementById('phone').value)){
+                    alert("请输入正确的手机格式");
+                    return false;
+                }
+            if (document.getElementById('IDNumber').value=="")
+                {
+                	alert("身份证号不能为空");
+                	return false;
+                }
+            if (document.getElementById('IDNumber').value.length != 18)
+                {
+                    alert("请输入正确的身份证号");
+                    return false;
+                }
+            if (document.getElementById('email').value=="")
+                {
+                	alert("email不能为空");
+                	return false;
+                }
+                var sex = document.getElementById('sex').value;
+            if (sex=="")
+                {
+                	alert("性别不能为空");
+                	return false;
+                }
+            if (sex!="男" && sex !="女")
+                 {
+                     alert("性别必须为男或女");
+                     return false;
+                 }
+        }
+    </script>
   </head>
   <body>
     <div class="show_userinfo" id="show_userinfo">
@@ -23,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div>&nbsp;状&nbsp;&nbsp;&nbsp;&nbsp;态&nbsp;&nbsp;:<span>${user.status}</span></div>
 		<div><input type="button" value="修改" id="alterinfo"></input></div>
 	</div>
-	<form action="userMethod!alteruserinfo" method="post">
+	<form action="userMethod!alteruserinfo" onsubmit="return checkeditform()" method="post">
 	<div class="alter_userinfo" id="alter_userinfo">
 		<p>修改您的基础信息</p>
 		<div>用户名称:<input type="text" name="name" id="name" value="${user.name }"></input></div>

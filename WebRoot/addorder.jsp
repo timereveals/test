@@ -67,6 +67,7 @@
         	</script>
     </head>
     <body>
+    <%@ include file="head.jsp" %>
     	<div class="bg">
 	<!-- -->
 	<div class="carpay-process">
@@ -271,7 +272,7 @@
 				<span class="checkbox" style="margin-left:60px;">
 					<input id="buyInfo" autocomplete="off" class="pname" type="checkbox">
 					<label for="buyInfo"></label><label for="buyInfo" class="checkbox-label-none">
-						<a target="_blank" href="helpcenter.jsp">已阅读购票须知</a>
+						<a target="_blank" href="helpcenter.jsp#jump2">已阅读购票须知</a>
 					</label>
 				</span>
 			</dd>

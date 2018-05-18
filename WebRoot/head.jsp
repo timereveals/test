@@ -45,7 +45,7 @@
 		        <a href="userMethod!orderList"><input value="我的订单" type="button"/></a>
 		  </c:if>
 		  <a href="userMethod!stationList"><input value="站点查询" type="button"/></a>
-		  <a href="hotroad.jsp"><input value="热门路线" type="button"/></a>
+		  <a href="userMethod!hotRoad"><input value="热门路线" type="button"/></a>
 		  <a href="helpcenter.jsp"><input value="帮助中心" type="button"/></a>
 		</div>
 	</div>

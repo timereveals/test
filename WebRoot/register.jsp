@@ -89,6 +89,16 @@ function checkregisterform(){
 		alert("请输入正确的手机格式");
 		return false;
 	}
+    if (document.getElementById('IDNumber').value=="")
+        {
+            alert("身份证号不能为空");
+            return false;
+        }
+	if (document.getElementById('IDNumber').value.length != 18)
+	{
+		alert("请输入正确的身份证号");
+		return false;
+	}
 	if (document.getElementById('email').value=="")
 	{
 		alert("email不能为空");

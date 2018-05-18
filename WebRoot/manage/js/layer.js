@@ -1,25 +1,4 @@
 
-/* var cover=document.getElementById("cover"); 
- var layer=document.getElementById("layer"); 
- var add=document.getElementById("submit_add"); 
- var btclose=document.getElementById("btclose"); 
- var sure=document.getElementById("sure")
- add.onclick=function() 
- { 
-  cover.style.display="block"; 
-  layer.style.display="block"; 
- } 
-
-  btclose.onclick=function() 
-   { 
-	cover.style.display="none"; 
-	layer.style.display="none";  
-   } 
-	sure.onclick=function()
-	{ 
-	cover.style.display="none"; 
-	layer.style.display="none";  
-   } */
 $(function(){
     //$("#layer").hide(); //先让div隐藏
     $("#submit_add").click(function(){

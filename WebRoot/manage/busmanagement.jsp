@@ -32,7 +32,6 @@
                 		alert("车牌号不能为空");
                 		return false;
                 	}
-
                 if (document.getElementById('totalSeats').value=="")
                 	{
                 		alert("座位不能为空");

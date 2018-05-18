@@ -46,7 +46,7 @@
     <div class="cover" id="cover"></div> 
     <!-- 弹出层(add)div-->
     <div class="layer" id="layer_add" >
-    	<form action="adminMethod!announcementCreate" onsubmit="return checknoticeform()" method="post">
+    	<form action="adminMethod!announcementCreate" onsubmit="return checkaddnoticeform()" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose" href="javascript:;">X</a>
 	    	</div>
@@ -69,7 +69,7 @@
     </div>
     <!-- 弹出层(editRow)div-->
     <div class="layer" id="layer_editRow" >
-    	<form action="${urlUpdate}" method="post">
+    	<form action="${urlUpdate}" onsubmit="return checkeditnoticeform()" method="post">
     		<div class="nav_close">
 	    		<a class="btclose" id="btclose_editRow" href="javascript:;">X</a>
 	    	</div>
@@ -110,7 +110,7 @@
                 $("#cover").fadeOut("slow");
                 $("#layer_editRow").fadeOut("slow");//淡入淡出效果 隐藏div
             })
-        function checknoticeform(){
+        function checkaddnoticeform(){
         if (document.getElementById('title1').value=="")
              {
                 alert("标题不能为空");
@@ -127,6 +127,28 @@
         		return false;
         	}
         if (document.getElementById('end').value=="")
+        	{
+        		alert("结束时间不能为空");
+        		return false;
+        	}
+        }
+    function checkeditnoticeform(){
+        if (document.getElementById('title2').value=="")
+             {
+                alert("标题不能为空");
+                return false;
+             }
+        if (document.getElementById('content2').value=="")
+        	{
+        		alert("内容不能为空");
+        		return false;
+        	}
+        if (document.getElementById('start_time').value=="")
+        	{
+        		alert("开始时间不能为空");
+        		return false;
+        	}
+        if (document.getElementById('end_time').value=="")
         	{
         		alert("结束时间不能为空");
         		return false;

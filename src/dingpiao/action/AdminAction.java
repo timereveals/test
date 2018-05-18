@@ -576,6 +576,14 @@ public class AdminAction extends ActionSupport {
         station.setLocationBrief(request.getParameter("locationBrief"));
         station.setLocationDetail(request.getParameter("locationDetail"));
         station.setPhone(request.getParameter("phone"));
+        int check = stationDAO.selectBeanCount(" where name = '" + station.getName() + "'");
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
+        if (0 != check) {
+            response.getWriter().print("<script language=javascript>alert('创建失败,站点名已存在');window.location.href='index" +
+                    ".jsp';</script>");
+            return;
+        }
         stationDAO.updateBean(station);
         response.getWriter().print("<script language=javascript>alert('编辑成功');window.location" +
                 ".href='javascript:history.back(-1);';</script>");
@@ -853,6 +861,8 @@ public class AdminAction extends ActionSupport {
         request.setAttribute("urlUpdate", "../adminMethod!routeUpdate");
         request.setAttribute("urlRemove", "../adminMethod!routeRemove");
         request.setAttribute("title", "线路管理");
+        List<Station> stationlist1 = stationDAO.selectBeanList(0, 999, "where locationBrief like '%重庆%'");
+        request.setAttribute("stationlist1", stationlist1);
         List<Station> stationlist = stationDAO.selectBeanList(0, 999, "");
         request.setAttribute("stationlist", stationlist);
         this.setUrl("manage/routemanage.jsp");
@@ -917,18 +927,19 @@ public class AdminAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         String keyWord = request.getParameter("keyWord");
         StringBuffer sb = new StringBuffer();
+        sb.append("where status = 0");
         if (keyWord != null && !"".equals(keyWord)) {
-            sb.append("where id = '" + keyWord + "' ");
-            request.setAttribute("username", keyWord);
+            sb.append("and id = '" + keyWord + "'");
+            request.setAttribute("keyWord", keyWord);
         }
-        sb.append("order by id desc ");
+        sb.append(" order by id desc ");
         String where = sb.toString();
         int currentpage = 1;
         int pagesize = 10;
         if (request.getParameter("pagenum") != null) {
             currentpage = Integer.parseInt(request.getParameter("pagenum"));
         }
-        int total = scheduleDAO.selectBeanCount("");
+        int total = scheduleDAO.selectBeanCount("where status = 0");
         request.setAttribute("list", scheduleDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
                 "adminMethod!scheduleManage", "共有" + total + "条记录"));
@@ -949,8 +960,10 @@ public class AdminAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         Schedule schedule = new Schedule();
-        schedule.setRoute(routeDAO.selectBean("where id=" + request.getParameter("routeId")));
-        schedule.setBus(busDAO.selectBean("where id=" + request.getParameter("busId")));
+        Route route = routeDAO.selectBean("where id=" + request.getParameter("routeId"));
+        Bus bus = busDAO.selectBean("where id=" + request.getParameter("busId"));
+        schedule.setRoute(route);
+        schedule.setBus(bus);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddHH:mm");
         String leave_time = request.getParameter("leaveTime").replace("T","");
         String arrive_time = request.getParameter("arriveTime").replace("T","");
@@ -959,6 +972,7 @@ public class AdminAction extends ActionSupport {
         Date date = new Date();
         schedule.setLeaveTime(leaveTime);
         schedule.setArriveTime(arriveTime);
+        schedule.setStatus(0);
         schedule.setPrice(Double.parseDouble(request.getParameter("price").trim()));
         int compare = arriveTime.compareTo(leaveTime);
         int compare2 = leaveTime.compareTo(date);
@@ -998,13 +1012,14 @@ public class AdminAction extends ActionSupport {
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        Schedule bean = scheduleDAO.selectBean("where id=" + id);
-        if (null == bean) {
+        Schedule schedule = scheduleDAO.selectBean("where id=" + id);
+        if (null == schedule) {
             response.getWriter().print("<script language=javascript>alert('班次不存在');window.location.href='manage/index.jsp';" +
                     "</script>");
             return;
         }
-        scheduleDAO.deleteBean(bean);
+        schedule.setStatus(1);
+        scheduleDAO.updateBean(schedule);
         response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='manage/index.jsp';" +
                 "</script>");
     }

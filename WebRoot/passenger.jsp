@@ -19,6 +19,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.backstretch.min.js"></script>
         <script src="js/scripts.js"></script>
+    <script type="text/javascript">
+        function checkaddform(){
+            if (document.getElementById('name').value=="")
+                {
+                	alert("姓名不能为空");
+                	return false;
+                }
+            if (document.getElementById('phone').value=="")
+                {
+                	alert("联系方式不能为空");
+                	return false;
+                }
+            valid=/^0?1[3,5,7,8][0,1,2,3,4,5,6,7,8,9]\d{8}$/;
+                if(!valid.test(document.getElementById('phone').value)){
+                    alert("请输入正确的手机格式");
+                    return false;
+                }
+            if (document.getElementById('IDNumber').value=="")
+                {
+                	alert("身份证号不能为空");
+                	return false;
+                }
+            if (document.getElementById('IDNumber').value.length != 18)
+                {
+                    alert("请输入正确的身份证号");
+                    return false;
+                }
+        }
+    </script>
 	</head>
 	<body>
 		<a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-addpas">+添加乘车人${passengerSize}</a>
@@ -33,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         				<h3 class="modal-title" id="modal-addpas-label">添加乘车人</h3>
         			</div>
         			<div class="modal-body">
-	                    <form action="${urlCreate}"method="post" class="addpas-form">
+	                    <form action="${urlCreate}" onsubmit="return checkaddform()" method="post" class="addpas-form">
 	                        <div class="pas_info_insert">
                                 <div>
                                         姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" id="name" name="name"></input>
@@ -42,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         电&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text" id="phone"  name="phone" ></input>
                                     </div>
                                     <div>
-                                        身&nbsp;&nbsp;份&nbsp;证： <input type="text" id="IDNumber" name="IDNumber"></input>
+                                        身份证： <input type="text" id="IDNumber" name="IDNumber"></input>
                                     </div>
 
                                 <div class="pas_btn">

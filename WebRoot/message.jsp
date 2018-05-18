@@ -9,18 +9,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
     <title>message消息</title>
 	<link rel="stylesheet" type="text/css" href="css/message.css">
-
   </head>
-  
   <body>
        <div class="title_message">消息</div>
        <div class="show_word_status">
-            <a href="javascript:useraction!wordList?list='1'";"><input type="button" value="全部" /></a>
-            <a href="javascript:useraction!wordList?list='2'";"><input type="button" value="已回复"  /></a>
-            <a href="javascript:useraction!wordList?list='3';"><input type="button" value="未回复" /></a>
+            <form action="${url}" method="post">
+                   	<div class="message_select">
+                        <input name="keyWord" value="${status}" id="message_status" type="text" placeholder="请输入留言状态进行查询"/>
+                   		<input id="submit-search" type="submit" value="查询" onclick="search('${url}')"/>
+                   	</div>
+            </form>
        </div>
        <c:forEach items="${wordList}"  var="bean2">
        <div class="show_word_detail">
