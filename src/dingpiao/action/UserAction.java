@@ -489,6 +489,35 @@ public class UserAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public void orderCancel() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String id = request.getParameter("id");
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html; charset=gbk");
+        if(id!=null && !id.isEmpty()){
+            Order order = orderDAO.selectBean("where id='"+id+"'");
+            Calendar now = Calendar.getInstance();
+            now.add(Calendar.MINUTE, 30);
+            Date curDateTime = now.getTime();
+            if(order.getStatus() == 0){
+                response.getWriter().print("<script language=javascript>alert('取消失败, 订单已取消');window.location.href='index.jsp';" + "</script>");
+                return;
+            }
+            if(curDateTime.getTime()>order.getTickets().get(0).getSchedule().getLeaveTime().getTime()){
+                response.getWriter().print("<script language=javascript>alert('取消失败');window.location.href='index.jsp';" + "</script>");
+                return;
+            }
+
+            order.setStatus(0);
+            for(Ticket ticket:order.getTickets()){
+                ticket.setStatus(0);
+            }
+            response.getWriter().print("<script language=javascript>alert('取消成功');window.location.href='index.jsp';" + "</script>");
+            return;
+        }
+        response.getWriter().print("<script language=javascript>alert('取消失败');window.location.href='index.jsp';" + "</script>");
+    }
+
     public String orderList() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();

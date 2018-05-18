@@ -97,6 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		         </label>
 	        	<label>
 					<a href="method!order" style=''>详情</a>
+					<a href="userMethod!orderCancel?id=${bean.id}">取消</a>
 				</label>
 	        </li>
 	    </ul>
