@@ -339,6 +339,8 @@ public class UserAction extends ActionSupport {
         List<Announcement> announcements = announcementDAO.selectBeanList(0, 999, " where date_format(start_time,'%Y-%m-%d%T') < '"+curTime+"' and date_format(end_time,'%Y-%m-%d%T') > '" + curTime+"'");
         request.setAttribute("announcements", announcements);
 
+        checkTicketStatus();
+
         List<Schedule> scheduleList = scheduleDAO.selectBeanList(0, 999, where);
         for (int i = 0; i < scheduleList.size(); ++i) {
             if (scheduleList.get(i).getTickets().size() <= 0 || allTicketSold(scheduleList.get(i).getTickets())) {
@@ -359,6 +361,21 @@ public class UserAction extends ActionSupport {
             }
         }
         return true;
+    }
+
+    private void checkTicketStatus(){
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, -15);
+        Date curDateTime = now.getTime();
+        List<Order> orders = orderDAO.selectBeanList(0,999," where status != 0");
+        for(int i=0;i<orders.size();i++){
+            if(orders.get(i).getCreatetime().getTime() < curDateTime.getTime()){
+                orders.get(i).setStatus(0);
+                for(Ticket ticket:orders.get(i).getTickets()){
+                    ticket.setStatus(0);
+                }
+            }
+        }
     }
 
     public String order() throws Exception {
@@ -485,6 +502,8 @@ public class UserAction extends ActionSupport {
                     "</script>");
             return null;
         }
+
+        checkTicketStatus();
 
         List<Order> orders = orderDAO.selectBeanList(0, 999, "where user.id = '" + user.getId() + "'");
 

@@ -86,6 +86,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <c:when test="${bean.status == 2}">
                     <label>待支付</label>
                     </c:when>
+                    <c:when test="${bean.status == 0}">
+                    <label>已取消</label>
+                    </c:when>
                 </c:choose>
 	        </li>
 	        <li style='width:90px;margin-left:2px;'>
