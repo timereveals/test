@@ -75,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </ul>
                 </form>
                 <div style="WIDTH: 720px" class="chooseleft">
+                        <c:if test="${scheduleList.size() != 0}">
                     <table class="sel_table">
                           <thead>
                               <tr class=chose-tt>
@@ -118,6 +119,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </c:forEach>
                     </tbody>
                     </table>
+                        </c:if>
+                        <c:if test="${scheduleList.size() == 0}">
+                        暂无班次
+                        </c:if>
                 </div>
                 <div style="TEXT-ALIGN: right; PADDING-BOTTOM: 5px; LINE-HEIGHT: 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #f00; PADDING-TOP: 5px">以上查询信息仅供参考，请以站点当日售票信息为准！</div>
             </div>

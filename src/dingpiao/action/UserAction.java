@@ -331,7 +331,7 @@ public class UserAction extends ActionSupport {
             request.setAttribute("busType", busType);
         }
 
-        where += " and status = 0 order by id DESC";
+        where += " and status = 0 order by leaveTime asc";
 
         Date curDate = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-ddHH:mm");
@@ -341,7 +341,7 @@ public class UserAction extends ActionSupport {
 
         List<Schedule> scheduleList = scheduleDAO.selectBeanList(0, 999, where);
         for (int i = 0; i < scheduleList.size(); ++i) {
-            if (scheduleList.get(i).getTickets().size() <= 0) {
+            if (scheduleList.get(i).getTickets().size() <= 0 || allTicketSold(scheduleList.get(i).getTickets())) {
                 scheduleList.remove(i);
             }
         }
@@ -350,6 +350,15 @@ public class UserAction extends ActionSupport {
 
         this.setUrl("busticket.jsp");
         return SUCCESS;
+    }
+
+    private boolean allTicketSold(List<Ticket> tickets){
+        for(Ticket ticket:tickets){
+            if(ticket.getStatus() == 0){
+                return false;
+            }
+        }
+        return true;
     }
 
     public String order() throws Exception {
