@@ -331,7 +331,7 @@ public class UserAction extends ActionSupport {
         }
 
         if (null != busType && !busType.isEmpty()) {
-            where += " and bus.busType.name like '%" + to + "%'";
+            where += " and bus.busType.name = '" + busType + "'";
             request.setAttribute("busType", busType);
         }
 

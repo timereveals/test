@@ -822,12 +822,12 @@ public class AdminAction extends ActionSupport {
         response.setContentType("text/html; charset=gbk");
         if (0 != check) {
             response.getWriter().print("<script language=javascript>alert('创建失败,该类型已存在');window.location" +
-                    ".href='javascript:history.back(-1);';</script>");
+                    ".href='index.jsp';</script>");
             return;
         }
         busTypeDAO.insertBean(busType);
         response.getWriter().print("<script language=javascript>alert('创建成功');window.location" +
-                ".href='manage/index.jsp;';</script>");
+                ".href='index.jsp;';</script>");
     }
 
     public void busTypeRemove() throws Exception {
