@@ -14,6 +14,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>查询订单</title>
 
 	<link rel="stylesheet" href="css/queryorder.css" />
+	<script>
+	function checkorderform(){
+          document.getElementById("myorderform").submit();
+         }
+	</script>
   </head>
 
   <body>
@@ -21,6 +26,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 汽车票订单信息 -->
 <div class="line-2"></div>
 <div class="theCarPage" style="margin-left:18%;">
+    <form action="${url}" method="post">
+        <ul class="theCarPage-ul1">
+            <li>
+                <input name="keyWord" value="${status}" id="message_status" type="text" placeholder="请输入留言状态进行查询"/>
+                <input class="orderSearch" id="submit-search" type="submit" value="订单搜索" onclick="search('${url}')"/>
+            </li>
+        </ul>
+     </form>
+
 	<ul class="theCarPage-ul3">
 	  <li>订单</li>
 	  <li style="width:80px">价格</li>
@@ -39,21 +53,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--有保费时,显示 （含保险费） -->
 	<!-- 存售票提交反馈记录表id,全部退票超时时用 -->
 	
-    <form class="weigo" style="clear: both; ">
+    <form class="weigo" id="myorderform" style="clear: both; ">
     <c:forEach items="${orderlist}" var="bean">
+    <form id="myorderform">
+        <div style="width:750px;margin-left:10px;border: 1px solid #dddddd;">下单时间：${fn:substring(bean.createtime,0, 16)}</div>
 	    <ul class="theCarPage-ul5">
 	        <li>
 				<ul>
 	                <li>
 	                    <span>${fn:substring(bean.tickets[0].schedule.leaveTime,0, 10)}</span>
-	                    <span class="goPlace"></span>
+	                    <span class="goPlace">${bean.tickets[0].schedule.route.leaveStation.name}</span>
 	                    <span>${bean.tickets[0].schedule.price}</span>
 	                    <span style='width:auto;margin-left: 20px;'>1</span>
 	                    <span style='float: right;margin-top: 3px;margin-right: 35px;'> </span>
 	                </li>
 	                <li>
 	                    <span>${fn:substring(bean.tickets[0].schedule.leaveTime,11, 16)}</span>
-	                    <span class="atPlace">${bean.tickets[0].schedule.bus.plateNumber}</span>
+	                    <span class="atPlace">${bean.tickets[0].schedule.route.arriveStation.name}</span>
 	                    <span></span>
 	                </li>
 	                <li>
@@ -65,7 +81,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                   	<span style="width: 77px;margin-right: 35px;text-align: right;">座位号:${bean.tickets[0].seatNumber}</span>
 	                </li>
 		         </ul>
-	           	
 	            <div>
 	            	<span>保险服务</span>
 	            	<span>￥0.00</span>
@@ -78,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <label></label>
 	        </li>
 	        <li>
-	        	<!-- 查状态表 -->
+	        	<!-- 查询状态 -->
                 <c:choose>
                     <c:when test="${bean.status == 1}">
                     <label>已支付</label>
@@ -96,16 +111,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           		<a href="userMethod!schedule" class="ticket-search pay ticket_search1"  style='color:white!important; '>再次购买</a>
 		         </label>
 	        	<label>
-					<a href="method!order" style=''>详情</a>
-					<a href="userMethod!orderCancel?id=${bean.id}">取消</a>
+					<a href="javascript:checkorderform();" style=''>详情</a>
+					<c:choose>
+					<c:when test="${bean.status == 2}">
+					<a href="javascript:cancelOrder(${bean.id});">取消</a>
+					</c:when>
+
+					</c:choose>
 				</label>
 	        </li>
 	    </ul>
+	    </form>
 	    </c:forEach>
+	    <c:if test="${orderlist.size() == 0}">
+             <div style="color:#f00;margin:5px;" ><h3>暂无订单<h3></div>
+        </c:if>
     </form>
 
 </div>
 
-</div> 
+</div>
+<script>
+    function cancelOrder(orderid){
+        if(confirm('确认取消？'+orderid)){
+            window.location.href="userMethod!orderCancel?id = '"+orderid+"' ";
+        }
+    }
+</script>
   </body>
 </html>

@@ -51,6 +51,12 @@
                 		alert("电话不能为空");
                 		return false;
                 	}
+                var phoneReg=/0\d{2,3}-\d{7,8}/;
+                if (!phoneReg.test(document.getElementById("phone").value))
+                	{
+                		alert("请输入正确的电话格式");
+                		return false;
+                	}
             }
         </script>
     </head>

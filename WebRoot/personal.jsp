@@ -5,7 +5,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
-<!-- saved from url=(0040)http://huochepiao.114piaowu.com/beijing/ -->
 <HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
 
 <TITLE>网上订票网站</TITLE>
@@ -14,10 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel=stylesheet href="css/personal.css">
 <script type="text/javascript" src="js/jquery-1.11.0.min.js" ></script>
 <BODY>
-
 <%@ include file="head.jsp" %>
-
-
 <!-- main -->
 <div class="personal">
     <div class="person_nav">
@@ -27,9 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<a href="javascript:;" onclick="doclk('alertpwd.jsp')"><li  id="nav-alertpwd" >修改密码</li></a>
         	<a href="javascript:;" onclick="doclk('userMethod!passengerManage')"><li  id="nav-passenger" >常用乘车人</li></a>
         	<a href="javascript:;" onclick="doclk('userMethod!wordList')"><li  id="nav-message" >消息</li></a>
-        	</br>
-        	<label>订单中心</label>
-        	<a href="javascript:;" onclick="doclk('queryorder.jsp')"><li  id="nav-orderinfo">汽车票订单</li></a>
         	</br>
         	<label>客户服务</label>
         	<a href="javascript:;" onclick="doclk('suggest.jsp')"><li  id="nav-suggest">在线咨询</li></a>

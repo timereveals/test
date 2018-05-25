@@ -19,16 +19,32 @@
                 		alert("姓名不能为空");
                 		return false;
                 	}
+                var chineseReg = /^[\u4E00-\u9FA5]{2,4}$/;
+            	if(!chineseReg.test(document.getElementById('realName').value)) {
+            		  alert('姓名请填写中文2到4个字!!');
+            		  return false;
+            	}
                 if (document.getElementById('phone').value=="")
                 	{
                 		alert("联系方式不能为空");
                 		return false;
                 	}
+                var valid=/^0?1[3,5,8][0,1,2,3,4,5,6,7,8,9]\d{8}$/;
+            	if(!valid.test(document.getElementById('phone').value)){
+            		alert("请输入正确的手机格式");
+            		return false;
+            	}
                 if (document.getElementById('idNumber').value=="")
                 	{
                 		alert("身份证号不能为空");
                 		return false;
                 	}
+                var IDNumberReg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            	if (!IDNumberReg.test(document.getElementById("idNumber").value))
+            	{
+            		alert("请输入正确的身份证号");
+            		return false;
+            	}
             }
         </script>
     </head>

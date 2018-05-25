@@ -1,5 +1,6 @@
 package dingpiao.action;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import dingpiao.dao.*;
 import dingpiao.model.*;
 import dingpiao.util.Arith;
+import dingpiao.util.Util;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.struts2.ServletActionContext;
 
@@ -286,8 +288,10 @@ public class UserAction extends ActionSupport {
         String dateFormat = "yyyy-MM-dd";
         String timeFormat = "HH:mm:ss";
         String dateTimeFormat = dateFormat + " " + timeFormat;
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, 30);
+        Date currentTime = now.getTime();
 
-        Date currentTime = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat(dateTimeFormat);
         String strCurrentTime = sdf.format(currentTime);
         where += " date_format(leaveTime, '%Y-%m-%d %T') > '" + strCurrentTime + "' ";
@@ -338,7 +342,6 @@ public class UserAction extends ActionSupport {
         String curTime = simpleDateFormat.format(curDate);
         List<Announcement> announcements = announcementDAO.selectBeanList(0, 999, " where date_format(start_time,'%Y-%m-%d%T') < '"+curTime+"' and date_format(end_time,'%Y-%m-%d%T') > '" + curTime+"'");
         request.setAttribute("announcements", announcements);
-
         checkTicketStatus();
 
         List<Schedule> scheduleList = scheduleDAO.selectBeanList(0, 999, where);
@@ -363,17 +366,22 @@ public class UserAction extends ActionSupport {
         return true;
     }
 
-    private void checkTicketStatus(){
+    private void checkTicketStatus() throws IOException {
+        HttpServletResponse response = ServletActionContext.getResponse();
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE, -15);
         Date curDateTime = now.getTime();
-        List<Order> orders = orderDAO.selectBeanList(0,999," where status != 0");
+        List<Order> orders = orderDAO.selectBeanList(0,999," where status = 2");
         for(int i=0;i<orders.size();i++){
             if(orders.get(i).getCreatetime().getTime() < curDateTime.getTime()){
                 orders.get(i).setStatus(0);
                 for(Ticket ticket:orders.get(i).getTickets()){
                     ticket.setStatus(0);
                 }
+                response.setCharacterEncoding("gbk");
+                response.setContentType("text/html; charset=gbk");
+                response.getWriter().print("<script language=javascript>alert('订单超过15分钟未支付，已自动取消！');window.location.href='login.jsp';" +
+                        "</script>");
             }
         }
     }
@@ -391,15 +399,17 @@ public class UserAction extends ActionSupport {
             return null;
         }
         String scheduleid = request.getParameter("scheduleid");
-        int iAvailable = ticketDAO.selectBeanCount("where status = 0 and schedule.id = " + scheduleid);
-        if (0 == iAvailable) {
-            response.setCharacterEncoding("gbk");
-            response.setContentType("text/html; charset=gbk");
-            response.getWriter().print("<script language=javascript>alert('该班次票已售完！');window.location" +
-                    ".href='userMethod!schedule';</script>");
-            return null;
-        }
+        int iAvailable = ticketDAO.selectBeanCount("where status = 0 and schedule = " + scheduleid);
+//        if (0 == iAvailable) {
+//            response.setCharacterEncoding("gbk");
+//            response.setContentType("text/html; charset=gbk");
+//            response.getWriter().print("<script language=javascript>alert('该班次票已售完！"+iAvailable+"');window.location" +
+//                    ".href='userMethod!schedule';</script>");
+//            return null;
+//        }
         Schedule schedule = scheduleDAO.selectBean("where id =" + scheduleid);
+        List<Passenger> passengerList = passengerDAO.selectBeanList(0,999,"where user.id = '" + user.getId() +"'");
+        request.setAttribute("passengerList",passengerList);
         request.setAttribute("schedule", schedule);
         request.setAttribute("iAvailable", iAvailable);
         this.setUrl("addorder.jsp");
@@ -445,6 +455,7 @@ public class UserAction extends ActionSupport {
         double totalPrice = 0;
         for (int i = 0; i < orderNum; i++) {
             Passenger passenger = new Passenger();
+            passenger.setUser(user);
             passenger.setName(request.getParameter("name" + i));
             passenger.setIDNumber(request.getParameter("idCardNo" + i));
             passenger.setPhone(request.getParameter("telphone" + i));
@@ -500,11 +511,11 @@ public class UserAction extends ActionSupport {
             now.add(Calendar.MINUTE, 30);
             Date curDateTime = now.getTime();
             if(order.getStatus() == 0){
-                response.getWriter().print("<script language=javascript>alert('取消失败, 订单已取消');window.location.href='index.jsp';" + "</script>");
+                response.getWriter().print("<script language=javascript>alert('取消失败, 订单已取消');window.location.href='userMethod!orderList';" + "</script>");
                 return;
             }
             if(curDateTime.getTime()>order.getTickets().get(0).getSchedule().getLeaveTime().getTime()){
-                response.getWriter().print("<script language=javascript>alert('取消失败');window.location.href='index.jsp';" + "</script>");
+                response.getWriter().print("<script language=javascript>alert('取消失败');window.location.href='userMethod!orderList';" + "</script>");
                 return;
             }
 
@@ -512,30 +523,46 @@ public class UserAction extends ActionSupport {
             for(Ticket ticket:order.getTickets()){
                 ticket.setStatus(0);
             }
-            response.getWriter().print("<script language=javascript>alert('取消成功');window.location.href='index.jsp';" + "</script>");
+            response.getWriter().print("<script language=javascript>alert('取消成功');window.location.href='userMethod!orderList';" + "</script>");
             return;
         }
-        response.getWriter().print("<script language=javascript>alert('取消失败');window.location.href='index.jsp';" + "</script>");
+        response.getWriter().print("<script language=javascript>alert('取消失败');window.location.href='userMethod!orderList';" + "</script>");
     }
 
     public String orderList() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
-
+        response.setCharacterEncoding("gbk");
+        response.setContentType("text/html; charset=gbk");
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            response.setCharacterEncoding("gbk");
-            response.setContentType("text/html; charset=gbk");
             response.getWriter().print("<script language=javascript>alert('请先登录！');window.location.href='login.jsp';" +
                     "</script>");
             return null;
         }
+        String keyWord = request.getParameter("keyWord");
+        StringBuffer sb = new StringBuffer();
+        if (keyWord != null && !"".equals(keyWord)) {
+            String status = null;
+            if(keyWord.equals("已支付")){
+                status = "1";
+            }else if(keyWord.equals("待支付")){
+                status = "2";
+            }else if(keyWord.equals("已取消")) {
+                status = "0";
+            }
+            sb.append("where  user.id = '" + user.getId() + "'and status = "+status);
+            request.setAttribute("keyWord", keyWord);
+        }else {
+            sb.append("where  user.id = '" + user.getId() + "' ");
+        }
+        sb.append(" order by createtime desc ");
+        String where = sb.toString();
 
-        checkTicketStatus();
-
-        List<Order> orders = orderDAO.selectBeanList(0, 999, "where user.id = '" + user.getId() + "'");
-
+       checkTicketStatus();
+        List<Order> orders = orderDAO.selectBeanList(0, 999, where );
+        request.setAttribute("url","userMethod!orderList");
         request.setAttribute("orderlist", orders);
         this.setUrl("myorder.jsp");
         return SUCCESS;
@@ -557,8 +584,6 @@ public class UserAction extends ActionSupport {
         this.setUrl("querystation.jsp");
         return SUCCESS;
     }
-
-
     public String orderInfo() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -598,6 +623,7 @@ public class UserAction extends ActionSupport {
         HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        String user_name = user.getName();
         if (user == null) {
             response.setCharacterEncoding("gbk");
             response.setContentType("text/html; charset=gbk");
@@ -606,17 +632,26 @@ public class UserAction extends ActionSupport {
             return null;
         }
         User user_check = userDAO.selectBean("where id='" + user.getId() + "'");
-        user_check.setName(request.getParameter("name"));
+        String name = request.getParameter("name");
+        user_check.setName(name);
         user_check.setRealName(request.getParameter("realName"));
         user_check.setPhone(request.getParameter("phone"));
         user_check.setIDNumber(request.getParameter("IDNumber"));
         user_check.setEmail(request.getParameter("email"));
         user_check.setSex(request.getParameter("sex"));
-        userDAO.updateBean(user_check);
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        response.getWriter().print("<script language=javascript>alert('修改成功！');window.location.href='personal.jsp';" +
-                "</script>");
+        int check = userDAO.selectBeanCount(" where name='" + user_check.getName()+ "'");
+        if (check != 0 && !name.equals(user_name)) {
+            response.getWriter().print("<script language=javascript>alert('创建失败,用户名已存在');window.location" +
+                    ".href='personal.jsp';</script>");
+            return null;
+        }
+        response.getWriter().print("<script language=javascript>alert('修改成功');window.location" +
+                ".href='personal.jsp';</script>");
+        userDAO.updateBean(user_check);
+        session.setAttribute("user", user_check);
+        this.setUrl("personal.jsp");
         return SUCCESS;
     }
 
@@ -661,6 +696,13 @@ public class UserAction extends ActionSupport {
         HttpSession session = request.getSession();
         Word word = new Word();
         User user = (User) session.getAttribute("user");
+		if (user == null) {
+            response.setCharacterEncoding("gbk");
+            response.setContentType("text/html; charset=gbk");
+            response.getWriter().print("<script language=javascript>alert('请先登录！');window.location.href='login.jsp';" +
+                    "</script>");
+            return null;
+        }
         word.setUser(user);
         word.setWord_content(request.getParameter("wordContent"));
         word.setWord_time(new Date());
@@ -678,7 +720,6 @@ public class UserAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
-        String list = (String) session.getAttribute("list");
         User user = (User) session.getAttribute("user");
         if (user == null) {
             response.setCharacterEncoding("gbk");
@@ -692,6 +733,8 @@ public class UserAction extends ActionSupport {
         if (keyWord != null && !"".equals(keyWord)) {
             sb.append("where  user.id = '" + user.getId() + "'and status like '%" + keyWord + "%' ");
             request.setAttribute("keyWord", keyWord);
+        }else {
+            sb.append("where  user.id = '" + user.getId() + "' ");
         }
         sb.append(" order by word_time desc ");
         String where = sb.toString();

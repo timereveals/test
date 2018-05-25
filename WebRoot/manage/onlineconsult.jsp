@@ -7,6 +7,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>在线咨询</title>
         <link rel="stylesheet" href="css/common.css" />
+        <script type="text/javascript">
+             function checkreplyform(){
+                 if (document.getElementById('reply_content_show').value=="")
+                 {
+                      alert("回复内容不能为空");
+                      return false;
+                 }
+             }
+         </script>
     </head>
     <body>
     	<div id="title">${title }</div>
@@ -14,7 +23,6 @@
 		    <div class="top">
 				&nbsp;&nbsp;&nbsp;关键字：<input type="text" name="keyWord" value="${username}" id="keyWord" placeholder="请输入id进行查询">
 				<input type="button" value="搜索" id="submit_find" onclick="search('${url}')">
-				<input type="button" value="添加" id="submit_add" >
 				<br/>
 			</div>
         </form>
@@ -52,7 +60,7 @@
     <!-- 遮罩层div-->
         <div class="cover" id="cover"></div>
         <!-- 弹出层(reply)回复留言div-->
-        <div class="layer" id="layer_reply" >
+        <div class="layer" id="layer_reply"  onsubmit="return checkreplyform()">
         	<form action="${urlUpdate}" method="post">
         		<div class="nav_close">
     	    		<a class="btclose" id="btclose_reply" href="javascript:;">X</a>

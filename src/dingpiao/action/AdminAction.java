@@ -17,6 +17,7 @@ import dingpiao.util.Pager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -223,6 +224,7 @@ public class AdminAction extends ActionSupport {
         if (null == admin) {
             return null;
         }
+        request.setAttribute("title","个人信息");
         request.setAttribute("user", admin);
         this.setUrl("manage/personalinfo.jsp");
         return SUCCESS;
@@ -232,15 +234,32 @@ public class AdminAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
-        Admin admin = (Admin) session.getAttribute("admin");
-        admin.setName(request.getParameter("name"));
+        Admin admin_check = (Admin) session.getAttribute("admin");
+        String check_name = admin_check.getName();
+        if (admin_check == null) {
+            response.setCharacterEncoding("gbk");
+            response.setContentType("text/html; charset=gbk");
+            response.getWriter().print("<script language=javascript>alert('请先登录！');window.location.href='manage/login.jsp';" +
+                    "</script>");
+            return;
+        }
+        Admin admin = adminDAO.selectBean("where id='" + admin_check.getId() + "'");
+        String name= request.getParameter("name");
+        admin.setName(name);
         admin.setRealName(request.getParameter("realName"));
         admin.setPhone(request.getParameter("phone"));
         admin.setIDNumber(request.getParameter("idNumber"));
         admin.setSex(request.getParameter("sex"));
-        adminDAO.updateBean(admin);
+        int check = adminDAO.selectBeanCount(" where name='" + admin.getName()+ "'");
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
+        if (check != 0 && !name.equals(check_name)) {
+            response.getWriter().print("<script language=javascript>alert('修改失败,用户名已存在');window.location" +
+                    ".href='manage/index.jsp';</script>");
+            return;
+        }
+        adminDAO.updateBean(admin);
+        session.setAttribute("admin", admin);
         response.getWriter().print("<script language=javascript>alert('修改成功');window.location" +
                 ".href='manage/index.jsp;';</script>");
 
@@ -304,7 +323,7 @@ public class AdminAction extends ActionSupport {
         Station station = stationDAO.selectBean(" where name='"+stationName+"'");
         if(station == null){
             response.getWriter().print("<script language=javascript>alert('创建失败,站点不存在');window.location" +
-                    ".href='index.jsp';</script>");
+                    ".href='manage/index.jsp';</script>");
             return;
         }
         admin.setStation(station);
@@ -312,12 +331,12 @@ public class AdminAction extends ActionSupport {
         int check = adminDAO.selectBeanCount(" where name='" + admin.getName() + "'");
         if (check != 0) {
             response.getWriter().print("<script language=javascript>alert('创建失败,用户名已存在');window.location" +
-                    ".href='index.jsp';</script>");
+                    ".href='manage/index.jsp';</script>");
             return;
         }
         adminDAO.insertBean(admin);
         response.getWriter().print("<script language=javascript>alert(\"创建车站管理员成功,初始密码为'" + admin.getPassword() + "'\")" +
-                ";window.location.href='index.jsp';</script>");
+                ";window.location.href='manage/index.jsp';</script>");
     }
 
     public void adminSetLock() throws Exception {
@@ -541,12 +560,12 @@ public class AdminAction extends ActionSupport {
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
         if (0 != check) {
-            response.getWriter().print("<script language=javascript>alert('创建失败,站点名已存在');window.location.href='index" +
+            response.getWriter().print("<script language=javascript>alert('创建失败,站点名已存在');window.location.href='manage/index" +
                     ".jsp';</script>");
             return;
         }
         stationDAO.insertBean(station);
-        response.getWriter().print("<script language=javascript>alert('创建成功');window.location.href='index.jsp';" +
+        response.getWriter().print("<script language=javascript>alert('创建成功');window.location.href='manage/index.jsp';" +
                 "</script>");
     }
 
@@ -562,6 +581,12 @@ public class AdminAction extends ActionSupport {
                     ".href='javascript:history.back(-1);';</script>");
             return;
         }
+        int check = routeDAO.selectBeanCount("where leavestation = '"+station.getId()+"' or  arrivestation = '"+station.getId()+"'");
+        if (check != 0){
+            response.getWriter().print("<script language=javascript>alert('该站点有对应线路, 不能删除');window.location" +
+                    ".href='manage/index.jsp';</script>");
+            return;
+        }
         stationDAO.deleteBean(station);
         response.getWriter().print("<script language=javascript>alert('删除成功');window.location" +
                 ".href='javascript:history.back(-1);';</script>");
@@ -571,22 +596,25 @@ public class AdminAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         String id = request.getParameter("id");
+        Station station_check = stationDAO.selectBean("where id=" + id);
+        String check_name = station_check.getName();
         Station station = stationDAO.selectBean("where id=" + id);
-        station.setName(request.getParameter("name"));
+        String name = request.getParameter("name");
+        station.setName(name);
         station.setLocationBrief(request.getParameter("locationBrief"));
         station.setLocationDetail(request.getParameter("locationDetail"));
         station.setPhone(request.getParameter("phone"));
         int check = stationDAO.selectBeanCount(" where name = '" + station.getName() + "'");
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        if (0 != check) {
-            response.getWriter().print("<script language=javascript>alert('创建失败,站点名已存在');window.location.href='index" +
+        if (0 != check && !name.equals(check_name) ) {
+            response.getWriter().print("<script language=javascript>alert('修改失败,站点名已存在');window.location.href='manage/index" +
                     ".jsp';</script>");
             return;
         }
         stationDAO.updateBean(station);
         response.getWriter().print("<script language=javascript>alert('编辑成功');window.location" +
-                ".href='javascript:history.back(-1);';</script>");
+                ".href='manage/index.jsp';</script>");
 
     }
 
@@ -714,6 +742,12 @@ public class AdminAction extends ActionSupport {
             response.getWriter().print("<script language=javascript>alert('车辆不存在');window.location.href='javascript:history.back(-1);';</script>");
             return;
         }
+        int check = scheduleDAO.selectBeanCount("where bus.id ="+bus.getId());
+        if(check!=0){
+            response.getWriter().print("<script language=javascript>alert('该车辆有对应班次, 不能删除');window.location.href='manage/index.jsp';" +
+                    "</script>");
+            return;
+        }
         busDAO.deleteBean(bus);
         response.getWriter().print("<script language=javascript>alert('删除成功');window.location.href='javascript:history.back(-1);';</script>");
     }
@@ -724,8 +758,11 @@ public class AdminAction extends ActionSupport {
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
         String id =request.getParameter("id");
-        Bus bus = busDAO.selectBean("where id=" + id);
-        bus.setPlateNumber(request.getParameter("plateNumber"));
+        Bus bus_check = busDAO.selectBean("where id = " + id);
+        String check_plateNumber = bus_check.getPlateNumber();
+        Bus bus = busDAO.selectBean("where id = " + id);
+        String plateNumber = request.getParameter("plateNumber");
+        bus.setPlateNumber(plateNumber);
         bus.setTotalSeats(Integer.parseInt(request.getParameter("totalSeats").trim()));
         bus.setDescription(request.getParameter("description"));
         String busTypeName = request.getParameter("busTypeName");
@@ -736,14 +773,12 @@ public class AdminAction extends ActionSupport {
             return ;
         }
         int check = busDAO.selectBeanCount(" where plateNumber='" + bus.getPlateNumber() + "'");
-        if (check != 1) {
-            response.getWriter().print("<script language=javascript>alert('添加失败,该车辆已存在');window.location" +
+        if (check != 0 && !plateNumber.equals(check_plateNumber)) {
+            response.getWriter().print("<script language=javascript>alert('修改失败,该车辆已存在');window.location" +
                     ".href='manage/index.jsp';</script>");
             return ;
-        }else{
-            busDAO.updateBean(bus);
         }
-
+        busDAO.updateBean(bus);
         response.getWriter().print("<script language=javascript>alert('编辑成功');window.location.href='manage/index.jsp';</script>");
 
     }
@@ -792,7 +827,7 @@ public class AdminAction extends ActionSupport {
         }
         busTypeDAO.insertBean(busType);
         response.getWriter().print("<script language=javascript>alert('创建成功');window.location" +
-                ".href='javascript:history.back(-1);';</script>");
+                ".href='manage/index.jsp;';</script>");
     }
 
     public void busTypeRemove() throws Exception {
@@ -807,29 +842,43 @@ public class AdminAction extends ActionSupport {
                     ".href='javascript:history.back(-1);';</script>");
             return;
         }
+        int check = busDAO.selectBeanCount("where bustype ="+busType.getId());
+        if (check != 0){
+            response.getWriter().print("<script language=javascript>alert('该类型有对应车辆, 不能删除');window.location" +
+                    ".href='manage/index.jsp';</script>");
+            return;
+        }
         busTypeDAO.deleteBean(busType);
         response.getWriter().print("<script language=javascript>alert('删除成功');window.location" +
-                ".href='javascript:history.back(-1);';</script>");
+                ".href='manage/index.jsp';</script>");
     }
 
     public void busTypeUpdate() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         String id = request.getParameter("id");
-        BusType busType = busTypeDAO.selectBean("where id=" + id);
+        BusType busType_check = busTypeDAO.selectBean("where id=" + id);
+        String check_name = busType_check.getName();
         response.setCharacterEncoding("gbk");
         response.setContentType("text/html; charset=gbk");
-        if (busType == null) {
+        if (busType_check == null) {
             response.getWriter().print("<script language=javascript>alert('类型不存在');window.location" +
-                    ".href='javascript:history.back(-1);';</script>");
+                    ".href='manage/index.jsp';</script>");
             return;
-        } else {
-            busType.setName(request.getParameter("name"));
-            busType.setDescription(request.getParameter("description"));
+        }
+        BusType busType = busTypeDAO.selectBean("where id =" +id);
+        String name= request.getParameter("name");
+        busType.setName(name);
+        busType.setDescription(request.getParameter("description"));
+        int check = busTypeDAO.selectBeanCount(" where name='" + busType.getName()+ "'");
+        if (check != 0 && !name.equals(check_name)) {
+            response.getWriter().print("<script language=javascript>alert('修改失败,类型已存在');window.location" +
+                    ".href='manage/index.jsp';</script>");
+            return ;
         }
         busTypeDAO.updateBean(busType);
         response.getWriter().print("<script language=javascript>alert('编辑成功');window.location" +
-                ".href='javascript:history.back(-1);';</script>");
+                ".href='manage/index.jsp';</script>");
 
     }
 
@@ -975,12 +1024,15 @@ public class AdminAction extends ActionSupport {
         schedule.setStatus(0);
         schedule.setPrice(Double.parseDouble(request.getParameter("price").trim()));
         int compare = arriveTime.compareTo(leaveTime);
-        int compare2 = leaveTime.compareTo(date);
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, 60);
+        Date curDateTime = now.getTime();
+        int compare2 = leaveTime.compareTo(curDateTime);
         response.setContentType("text/html; charset=gbk");
         if(compare == 1 && compare2 == 1) {
          scheduleDAO.insertBean(schedule);
         }else if(compare2 != 1){
-            response.getWriter().print("<script language=javascript>alert('添加失败,开始日期不能小于或等于当前日期');window.location.href='index.jsp';" +
+            response.getWriter().print("<script language=javascript>alert('添加失败,开始日期不能小于或等于当前日期一个小时以内');window.location.href='index.jsp';" +
                     "</script>");
             return;
         }
