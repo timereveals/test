@@ -31,7 +31,7 @@
 					<dd>
 						<span>购票订单_${schedule.route.leaveStation.name}-${schedule.route.arriveStation.name}_${schedule.leaveTime}</span>
 					</dd>
-				</dl>				
+				</dl>
 				<dl>
 					<dt>订单状态:</dt>
 					<dd>
@@ -39,7 +39,7 @@
 						<c:if test="${order.status == 1}">
 						已支付
 						</c:if>
-						<c:if test="${order.status != 1}">
+						<c:if test="${order.status == 2}">
 						待支付
 						</c:if>
 						</span>
@@ -95,7 +95,7 @@
 					</dl>
 					<dl style="border-bottom: none;">
 						<dt>车辆/班次</dt>
-						<dd>${shcedule.bus.plateNumber}</dd>
+						<dd>${schedule.bus.plateNumber}</dd>
 					</dl>
 				</div>
 				<div class="newCpxx87-b">下单人信息</div>
@@ -121,8 +121,11 @@
 			</div>
 		</div>
 		<div style="text-align: center;">
-			<a href="javascript:window.history.go(-1)" class="btn-submit">确认支付</a>
-			<a href="javascript:window.history.go(-1)" class="btn-back">返&nbsp;回</a>
+		    <c:if test="${order.status == 2}">
+                <a href="javascript:window.history.go(-1)" class="btn-submit">确认支付</a>
+            </c:if>
+                <a href="javascript:window.history.go(-1)" class="btn-back">返&nbsp;回</a>
+
 		</div>
 		
 	</div>

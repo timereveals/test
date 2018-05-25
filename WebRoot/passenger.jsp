@@ -26,6 +26,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	alert("姓名不能为空");
                 	return false;
                 }
+            var chineseReg = /^[\u4E00-\u9FA5]{2,4}$/;
+        	if(!chineseReg.test(document.getElementById('realName').value)) {
+        		  alert('姓名请填写中文2到4个字!!');
+        		  return false;
+        	}
             if (document.getElementById('phone').value=="")
                 {
                 	alert("联系方式不能为空");
@@ -41,11 +46,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	alert("身份证号不能为空");
                 	return false;
                 }
-            if (document.getElementById('IDNumber').value.length != 18)
-                {
-                    alert("请输入正确的身份证号");
-                    return false;
-                }
+            var IDNumberReg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        	if (!IDNumberReg.test(document.getElementById("IDNumber").value))
+        	{
+        		alert("请输入正确的身份证号");
+        		return false;
+        	}
         }
     </script>
 	</head>

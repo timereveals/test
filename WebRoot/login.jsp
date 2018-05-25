@@ -62,7 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <META name=GENERATOR content="MSHTML 8.00.7601.18210"></HEAD>
 <BODY onload="createCode();">
 	<form  class="login_form" action="userMethod!login" onsubmit="return 1checkregisterform()" method="post" >
-		<h2 class="ui center aligned icon header"><i class="circular users icon "></i> 用户登录 </h2>
+	<i class="fa fa-user-circle-o" aria-hidden="true" style="width:100%;font-size:70px; text-align:center;margin-top:10px;"></i>
+		<h2 class="ui center aligned icon header">用户登录 </h2>
 		<div class="ui input focus div1">
 		    <label>用户名：</label>
 		    <input type="text" placeholder="请输入用户名" name="name" size="45"  id="usernameid"/>

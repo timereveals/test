@@ -78,7 +78,11 @@ function checkregisterform(){
 		alert("真实姓名不能为空");
 		return false;
 	}
-
+    var chineseReg = /^[\u4E00-\u9FA5]{2,4}$/;
+	if(!chineseReg.test(document.getElementById('realName').value)) {
+		  alert('真实姓名请填写中文2到4个字!!');
+		  return false;
+	}
 	if (document.getElementById('phone').value=="")
 	{
 		alert("手机不能为空");
@@ -94,7 +98,8 @@ function checkregisterform(){
             alert("身份证号不能为空");
             return false;
         }
-	if (document.getElementById('IDNumber').value.length != 18)
+    var IDNumberReg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+	if (!IDNumberReg.test(document.getElementById("IDNumber").value))
 	{
 		alert("请输入正确的身份证号");
 		return false;
@@ -105,7 +110,6 @@ function checkregisterform(){
 		return false;
 	}
 
-	
 	return true;
 	
 }
@@ -114,7 +118,8 @@ function checkregisterform(){
 <META name=GENERATOR content="MSHTML 8.00.7601.18210"></HEAD>
 <BODY onload="createCode();">
 <form action="userMethod!register" onsubmit="return checkregisterform()" method="post" >
-<h2 class="ui center aligned icon header"><i class="circular users icon "></i> 用户注册 </h2>
+<i class="fa fa-user-circle-o" aria-hidden="true" style="width:100%;font-size:70px; text-align:center;margin-top:10px;"></i>
+<h2 class="ui center aligned icon header"> 用户注册 </h2>
 		<div class="ui input focus">
 		    <label>用&nbsp;&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
 		    <input type="text" placeholder="请输入用户名" name="name" size="45"  id="name"/>
@@ -147,15 +152,15 @@ function checkregisterform(){
               </select>
         </div>
 	    <div class="ui input focus">
-		    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</label>
-		    <input type="text" placeholder="请输入email" name="email" size="45" id="email"/>
+		    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</label>
+		    <input type="email" placeholder="请输入email" name="email" size="45" id="email"/>
 	    </div>
 		<div class="ui input focus">
-		    <label>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码：</label>
+		    <label>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码&nbsp;：</label>
 		    <input type="text" placeholder="请输入验证码" id="input1" size="45"/>
 	    </div>
 	    <div >
-		    <label>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码：</label>
+		    <label>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码&nbsp;：</label>
 		    <input type="text" id="checkCode" class="code" size="20" readonly="readonly"/> 
 		    <a href="####" onclick="createCode()">看不清楚</a>
 		</div>
