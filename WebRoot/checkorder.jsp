@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="css/checkorder.css" />
 	</head>
 	<body>
-        <%@ include file="head.jsp" %>
+		<%@ include file="head.jsp" %>
 		<div class="bg" style="padding-top: 20px;">
 			<div class="carpay-process">
 			<span class="carpay-process-conten">1.确定预定车票车次</span> <span >2.核对支付订单</span>
@@ -19,11 +19,11 @@
 			<span class="carpay-tittle" style="font-size: 18px;">订单信息</span>
 			<!-- 左 -->
 			<div class="carpay-box-list" >
-			
+
 				<dl>
 					<dt>订单号:</dt>
 					<dd>
-						<span>${order.id}</span>
+						<span>${schedule.order.id}</span>
 					</dd>
 				</dl>
 				<dl>

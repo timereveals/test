@@ -400,7 +400,7 @@ public class AdminAction extends ActionSupport {
         int total = announcementDAO.selectBeanCount("");
         request.setAttribute("list", announcementDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
-                "adminMethod!announcementManage", "共有" + total + "条记录"));
+                "../adminMethod!announcementManage", "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!announcementManage");
         request.setAttribute("urlUpdate", "adminMethod!announcementUpdate");
         request.setAttribute("urlRemove", "adminMethod!announcementRemove");
@@ -519,7 +519,7 @@ public class AdminAction extends ActionSupport {
         int total = stationDAO.selectBeanCount("");
         request.setAttribute("list", stationDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
-                "adminMethod!stationManage", "共有" + total + "条记录"));
+                "../adminMethod!stationManage", "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!stationManage");
         request.setAttribute("urlUpdate", "../adminMethod!stationUpdate");
         request.setAttribute("urlRemove", "../adminMethod!stationRemove");
@@ -608,7 +608,7 @@ public class AdminAction extends ActionSupport {
         int total = wordDAO.selectBeanCount("");
         request.setAttribute("list", wordDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
-                "adminMethod!wordManage", "共有" + total + "条记录"));
+                "../adminMethod!wordManage", "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!wordManage");
         request.setAttribute("urlUpdate", "../adminMethod!wordUpdate");
         request.setAttribute("urlRemove", "../adminMethod!wordRemove");
@@ -662,7 +662,7 @@ public class AdminAction extends ActionSupport {
         }
         int total = busDAO.selectBeanCount("");
         request.setAttribute("list", busDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
-        request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage, "adminMethod!busManage",
+        request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage, "../adminMethod!busManage",
                 "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!busManage");
         request.setAttribute("urlUpdate", "../adminMethod!busUpdate");
@@ -766,7 +766,7 @@ public class AdminAction extends ActionSupport {
         int total = busTypeDAO.selectBeanCount("");
         request.setAttribute("list", busTypeDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
-                "adminMethod!busTypeManage", "共有" + total + "条记录"));
+                "../adminMethod!busTypeManage", "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!busTypeManage");
         request.setAttribute("urlUpdate", "../adminMethod!busTypeUpdate");
         request.setAttribute("urlRemove", "../adminMethod!busTypeRemove");
@@ -856,7 +856,7 @@ public class AdminAction extends ActionSupport {
         int total = routeDAO.selectBeanCount("");
         request.setAttribute("list", routeDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
-                "adminMethod!routeManage", "共有" + total + "条记录"));
+                "../adminMethod!routeManage", "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!routeManage");
         request.setAttribute("urlUpdate", "../adminMethod!routeUpdate");
         request.setAttribute("urlRemove", "../adminMethod!routeRemove");
@@ -942,7 +942,7 @@ public class AdminAction extends ActionSupport {
         int total = scheduleDAO.selectBeanCount("where status = 0");
         request.setAttribute("list", scheduleDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
-                "adminMethod!scheduleManage", "共有" + total + "条记录"));
+                "../adminMethod!scheduleManage", "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!scheduleManage");
         request.setAttribute("urlUpdate", "../adminMethod!scheduleUpdate");
         request.setAttribute("urlRemove", "../adminMethod!scheduleRemove");
@@ -1046,7 +1046,7 @@ public class AdminAction extends ActionSupport {
         int total = userDAO.selectBeanCount("");
         request.setAttribute("list", userDAO.selectBeanList((currentpage - 1) * pagesize, pagesize, where));
         request.setAttribute("pagerinfo", Pager.getPagerNormal(total, pagesize, currentpage,
-                "adminMethod!userManage", "共有" + total + "条记录"));
+                "../adminMethod!userManage", "共有" + total + "条记录"));
         request.setAttribute("url", "../adminMethod!userManage");
         request.setAttribute("urlSetLock", "../adminMethod!userSetLock");
         request.setAttribute("urlReleaseLock", "../adminMethod!userReleaseLock");
