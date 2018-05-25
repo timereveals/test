@@ -29,18 +29,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="newgouccici" style="padding-bottom: 20px;height: 231px;">
 					<ul>
 					    <% int num = 0; %>
-					    <c:forEach items="${schedules}" var="bean">
+					    <c:forEach items="${routes}" var="bean">
 					    <% num = num + 1; %>
 					    <c:if test="num == 7">
 					    break;
 					    </c:if>
 						<li>
-							<a href="javascript:void(0)" class="ticket-list1 ticket-search" >
+							<a href="userMethod!schedule?from=${bean.leaveStation.name}&to=${bean.arriveStation.name}" class="ticket-list1 ticket-search" >
 								<div>
-									<p style="text-align: center;font-size: 16px;padding-top: 10px;padding-bottom: 10px;">${bean.leavestationName}-${bean.arrivestationName}</p>
-									<p class="btnyupiaocx">
-										<span>余票查询</span>
-									</p>
+									<p style="text-align: center;font-size: 16px;padding-top: 10px;padding-bottom: 10px;">${bean.leaveStation.name}-${bean.arriveStation.name}</p>
 								</div>
 							</a>
 						</li>

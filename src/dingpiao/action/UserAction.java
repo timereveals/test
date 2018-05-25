@@ -865,9 +865,30 @@ public class UserAction extends ActionSupport {
     public String hotRoad() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
-        List<Schedule> scheduleList = scheduleDAO.selectBeanList(0,999,"");
-        Map<String,Object> map;
-        List<Map<String,Object>> schedules=new ArrayList<>();
+        List<Ticket> tickets = ticketDAO.selectBeanList(0,999," where status = 1");
+        Map<Route,Integer> route_ticketCount_map=new HashMap<>();
+        for(Ticket ticket:tickets){
+            Route route = ticket.getSchedule().getRoute();
+            if(!route_ticketCount_map.containsKey(route)){
+                route_ticketCount_map.put(route,0);
+            }else{
+                route_ticketCount_map.put(route,route_ticketCount_map.get(route)+1);
+            }
+        }
+        List<Map.Entry<Route,Integer>> list = new ArrayList<>(route_ticketCount_map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<Route, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Route, Integer> o1, Map.Entry<Route, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+
+        List<Route> routes = new ArrayList<>();
+        for(Map.Entry<Route, Integer> entry:list){
+            routes.add(entry.getKey());
+        }
+
+        /*List<Map<String,Object>> schedules=new ArrayList<>();
         int scheduleId;
         for (Schedule schedule:scheduleList) {
             map=new HashMap<>();
@@ -890,6 +911,8 @@ public class UserAction extends ActionSupport {
         });
         request.setAttribute("schedules",schedules);
         request.setAttribute("url","userMethod!hotRoad");
+        */
+        request.setAttribute("routes", routes);
         this.setUrl("hotroad.jsp");
         return SUCCESS;
     }
