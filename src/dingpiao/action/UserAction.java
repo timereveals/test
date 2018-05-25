@@ -377,7 +377,9 @@ public class UserAction extends ActionSupport {
                 orders.get(i).setStatus(0);
                 for(Ticket ticket:orders.get(i).getTickets()){
                     ticket.setStatus(0);
+                    ticketDAO.updateBean(ticket);
                 }
+                orderDAO.updateBean(orders.get(i));
                 response.setCharacterEncoding("gbk");
                 response.setContentType("text/html; charset=gbk");
                 response.getWriter().print("<script language=javascript>alert('订单超过15分钟未支付，已自动取消！');window.location.href='login.jsp';" +
@@ -397,6 +399,14 @@ public class UserAction extends ActionSupport {
             response.getWriter().print("<script language=javascript>alert('请先登录！');window.location.href='login.jsp';" +
                     "</script>");
             return null;
+        }
+        List<Order> orders = orderDAO.selectBeanList(0,999,"where user.id="+user.getId()+"");
+        for(Order order:orders){
+            if(order.getStatus() == 2){
+                response.getWriter().print("<script language=javascript>alert('您有未支付的订单,暂不能预定');window.location.href='login.jsp';" +
+                        "</script>");
+                return null;
+            }
         }
         String scheduleid = request.getParameter("scheduleid");
         int iAvailable = ticketDAO.selectBeanCount("where status = 0 and schedule = " + scheduleid);
@@ -548,7 +558,7 @@ public class UserAction extends ActionSupport {
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setContentType("text/html; charset=gbk");
         if(id!=null && !id.isEmpty()){
-            Order order = orderDAO.selectBean("where id='"+id+"'");
+            Order order = orderDAO.selectBean("where id="+id+"");
             Calendar now = Calendar.getInstance();
             now.add(Calendar.MINUTE, 30);
             Date curDateTime = now.getTime();
@@ -564,11 +574,13 @@ public class UserAction extends ActionSupport {
             order.setStatus(0);
             for(Ticket ticket:order.getTickets()){
                 ticket.setStatus(0);
+                ticketDAO.updateBean(ticket);
             }
+            orderDAO.updateBean(order);
             response.getWriter().print("<script language=javascript>alert('取消成功');window.location.href='userMethod!orderList';" + "</script>");
             return;
         }
-        response.getWriter().print("<script language=javascript>alert('取消失败');window.location.href='userMethod!orderList';" + "</script>");
+        response.getWriter().print("<script language=javascript>alert('取消失败, id为空');window.location.href='userMethod!orderList';" + "</script>");
     }
 
     public String orderList() throws Exception {

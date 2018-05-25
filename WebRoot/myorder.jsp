@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
     function cancelOrder(orderid){
         if(confirm('确认取消？'+orderid)){
-            window.location.href="userMethod!orderCancel?id = '"+orderid+"' ";
+            window.location.href="userMethod!orderCancel?id='"+orderid+"'";
         }
     }
 </script>
