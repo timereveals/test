@@ -500,6 +500,48 @@ public class UserAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String checkOrder() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html; charset=gbk");
+
+        String orderid = request.getParameter("orderid");
+        String scheduleid = request.getParameter("scheduleid");
+
+        Order order = orderDAO.selectBean("where id='"+orderid+"'");
+        Schedule schedule = scheduleDAO.selectBean("where id='"+scheduleid+"'");
+        if(order == null || schedule == null){
+            return null;
+        }
+        request.setAttribute("order", order);
+        request.setAttribute("schedule", schedule);
+        request.setAttribute("user",(User)request.getSession().getAttribute("user"));
+
+        this.setUrl("checkorder.jsp");
+        return SUCCESS;
+    }
+
+    public void confirmPay() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html; charset=gbk");
+        String id = request.getParameter("id");
+        if(null == id || id.isEmpty()){
+            return;
+        }
+        Order order = orderDAO.selectBean(" where id='"+id+"'");
+        if(null == order){
+            return;
+        }
+        order.setStatus(1);
+        for(Ticket ticket:order.getTickets()){
+            ticket.setStatus(1);
+            ticketDAO.updateBean(ticket);
+        }
+        orderDAO.updateBean(order);
+        response.getWriter().print("<script language=javascript>alert('支付成功');window.location.href='index.jsp';" + "</script>");
+    }
+
     public void orderCancel() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         String id = request.getParameter("id");

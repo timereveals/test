@@ -111,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           		<a href="userMethod!schedule" class="ticket-search pay ticket_search1"  style='color:white!important; '>再次购买</a>
 		         </label>
 	        	<label>
-					<a href="javascript:checkorderform();" style=''>详情</a>
+					<a href="userMethod!checkOrder?orderid=${bean.id}&scheduleid=${bean.tickets[0].schedule.id}" style=''>详情</a>
 					<c:choose>
 					<c:when test="${bean.status == 2}">
 					<a href="javascript:cancelOrder(${bean.id});">取消</a>

@@ -23,7 +23,7 @@
 				<dl>
 					<dt>订单号:</dt>
 					<dd>
-						<span>${schedule.order.id}</span>
+						<span>${order.id}</span>
 					</dd>
 				</dl>
 				<dl>
@@ -122,7 +122,7 @@
 		</div>
 		<div style="text-align: center;">
 		    <c:if test="${order.status == 2}">
-                <a href="javascript:window.history.go(-1)" class="btn-submit">确认支付</a>
+                <a href="userMethod!confirmPay?id=${order.id}" class="btn-submit">确认支付</a>
             </c:if>
                 <a href="javascript:window.history.go(-1)" class="btn-back">返&nbsp;回</a>
 
