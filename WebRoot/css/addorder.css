@@ -52,7 +52,6 @@ select {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  background: url("../images/select-arrow.png") no-repeat scroll right center #FFFFFF;
   padding-right: 32px;
   border: 1px solid #CCCCCC;
 }

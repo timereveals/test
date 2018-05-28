@@ -8,69 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/addorder.css" />
-        <script>
-        	    var available = Math.min(3,${iAvailable});
-				var num = 0;
-                function add_passenger(){
-					if(num>=available){
-						alert("超过最大可添加数量"+available);
-						return;
-					}
-                    document.getElementById("passenger_info").innerHTML+="<br/><div id='add"+num+"' style='margin-top:30px ;'>\
-                    	<dl><dt style='width: 45px;'><span>*</span>姓名</dt>\
-                    		<dd><input placeholder='乘客姓名' autocomplete='off' name='name"+num+"' class='linkName' type='text' data-rule='姓名:required;chinaname;' style='width:70px;height: 30px;'></dd>\
-                    	</dl>\
-                    	<dl><dt><span>*</span>证件号码</dt>\
-                    		<dd><input placeholder='证件号码' autocomplete='off' name='idCardNo"+num+"' class='idCardNo' type='text' data-rule='证件号码:required;cerNo;' style='width:142px;height: 30px;'></dd>\
-                    	</dl>\
-                    	<dl><dt style='width: 50px;'><span>*</span>手机号</dt>\
-                    		<dd><input placeholder='手机号码' autocomplete='off' name='telphone"+num+"' class='telphone' style='width: 100px;height: 30px;' type='text' data-rule='电话:required;phonemobil;'></dd>\
-                    	</dl>\
-						<dl>\
-							<dd>\
-							<select name='ticketType"+num+"' class='flush ticketType' style='padding-left: 5px;margin-left: 10px;'>\
-							<option value='1'>全票</option>\
-							<option value='2'>半票</option>\
-							</select>\
-							</dd>\
-						</dl>\
-						<dl>\
-						<dd>\
-							<input name='hasInsurance"+num+"' type='checkbox'  name='insurance"+num+"' style='margin-left:15px;'/>\
-                            <label >乘车保险</label>\
-							</span>\
-							</dd>\
-						</dl>\
-						<dl>\
-						<dd>\
-							<input name='hasChild"+num+"' type='checkbox'  name='freechild"+num+"' style='margin-left:15px;'/>\
-							<label>免票儿童</label>\
-							</span>\
-							</dd>\
-						</dl>\
-						<a onclick='delete1("+num+")' style='cursor:pointer' >&nbsp;&nbsp;&nbsp;删除</a>\
-                    	</div>";
-                    num=num+1;
-                    document.getElementById("orderForm").action="userMethod!createOrder?scheduleid=${schedule.id}&num="+num;
-                }
-                 function delete1(i){
-                           var divid="add"+i;
-                           var add = document.getElementById(divid);
-                           add.style.display = 'none';
-                           num=num-1;
-                       }
 
-                function submitOrderForm(){
-                    document.getElementById("orderForm").submit();
-                }
-                function read(){
-                    var checked = document.getElementsById("readInfo");
-                      if (checked.checked==false) {
-                        alert("请阅读购票须知！");
-                        return false;
-                    }
-                }
-        	</script>
     </head>
     <body>
     <%@ include file="head.jsp" %>
@@ -130,26 +68,57 @@
 			</tr>
 		</tbody>
 	</table>
-	    <!-- -->
+	    <!-- 显示所有乘车人信息，勾选要购票的乘车人-->
         <div class="carpay-tiitle">
             <span>乘车人信息</span>
-            <div style="display: none;">
-                <input name="price" value="28.00">
-                <input name="discprice" value="14.00">
-                <input name="insprice" value="2.00">
-            </div>
         </div>
-
         <div class="passenger-tiitle" style="height:auto;">
+        <% int count = 0; %>
+        <c:forEach items="${passengerList}" var="bean">
+           <label>
+              <input type="checkbox"  name="passengerName<%=count %>" id="passengerName<%=count %>" value="${bean.name}" />
+              <span>${bean.name}</span>
+           </label>
+        </c:forEach>
+        <div class="carpay-add-info" >
+        <div class="carpay-add-list" style="height: auto;position: relative;padding-bottom: 10px;" id="passenger_info">
             <c:forEach items="${passengerList}" var="bean">
-                <label>
-                <input type="checkbox"  name="passengerName"  value="${bean.name}" />
-                <span>${bean.name}</span>
-                </label>
+
+                <div id='add<%=count %>'  style="margin-top:20px ; display:none;">
+                 	<dl><dt style='width: 45px;'>姓名</dt>
+                    		<dd><input placeholder='乘客姓名' autocomplete='off' name='name<%=count %>' class='linkName' type='text' data-rule='姓名:required;chinaname;' style='width:70px;height: 30px;' value="${bean.name}" ></dd>
+                    	</dl>
+                    	<dl><dt>证件号码</dt>
+                    		<dd><input placeholder='证件号码' autocomplete='off' name='idCardNo<%=count %>' class='idCardNo' type='text' data-rule='证件号码:required;cerNo;' style='width:200px;height: 30px;' value="${bean.IDNumber}"></dd>
+                    	</dl>
+                    	<dl><dt style='width: 50px;'>手机号</dt>
+                    		<dd><input placeholder='手机号码' autocomplete='off' name='telphone<%=count %>' class='telphone' style='width: 100px;height: 30px;' type='text' data-rule='电话:required;phonemobil;' value="${bean.phone}"></dd>
+                    	</dl>
+						<dl><dd>
+							<select name='ticketType<%=count %>' class='flush ticketType' style='padding-left: 5px;margin-left: 10px;'>
+                                <option value='全票'>全票</option>
+                                <option value='半票'>半票</option>
+							</select>
+						</dd></dl>
+						<dl><dd>
+							<input name='hasInsurance<%=count %>' type='checkbox'  name='insurance<%=count %>' style='margin-left:15px;'/>
+                            <label >乘车保险</label>
+							</span>
+						</dd></dl>
+						<dl><dd>
+							<input name='hasChild<%=count %>' type='checkbox'  name='freechild<%=count %>' style='margin-left:15px;'/>
+							<label>免票儿童</label>
+							</span>
+						</dd></dl>
+						<br/>
+                    	</div>
+                    	<%count++;%>
             </c:forEach>
         </div>
-        <!-- -->
-        <form id="orderForm" class="passengerform" action="userMethod!createOrder?scheduleid=${schedule.id}&num=1" method="post">
+    </div>
+    </div>
+        <!--添加乘车人 -->
+        <form id="orderForm" class="passengerform" action="userMethod!createOrder?scheduleid=${schedule.id}&num=0" method="post">
             <div class="carpay-add-info" >
                 <div class="carpay-add-list" style="height: auto;position: relative;padding-bottom: 10px;" id="passenger_info">
 
@@ -195,5 +164,95 @@
 	    <input type="submit" value="提交订单" class="button submitorder" onclick="submitOrderForm()">
 	<!-- -->
 </div>
+        <script type="text/javascript">
+        	    var available = Math.min(3,${iAvailable});
+				var num = 0;
+                var passenger_num = "<%=count %>";
+                for(var i = 0; i <= passenger_num;i++){
+                    var passengerName_id=document.getElementById("passengerName"+i);
+                    var add_id=document.getElementById("add"+i);
+                    if(!passengerName_id.checked){
+                        passengerName_id.onclick = function(){
+                            num = num +1;
+
+                            add_id.style.display='block';
+                            if(num>=available){
+                                 alert("达到最大可添加数量"+available);
+                                 for(var i = 0; i <= passenger_num;i++){
+                                     var checked_id2=document.getElementById("checked"+i);
+                                     if(!checked_id2.checked){
+                                      checked_id2.setAttribute('disabled','disabled');
+                                     }
+                                 }
+                            }
+                        }
+                    }else{
+                    alert(1);
+                    }
+                }
+                function add_passenger(){
+					if(num>=available){
+						alert("超过最大可添加数量"+available);
+						return;
+					}
+                    document.getElementById("passenger_info").innerHTML+="<div id='add"+num+"' style='margin-top:20px;'>\
+                    	<dl><dt style='width: 45px;'>姓名</dt>\
+                    		<dd><input placeholder='乘客姓名' autocomplete='off' name='name"+num+"' class='linkName' type='text' data-rule='姓名:required;chinaname;' style='width:70px;height: 30px;' ></dd>\
+                    	</dl>\
+                    	<dl><dt>证件号码</dt>\
+                    		<dd><input placeholder='证件号码' autocomplete='off' name='idCardNo"+num+"' class='idCardNo' type='text' data-rule='证件号码:required;cerNo;' style='width:200px;height: 30px;'></dd>\
+                    	</dl>\
+                    	<dl><dt style='width: 50px;'>手机号</dt>\
+                    		<dd><input placeholder='手机号码' autocomplete='off' name='telphone"+num+"' class='telphone' style='width: 100px;height: 30px;' type='text' data-rule='电话:required;phonemobil;'></dd>\
+                    	</dl>\
+						<dl>\
+							<dd>\
+							<select name='ticketType"+num+"' class='flush ticketType' style='padding-left: 5px;margin-left: 10px;'>\
+                                <option value='全票'>全票</option>\
+                                <option value='半票'>半票</option>\
+							</select>\
+							</dd>\
+						</dl>\
+						<dl>\
+						<dd>\
+							<input name='hasInsurance"+num+"' type='checkbox'  name='insurance"+num+"' style='margin-left:15px;'/>\
+                            <label >乘车保险</label>\
+							</span>\
+							</dd>\
+						</dl>\
+						<dl>\
+						<dd>\
+							<input name='hasChild"+num+"' type='checkbox'  name='freechild"+num+"' style='margin-left:15px;'/>\
+							<label>免票儿童</label>\
+							</span>\
+							</dd>\
+						</dl>\
+						<a onclick='delete1("+num+")' style='cursor:pointer' >&nbsp;&nbsp;&nbsp;删除</a>\
+                    	</div>";
+                    num=num+1;
+                    document.getElementById("orderForm").action="userMethod!createOrder?scheduleid=${schedule.id}&num="+num;
+                }
+
+                 function delete1(i){
+                           var divid="add"+i;
+                           var add = document.getElementById(divid);
+                           add.style.display = 'none';
+                           num=num-1;
+                       }
+                function submitOrderForm(){
+                    if(num == 0){
+                        alert("乘车人数量不能为空");
+                        return;
+                    }
+                    var checked = document.getElementById("readInfo");
+                    if(!checked.checked)
+                    {
+                        alert("请仔细阅读乘车须知并勾选");
+                        return ;
+                    }
+                        document.getElementById("orderForm").submit();
+                }
+
+        	</script>
  	</body>
 </html>
