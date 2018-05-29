@@ -158,13 +158,9 @@
 
                 function checkbox_clicked(obj){
                     if(obj.checked){
-<<<<<<< HEAD
                         if(!add_passenger(obj.getAttribute("name"), obj.getAttribute("idNumber"), obj.getAttribute("phone"))){
                             obj.checked=false;
                         }
-=======
-                        add_passenger(obj.getAttribute("name"), obj.getAttribute("idNumber"), obj.getAttribute("phone"));
->>>>>>> aa5dcb2e738ce64a34a091a3e576f5aef220fcfc
                     }else{
                         del_passenger(obj.getAttribute("idNumber"));
                     }
@@ -235,7 +231,7 @@
                         node.parentNode.removeChild(node);
                         var list = document.getElementsByClassName("psg_checkbox");
                         for(i = 0; i<list.length; i++){
-                            if(list[i].checked || list[i].getAttribute("idNumber")==idNumber){
+                            if(list[i].checked && list[i].getAttribute("idNumber")==idNumber){
                                 list[i].checked=false;
                             }
                         }
